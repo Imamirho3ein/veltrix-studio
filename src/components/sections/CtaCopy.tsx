@@ -68,7 +68,7 @@ export function CtaCopy() {
         <Button
           href={siteConfig.telegram.channel}
           external
-          variant="secondary"
+          variant="primary"
           fullWidth
           className="sm:w-auto"
           trailingIcon={<Send className="size-4" />}
