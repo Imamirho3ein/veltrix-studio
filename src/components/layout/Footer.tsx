@@ -176,7 +176,7 @@ export function Footer() {
             className="foot-hands foot-hands-right"
           />
 
-          <p className="absolute inset-x-0 bottom-[clamp(6rem,11.5vw,10.5rem)] z-[3] mx-auto flex w-max max-w-[88%] flex-wrap items-center justify-center gap-x-[0.5em] gap-y-1 text-center text-[clamp(0.62rem,1.05vw,0.8rem)] leading-6 text-fog-400">
+          <p className="absolute inset-x-0 bottom-[clamp(11rem,19.5vw,20rem)] z-[3] mx-auto flex w-max max-w-[88%] flex-wrap items-center justify-center gap-x-[0.5em] gap-y-1 text-center text-[clamp(0.62rem,1.05vw,0.8rem)] leading-6 text-fog-400">
             <span>©۲۰۲۶</span>
             <span aria-hidden="true" className="text-brand/55">
               /
@@ -190,7 +190,7 @@ export function Footer() {
 
           <span
             aria-hidden="true"
-            className="foot-wordmark absolute inset-x-[calc(-1*clamp(1.25rem,4vw,2rem))] bottom-[calc(-1*clamp(1.2rem,7.8vw,7.5rem))] z-[1] select-none whitespace-nowrap text-center font-latin text-[clamp(3.4rem,21vw,19rem)] font-extralight leading-none tracking-[-0.035em]"
+            className="foot-wordmark absolute inset-x-[calc(-1*clamp(1.25rem,4vw,2rem))] bottom-[clamp(-1rem,-2vw,-0.25rem)] z-[1] select-none whitespace-nowrap text-center font-latin text-[clamp(3.4rem,21vw,19rem)] font-extralight leading-none tracking-[-0.035em]"
           >
             VELTRIX
           </span>
