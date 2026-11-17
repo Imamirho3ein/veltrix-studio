@@ -87,7 +87,7 @@ export function TelegramSection() {
                   className="group rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-400/35 hover:bg-accent-400/[0.07]"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex size-9 items-center justify-center rounded-xl bg-accent-400/15 text-accent-300">
+                    <span className="flex size-9 items-center justify-center rounded-xl bg-accent-400/15 text-accent-600">
                       <Bot className="size-4" />
                     </span>
                     <ArrowUpLeft className="size-4 text-fog-600 transition group-hover:-translate-y-0.5 group-hover:text-white" />
@@ -118,7 +118,7 @@ export function TelegramSection() {
                 whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative overflow-hidden rounded-[2rem] border-[5px] border-[#26201a] bg-[#100f0e] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)]"
+                className="dark-scope relative overflow-hidden rounded-[2rem] border-[5px] border-[#26201a] bg-[#100f0e] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)]"
               >
                 <div className="flex items-center gap-2.5 border-b border-white/[0.07] bg-white/[0.02] px-4 py-3">
                   <span className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-500 text-[#2c241d]">
@@ -128,12 +128,12 @@ export function TelegramSection() {
                     <p className="text-[0.72rem] font-semibold text-white">
                       Veltrix Bot
                     </p>
-                    <p className="flex items-center gap-1.5 text-[0.58rem] text-fog-500">
+                    <p className="flex items-center gap-1.5 text-[0.58rem] text-fog-300">
                       <span className="size-1 rounded-full bg-brand-400" />
                       آنلاین · پاسخ سریع
                     </p>
                   </div>
-                  <Send className="size-3.5 text-fog-600" />
+                  <Send className="size-3.5 text-fog-400" />
                 </div>
 
                 <div className="space-y-2.5 px-3 pb-4 pt-4">
@@ -158,7 +158,7 @@ export function TelegramSection() {
                         dir="rtl"
                         className={
                           message.from === "user"
-                            ? "max-w-[85%] rounded-2xl rounded-bl-md bg-[linear-gradient(135deg,#f0a24c,#f7c98a)] px-3 py-2 text-[0.62rem] leading-6 text-[#2c241d]"
+                            ? "max-w-[85%] rounded-2xl rounded-bl-md bg-[linear-gradient(135deg,#b08968,#d4b996)] px-3 py-2 text-[0.62rem] leading-6 text-[#2c241d]"
                             : "max-w-[85%] rounded-2xl rounded-br-md border border-white/[0.07] bg-white/[0.05] px-3 py-2 text-[0.62rem] leading-6 text-fog-300"
                         }
                       >
@@ -174,14 +174,14 @@ export function TelegramSection() {
                     transition={{ delay: 1.25, duration: 0.4 }}
                     className="flex justify-start gap-1.5 pl-1"
                   >
-                    <span className="size-1.5 animate-bounce rounded-full bg-fog-600 [animation-delay:-0.2s]" />
-                    <span className="size-1.5 animate-bounce rounded-full bg-fog-600 [animation-delay:-0.1s]" />
-                    <span className="size-1.5 animate-bounce rounded-full bg-fog-600" />
+                    <span className="size-1.5 animate-bounce rounded-full bg-fog-500 [animation-delay:-0.2s]" />
+                    <span className="size-1.5 animate-bounce rounded-full bg-fog-500 [animation-delay:-0.1s]" />
+                    <span className="size-1.5 animate-bounce rounded-full bg-fog-500" />
                   </motion.div>
                 </div>
 
                 <div className="flex items-center gap-2 border-t border-white/[0.07] bg-white/[0.02] px-3 py-2.5">
-                  <span className="flex-1 rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1.5 text-[0.58rem] text-fog-600">
+                  <span className="flex-1 rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1.5 text-[0.58rem] text-fog-500">
                     پیام خود را بنویسید...
                   </span>
                   <span className="flex size-7 items-center justify-center rounded-full bg-brand text-[#2c241d]">

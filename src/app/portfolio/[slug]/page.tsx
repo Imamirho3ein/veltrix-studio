@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { Reveal } from "@/components/animations/Reveal";
 import { CTA } from "@/components/sections/CTA";
+import { DeviceShowcase } from "@/components/portfolio/DeviceShowcase";
 import {
   getAdjacentProjects,
   getProject,
@@ -135,7 +136,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
               <div className="flex flex-wrap items-center gap-2.5">
                 <Badge>{project.categoryLabel}</Badge>
-                <span className="tag font-latin">{project.year}</span>
+                <span className="tag">{project.year}</span>
                 <span className="tag font-latin">{project.title}</span>
               </div>
 
@@ -149,7 +150,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   <dt className="flex items-center gap-1.5 text-[0.62rem] text-fog-500">
                     <User className="size-3" /> کارفرما
                   </dt>
-                  <dd className="mt-1.5 text-[0.8rem] text-fog-200">
+                  <dd className="mt-1.5 text-[0.8rem] text-fog-600">
                     {project.client}
                   </dd>
                 </div>
@@ -157,7 +158,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   <dt className="flex items-center gap-1.5 text-[0.62rem] text-fog-500">
                     <Calendar className="size-3" /> زمان‌بندی
                   </dt>
-                  <dd className="mt-1.5 text-[0.8rem] text-fog-200">
+                  <dd className="mt-1.5 text-[0.8rem] text-fog-600">
                     {project.timeline}
                   </dd>
                 </div>
@@ -165,13 +166,13 @@ export default async function ProjectPage({ params }: PageProps) {
                   <dt className="flex items-center gap-1.5 text-[0.62rem] text-fog-500">
                     <Layers className="size-3" /> دسته‌بندی
                   </dt>
-                  <dd className="mt-1.5 text-[0.8rem] text-fog-200">
+                  <dd className="mt-1.5 text-[0.8rem] text-fog-600">
                     {project.categoryLabel}
                   </dd>
                 </div>
                 <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5">
                   <dt className="text-[0.62rem] text-fog-500">تکنولوژی</dt>
-                  <dd className="mt-1.5 truncate text-[0.8rem] text-fog-200">
+                  <dd className="mt-1.5 truncate text-[0.8rem] text-fog-600">
                     {project.tags.join(" · ")}
                   </dd>
                 </div>
@@ -194,7 +195,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   {project.services.map((service) => (
                     <span
                       key={service}
-                      className="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[0.65rem] text-white/90 backdrop-blur"
+                      className="rounded-full border border-[#FFF9F0]/15 bg-black/40 px-3 py-1 text-[0.65rem] text-[#FFF9F0]/90 backdrop-blur"
                     >
                       {service}
                     </span>
@@ -205,11 +206,18 @@ export default async function ProjectPage({ params }: PageProps) {
           </Container>
         </header>
 
+        <DeviceShowcase
+          projectTitle={project.title}
+          projectTitleFa={project.titleFa}
+          image={project.image}
+          accent={project.accent}
+        />
+
         <Container className="py-14 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,0.28fr)] lg:gap-16">
             <div className="space-y-12">
               <FadeUp>
-                <p className="text-lg font-medium leading-9 text-fog-200">
+                <p className="text-lg font-medium leading-9 text-fog-500">
                   {project.intro}
                 </p>
               </FadeUp>
@@ -246,7 +254,7 @@ export default async function ProjectPage({ params }: PageProps) {
                       className="absolute -left-8 -top-8 size-40 rounded-full bg-brand/15 blur-[60px]"
                     />
                     <Quote className="size-7 text-brand-2/60" aria-hidden="true" />
-                    <blockquote className="relative mt-4 text-[0.95rem] leading-9 text-fog-200">
+                    <blockquote className="relative mt-4 text-[0.95rem] leading-9 text-fog-500">
                       «{project.quote.text}»
                     </blockquote>
                     <figcaption className="mt-5 border-t border-white/[0.07] pt-4 text-xs text-fog-500">
@@ -273,7 +281,7 @@ export default async function ProjectPage({ params }: PageProps) {
                         key={result.label}
                         className="border-b border-white/[0.06] pb-4 last:border-b-0 last:pb-0"
                       >
-                        <span className="block font-latin text-xl font-extrabold text-white">
+                        <span className="block text-xl font-extrabold text-white">
                           {result.value}
                         </span>
                         <span className="mt-1 block text-[0.68rem] text-fog-500">
@@ -327,7 +335,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   <ArrowRight className="size-3.5" />
                   پروژه‌ی بعدی
                 </span>
-                <span className="text-lg font-bold text-white transition-colors group-hover:text-brand-200">
+                <span className="text-lg font-bold text-white transition-colors group-hover:text-brand-600">
                   {next.titleFa}
                 </span>
                 <span className="text-[0.7rem] text-fog-500">
@@ -342,7 +350,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   <ArrowLeft className="size-3.5" />
                   پروژه‌ی قبلی
                 </span>
-                <span className="text-lg font-bold text-white transition-colors group-hover:text-brand-200">
+                <span className="text-lg font-bold text-white transition-colors group-hover:text-brand-600">
                   {previous.titleFa}
                 </span>
                 <span className="text-[0.7rem] text-fog-500">

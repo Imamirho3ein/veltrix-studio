@@ -71,10 +71,18 @@ export function organizationSchema(): SchemaNode {
     name: siteConfig.name,
     alternateName: siteConfig.nameFa,
     url: siteConfig.url,
-    logo: absoluteUrl("/brand/logo-512.png"),
+    logo: absoluteUrl("/brand/logo-512.png?v=2"),
     image: absoluteUrl("/api/og?title=VELTRIX%20STUDIO&subtitle=Digital%20Design%20Studio"),
     description: siteConfig.description,
     email: siteConfig.email,
+    telephone: siteConfig.phone,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteConfig.phone,
+      contactType: "customer support",
+      availableLanguage: ["fa", "en"],
+      areaServed: "IR",
+    },
     address: {
       "@type": "PostalAddress",
       addressLocality: "تهران",
@@ -85,11 +93,9 @@ export function organizationSchema(): SchemaNode {
       name: "Iran",
     },
     sameAs: [
-      siteConfig.instagram,
       siteConfig.telegram.channel,
-      siteConfig.linkedin,
-      siteConfig.github,
-    ],
+      siteConfig.telegram.bot,
+    ].filter(Boolean),
     knowsAbout: [
       "طراحی وب‌سایت",
       "توسعه وب",
@@ -107,6 +113,14 @@ export function websiteSchema(): SchemaNode {
     name: siteConfig.name,
     url: siteConfig.url,
     inLanguage: "fa-IR",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/brand/logo-512.png?v=2"),
+      },
+    },
   };
 }
 

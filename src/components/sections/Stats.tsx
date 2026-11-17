@@ -12,7 +12,7 @@ export function Stats() {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(240, 162, 76,0.08),transparent_70%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(176, 137, 104,0.08),transparent_70%)]"
       />
       <Container className="relative">
         <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -24,7 +24,7 @@ export function Stats() {
             >
               <div
                 aria-hidden="true"
-                className="font-latin text-[clamp(2rem,4.4vw,3.35rem)] font-extrabold leading-none tracking-tight text-white"
+                className="text-[clamp(2rem,4.4vw,3.35rem)] font-extrabold leading-none tracking-tight text-white"
               >
                 <CountUp
                   value={stat.value}

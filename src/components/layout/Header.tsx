@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, UserRound } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
@@ -14,6 +14,7 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -21,6 +22,19 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/auth/me", { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (active && data) setAuthenticated(Boolean(data.authenticated));
+      })
+      .catch(() => undefined);
+    return () => {
+      active = false;
+    };
+  }, [pathname]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -67,6 +81,15 @@ export function Header() {
             </nav>
 
             <div className="hidden items-center gap-2 xl:flex">
+              {authenticated ? (
+                <Link
+                  href="/panel"
+                  className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-[0.8rem] text-fog-300 transition hover:bg-white/[0.05] hover:text-white"
+                >
+                  <UserRound className="size-4" />
+                  پنل کاربری
+                </Link>
+              ) : null}
               <Button href="/contact" size="sm" arrow>
                 شروع پروژه
               </Button>
@@ -86,7 +109,11 @@ export function Header() {
         </div>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        authenticated={authenticated}
+      />
     </>
   );
 }

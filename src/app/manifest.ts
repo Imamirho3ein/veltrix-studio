@@ -16,13 +16,13 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["business", "design", "technology"],
     icons: [
       {
-        src: "/brand/logo-192.png",
+        src: "/brand/logo-192.png?v=2",
         sizes: "192x192",
         type: "image/png",
         purpose: "any",
       },
       {
-        src: "/brand/logo-512.png",
+        src: "/brand/logo-512.png?v=2",
         sizes: "512x512",
         type: "image/png",
         purpose: "any",

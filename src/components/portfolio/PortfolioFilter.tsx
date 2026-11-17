@@ -38,7 +38,7 @@ export function PortfolioExplorer({ projects }: { projects: Project[] }) {
               className={cn(
                 "inline-flex h-10 items-center gap-2 rounded-full border px-4 text-[0.8rem] transition-all duration-300",
                 isActive
-                  ? "border-transparent bg-[linear-gradient(135deg,#f0a24c,#f7c98a)] text-white shadow-[0_10px_30px_-14px_rgba(240, 162, 76,0.9)]"
+                  ? "border-transparent bg-[linear-gradient(135deg,#6f4e37,#b08968)] text-[#FFF9F0] shadow-[0_10px_30px_-14px_rgba(176, 137, 104,0.9)]"
                   : "border-white/10 bg-white/[0.025] text-fog-400 hover:border-white/20 hover:text-white",
               )}
             >

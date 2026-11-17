@@ -122,7 +122,7 @@ export default function PricingPage() {
               </h2>
               <div className="mt-4 space-y-4 text-[0.78rem] leading-7">
                 <div>
-                  <p className="font-semibold text-fog-200">
+                  <p className="font-semibold text-fog-600">
                     قالب آماده — سریع‌تر، اقتصادی‌تر
                   </p>
                   <p className="mt-1 text-fog-400">
@@ -132,7 +132,7 @@ export default function PricingPage() {
                   </p>
                 </div>
                 <div className="border-t border-white/[0.06] pt-4">
-                  <p className="font-semibold text-fog-200">
+                  <p className="font-semibold text-fog-600">
                     طرح اختصاصی — متمایزتر، قابل‌توسعه‌تر
                   </p>
                   <p className="mt-1 text-fog-400">

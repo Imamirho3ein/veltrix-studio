@@ -2,6 +2,23 @@ import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
+export function PhoneIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M6.6 3h2.9l1.4 4.3-2.1 1.6a12.5 12.5 0 0 0 6.3 6.3l1.6-2.1 4.3 1.4v2.9a2 2 0 0 1-2.2 2A17.9 17.9 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3Z" />
+    </svg>
+  );
+}
+
 export function InstagramIcon(props: IconProps) {
   return (
     <svg

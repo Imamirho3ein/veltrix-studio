@@ -3,6 +3,8 @@ import { contactSchema, sanitizeText } from "@/lib/validations/contact";
 import { escapeHtml, isTelegramConfigured, sendTelegramMessage } from "@/lib/telegram";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
 import { siteConfig } from "@/lib/constants";
+import { getSessionUser } from "@/lib/auth";
+import { mutateDb, newLeadRecord } from "@/lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -52,6 +54,18 @@ export async function POST(request: Request) {
   const limit = rateLimit(`contact:${ip}`, MAX_REQUESTS, WINDOW_MS);
   if (!limit.success) return tooMany(limit.retryAfterSeconds);
 
+  const sessionUser = await getSessionUser();
+  if (!sessionUser) {
+    return NextResponse.json(
+      {
+        ok: false,
+        message:
+          "برای ثبت درخواست پروژه، ابتدا وارد حساب خود شوید یا ثبت‌نام کنید.",
+      },
+      { status: 401 },
+    );
+  }
+
   let payload: unknown;
   try {
     payload = await request.json();
@@ -97,6 +111,12 @@ export async function POST(request: Request) {
     timeStyle: "short",
     timeZone: "Asia/Tehran",
   }).format(new Date());
+
+  // درخواست همیشه در دیتابیس ثبت می‌شود تا در پنل کاربر دیده شود.
+  const lead = newLeadRecord({ ...clean, userId: sessionUser.id });
+  await mutateDb((db) => {
+    db.leads.push(lead);
+  });
 
   const lines = [
     "🚀 <b>درخواست پروژه‌ی جدید</b>",

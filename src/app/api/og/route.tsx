@@ -89,7 +89,7 @@ export async function GET(request: Request) {
             height: "640px",
             borderRadius: "999px",
             background:
-              "radial-gradient(circle, rgba(240, 162, 76,0.55) 0%, rgba(240, 162, 76,0) 68%)",
+              "radial-gradient(circle, rgba(176, 137, 104,0.55) 0%, rgba(176, 137, 104,0) 68%)",
           }}
         />
         <div
@@ -101,7 +101,7 @@ export async function GET(request: Request) {
             height: "620px",
             borderRadius: "999px",
             background:
-              "radial-gradient(circle, rgba(233, 199, 155,0.38) 0%, rgba(233, 199, 155,0) 68%)",
+              "radial-gradient(circle, rgba(212, 185, 150,0.38) 0%, rgba(212, 185, 150,0) 68%)",
           }}
         />
         <div
@@ -170,12 +170,12 @@ export async function GET(request: Request) {
               border: "1px solid rgba(255,255,255,0.16)",
               borderRadius: "999px",
               padding: "10px 22px",
-              color: "#fde9d2",
+              color: "#FFF9F0",
               fontSize: "18px",
               backgroundColor: "rgba(255,255,255,0.04)",
             }}
           >
-            veltrixstudio.com
+            veltrixstudio.ir
           </div>
         </div>
 
@@ -193,7 +193,7 @@ export async function GET(request: Request) {
               width: "72px",
               height: "5px",
               borderRadius: "999px",
-              background: "linear-gradient(90deg,#f0a24c,#f7c98a,#e9c79b)",
+              background: "linear-gradient(90deg,#b08968,#d4b996,#ede3d4)",
               marginBottom: "34px",
             }}
           />
@@ -248,7 +248,7 @@ export async function GET(request: Request) {
                 width: "9px",
                 height: "9px",
                 borderRadius: "999px",
-                backgroundColor: "#e9c79b",
+                backgroundColor: "#d4b996",
               }}
             />
             طراحی · توسعه · موشن

@@ -12,7 +12,7 @@ import { budgetOptions, projectTypes } from "@/lib/constants";
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} role="alert" className="mt-1.5 text-[0.68rem] text-rose-400">
+    <p id={id} role="alert" className="mt-1.5 text-[0.68rem] text-rose-600">
       {message}
     </p>
   );
@@ -129,7 +129,7 @@ export function ContactForm() {
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-xs text-fog-300">
-            نام و نام خانوادگی <span className="text-rose-400">*</span>
+            نام و نام خانوادگی <span className="text-rose-600">*</span>
           </label>
           <input
             id="name"
@@ -145,7 +145,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="phone" className="mb-2 block text-xs text-fog-300">
-            شماره تماس <span className="text-rose-400">*</span>
+            شماره تماس <span className="text-rose-600">*</span>
           </label>
           <input
             id="phone"
@@ -162,7 +162,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="email" className="mb-2 block text-xs text-fog-300">
-            ایمیل <span className="text-rose-400">*</span>
+            ایمیل <span className="text-rose-600">*</span>
           </label>
           <input
             id="email"
@@ -180,7 +180,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="brand" className="mb-2 block text-xs text-fog-300">
-            نام برند یا کسب‌وکار <span className="text-rose-400">*</span>
+            نام برند یا کسب‌وکار <span className="text-rose-600">*</span>
           </label>
           <input
             id="brand"
@@ -199,7 +199,7 @@ export function ContactForm() {
             htmlFor="projectType"
             className="mb-2 block text-xs text-fog-300"
           >
-            نوع پروژه <span className="text-rose-400">*</span>
+            نوع پروژه <span className="text-rose-600">*</span>
           </label>
           <select
             id="projectType"
@@ -225,7 +225,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="budget" className="mb-2 block text-xs text-fog-300">
-            بودجه تقریبی <span className="text-rose-400">*</span>
+            بودجه تقریبی <span className="text-rose-600">*</span>
           </label>
           <select
             id="budget"
@@ -247,7 +247,7 @@ export function ContactForm() {
 
       <div className="mt-4">
         <label htmlFor="message" className="mb-2 block text-xs text-fog-300">
-          توضیحات پروژه <span className="text-rose-400">*</span>
+          توضیحات پروژه <span className="text-rose-600">*</span>
         </label>
         <textarea
           id="message"
@@ -274,7 +274,7 @@ export function ContactForm() {
       {status === "error" ? (
         <div
           role="alert"
-          className="mt-5 rounded-xl border border-rose-400/25 bg-rose-400/[0.07] px-4 py-3 text-xs leading-6 text-rose-200"
+          className="mt-5 rounded-xl border border-rose-400/25 bg-rose-400/[0.07] px-4 py-3 text-xs leading-6 text-rose-700"
         >
           {serverError}
         </div>

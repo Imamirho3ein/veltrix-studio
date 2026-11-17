@@ -60,13 +60,13 @@ export function Preloader() {
             <Logo size={76} loading="eager" />
             <div className="mt-8 h-px w-56 overflow-hidden bg-white/10">
               <div
-                className="h-full bg-[linear-gradient(90deg,#f0a24c,#f7c98a,#e9c79b)] transition-[width] duration-150 ease-out"
+                className="h-full bg-[linear-gradient(90deg,#b08968,#d4b996,#ede3d4)] transition-[width] duration-150 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
             <div className="mt-4 flex w-56 items-center justify-between text-[0.65rem] text-fog-500">
               <span className="font-latin tracking-[0.3em]">LOADING</span>
-              <span className="font-latin">{toFa(progress)}٪</span>
+              <span>{toFa(progress)}٪</span>
             </div>
           </div>
         </motion.div>

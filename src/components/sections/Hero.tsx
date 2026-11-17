@@ -129,7 +129,7 @@ export function Hero() {
           >
             <MousePointer2 className="size-3.5 text-brand" />
             کمی پایین‌تر را ببینید
-            <span className="h-px w-10 bg-gradient-to-l from-white/40 to-transparent transition-all group-hover:w-16" />
+            <span className="h-px w-10 bg-gradient-to-l from-[#FFF9F0]/40 to-transparent transition-all group-hover:w-16" />
           </a>
           {reduced ? null : (
             <span className="font-latin text-[0.6rem] tracking-[0.3em] text-fog-600">

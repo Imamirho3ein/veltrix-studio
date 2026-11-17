@@ -6,7 +6,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Badge } from "@/components/ui/Badge";
 import { initials } from "@/lib/utils";
 
-const accents = ["#f0a24c", "#e9c79b", "#f7c98a", "#fad3a6"];
+const accents = ["#b08968", "#d4b996", "#c4a379", "#e0cbb0"];
 
 export function Testimonials() {
   return (
@@ -26,7 +26,7 @@ export function Testimonials() {
           description="ما بعد از تحویل پروژه هم در دسترس هستیم؛ این چند جمله از کسانی است که این مسیر را با ما رفته‌اند."
           action={
             <Badge dot={false} className="gap-3 px-4 py-2">
-              <span className="flex items-center gap-0.5 text-accent-300">
+              <span className="flex items-center gap-0.5 text-accent-500">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star key={index} className="size-3 fill-current" />
                 ))}
@@ -44,7 +44,7 @@ export function Testimonials() {
                   aria-hidden="true"
                   className="absolute -left-2 -top-2 size-20 text-white/[0.025]"
                 />
-                <div className="flex items-center gap-0.5 text-accent-300">
+                <div className="flex items-center gap-0.5 text-accent-500">
                   {Array.from({ length: testimonial.rating }).map((_, star) => (
                     <Star key={star} className="size-3 fill-current" />
                   ))}
@@ -54,7 +54,7 @@ export function Testimonials() {
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-white/[0.06] pt-5">
                   <span
-                    className="flex size-10 items-center justify-center rounded-full text-[0.7rem] font-bold text-white"
+                    className="flex size-10 items-center justify-center rounded-full text-[0.7rem] font-bold text-[#FFF9F0]"
                     style={{
                       background: `linear-gradient(135deg, ${accents[index % accents.length]}, rgba(18, 17, 16,0.9))`,
                     }}

@@ -61,7 +61,7 @@ export function WhyUs() {
                       <span className="flex size-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-brand-300 transition-colors group-hover:border-brand/30 group-hover:text-accent-300">
                         <Icon className="size-4.5" />
                       </span>
-                      <span className="font-latin text-[0.65rem] tracking-[0.2em] text-fog-600">
+                      <span className="text-[0.65rem] tracking-[0.2em] text-fog-600">
                         {feature.number}
                       </span>
                     </div>

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowLeft, Mail, Send, X } from "lucide-react";
+import { ArrowLeft, Mail, Phone, Send, UserRound, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { navItems, siteConfig } from "@/lib/constants";
@@ -13,9 +13,10 @@ import { cn } from "@/lib/utils";
 type MobileMenuProps = {
   open: boolean;
   onClose: () => void;
+  authenticated?: boolean;
 };
 
-export function MobileMenu({ open, onClose }: MobileMenuProps) {
+export function MobileMenu({ open, onClose, authenticated = false }: MobileMenuProps) {
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -150,7 +151,22 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               <Button href="/contact" fullWidth arrow onClick={onClose}>
                 شروع پروژه
               </Button>
+              <Link
+                href={authenticated ? "/panel" : "/login"}
+                onClick={onClose}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-fog-500 transition hover:bg-white/[0.06] hover:text-white"
+              >
+                <UserRound className="size-4 text-brand" />
+                {authenticated ? "پنل کاربری" : "ورود / ثبت‌نام"}
+              </Link>
               <div className="flex flex-col gap-2 text-sm text-fog-400">
+                <a
+                  href={`tel:${siteConfig.phone}`}
+                  className="inline-flex items-center gap-2 transition hover:text-white"
+                >
+                  <Phone className="size-4 text-brand" />
+                  <span dir="ltr">{siteConfig.phoneDisplay}</span>
+                </a>
                 <a
                   href={`mailto:${siteConfig.email}`}
                   className="inline-flex items-center gap-2 transition hover:text-white"

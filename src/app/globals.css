@@ -1,71 +1,76 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-vazirmatn-arabic), var(--font-vazirmatn-latin),
-    "Segoe UI", Tahoma, system-ui, sans-serif;
-  --font-latin: var(--font-manrope), var(--font-vazirmatn-latin), system-ui,
+  --font-sans: var(--font-vazirmatn), "Segoe UI", Tahoma, system-ui, sans-serif;
+  --font-latin: var(--font-manrope), var(--font-vazirmatn), system-ui,
     sans-serif;
 
-  --color-ink: #0d0d0d;
-  --color-ink-2: #121110;
-  --color-card: #141210;
-  --color-card-hover: #1b1815;
-  --color-brand: #f0a24c;
-  --color-brand-2: #f7c98a;
-  --color-accent: #e9c79b;
-  --color-muted: #adadad;
-  --color-line: rgba(255, 255, 255, 0.08);
+  /* پالت تم روشن — قهوه‌ای/کرم */
+  --color-ink: #fff9f0; /* پس‌زمینه‌ی صفحه — کرم روشن */
+  --color-ink-2: #f4eada; /* پس‌زمینه‌ی بخش‌های متناوب */
+  --color-card: #ffffff; /* سطح کارت‌ها — سفید */
+  --color-card-hover: #fffbf4;
+  --color-brand: #6f4e37; /* قهوه‌ای — رنگ اصلی برند */
+  --color-brand-2: #b08968; /* تنِ میانی */
+  --color-accent: #d4b996; /* تنِ روشن */
+  --color-muted: #8a7663;
+  --color-line: rgba(59, 42, 31, 0.1);
 
-  /* Amber scale — the primary brand direction. */
-  --color-brand-50: #fff6ec;
-  --color-brand-100: #fde9d2;
-  --color-brand-200: #fad3a6;
-  --color-brand-300: #f7c98a;
-  --color-brand-400: #f4af62;
-  --color-brand-500: #f0a24c;
-  --color-brand-600: #d8873a;
-  --color-brand-700: #b06a2b;
-  --color-brand-800: #7a5832;
-  --color-brand-900: #2c241d;
+  /* مقیاس قهوه‌ای — اعداد کوچک‌تر روشن‌تر. */
+  --color-brand-50: #fbf5ec;
+  --color-brand-100: #f1e5d5;
+  --color-brand-200: #e0cbb0;
+  --color-brand-300: #b08968;
+  --color-brand-400: #96714f;
+  --color-brand-500: #6f4e37;
+  --color-brand-600: #5c3f2c;
+  --color-brand-700: #4a3223;
+  --color-brand-800: #3b2a1f;
+  --color-brand-900: #2a1d14;
 
-  /* Warm sand signature accent. */
-  --color-accent-100: #fdf6ee;
-  --color-accent-200: #fbeedc;
-  --color-accent-300: #e9c79b;
-  --color-accent-400: #e0b482;
-  --color-accent-500: #c99a68;
-  --color-accent-600: #a9784a;
-  --color-accent-700: #9c7243;
+  /* مقیاس شنی */
+  --color-accent-100: #fbf4e9;
+  --color-accent-200: #f3e8d6;
+  --color-accent-300: #d4b996;
+  --color-accent-400: #c4a379;
+  --color-accent-500: #b08968;
+  --color-accent-600: #96714f;
+  --color-accent-700: #7a5b3e;
 
-  /* Warm neutrals so muted copy never drifts back to green-grey. */
-  --color-fog-100: #f5f5f5;
-  --color-fog-200: #e6e2dd;
-  --color-fog-300: #cfcac4;
-  --color-fog-400: #adadad;
-  --color-fog-500: #8c8c8c;
-  --color-fog-600: #717171;
-  --color-fog-700: #5a5a5a;
-  --color-fog-800: #3a3632;
-  --color-fog-900: #1a1714;
+  /* خنثی‌های گرم — خوانا روی کرم */
+  --color-fog-100: #ede3d4;
+  --color-fog-200: #b8a48c;
+  --color-fog-300: #9c866d;
+  --color-fog-400: #83705c;
+  --color-fog-500: #6e5b48;
+  --color-fog-600: #5d4c3b;
+  --color-fog-700: #4a3c2e;
+  --color-fog-800: #3b2a1f;
+  --color-fog-900: #2a1e14;
 
   --radius-card: 1.25rem;
   --radius-btn: 0.75rem;
   --radius-panel: 1.75rem;
 }
 
+/* سفید به قهوه‌ای تیره نگاشت می‌شود تا متن‌ها و خطوط ظریف روی پس‌زمینه‌ی کرم
+   خوانا بمانند. متغیر (نه inline) تعریف می‌شود تا utilities به
+   var(--color-white) اشاره کنند و داخل سطوح تیره (dark-scope) قابل بازگشت
+   به سفید واقعی باشد. قاعده‌ی بدون لایه بر متغیرهای پیش‌فرض Tailwind می‌چربد. */
 :root {
-  --gradient-brand: linear-gradient(135deg, #b06a2b 0%, #f0a24c 52%, #f7c98a 100%);
-  --gradient-text: linear-gradient(135deg, #f7c98a 0%, #f0a24c 48%, #e9c79b 100%);
+  --color-white: #3b2a1f;
+  --gradient-brand: linear-gradient(135deg, #3b2a1f 0%, #6f4e37 52%, #b08968 100%);
+  --gradient-text: linear-gradient(135deg, #6f4e37 0%, #8a6240 48%, #b08968 100%);
   --gradient-brand-soft: linear-gradient(
     135deg,
-    rgba(240, 162, 76, 0.16) 0%,
-    rgba(247, 201, 138, 0.12) 52%,
-    rgba(233, 199, 155, 0.14) 100%
+    rgba(111, 78, 55, 0.14) 0%,
+    rgba(176, 137, 104, 0.1) 52%,
+    rgba(212, 185, 150, 0.14) 100%
   );
-  --gradient-cream: linear-gradient(135deg, #fdf6ee 0%, #e9c79b 45%, #c99a68 100%);
-  --gradient-button: linear-gradient(180deg, #2c241d 0%, #7a5832 100%);
-  --shadow-glow: 0 24px 90px -28px rgba(240, 162, 76, 0.55);
-  --shadow-cream: 0 18px 60px -30px rgba(233, 199, 155, 0.45);
+  --gradient-cream: linear-gradient(135deg, #fff9f0 0%, #ede3d4 45%, #d4b996 100%);
+  --gradient-button: linear-gradient(180deg, #3b2a1f 0%, #6f4e37 100%);
+  --shadow-glow: 0 24px 90px -28px rgba(111, 78, 55, 0.4);
+  --shadow-cream: 0 18px 60px -30px rgba(212, 185, 150, 0.65);
   --header-height: 4.75rem;
 }
 
@@ -77,15 +82,15 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) + 1.5rem);
-    color-scheme: dark;
+    color-scheme: light;
     scrollbar-gutter: stable;
-    scrollbar-color: #8a6234 #0d0d0d;
+    scrollbar-color: #b08968 #f4eada;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
     background-color: var(--color-ink);
-    color: #ffffff;
+    color: #3b2a1f;
     font-family: var(--font-sans);
     font-feature-settings: "ss01" on, "ss02" on;
     line-height: 1.7;
@@ -95,12 +100,12 @@
   }
 
   ::selection {
-    background-color: #b06a2b;
-    color: #fff6ec;
+    background-color: #6f4e37;
+    color: #fff9f0;
   }
 
   :focus-visible {
-    outline: 2px solid #f0a24c;
+    outline: 2px solid #6f4e37;
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -111,17 +116,17 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0d0d0d;
+    background: #f4eada;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #8a6234;
+    background: #b08968;
     border-radius: 999px;
-    border: 2px solid #0d0d0d;
+    border: 2px solid #fff9f0;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #a97b45;
+    background: #6f4e37;
   }
 
   h1,
@@ -149,6 +154,12 @@
 }
 
 @layer components {
+  /* سطوح تیره‌ی خودکفا (قاب دستگاه‌ها، فون گوشی، کارت‌های تیره):
+     سفید واقعی داخل این محدوده برمی‌گردد. */
+  .dark-scope {
+    --color-white: #ffffff;
+  }
+
   .container-x {
     width: 100%;
     max-width: 1280px;
@@ -167,14 +178,14 @@
     font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.02em;
-    color: #f7c98a;
+    color: #8a6240;
   }
 
   .eyebrow::before {
     content: "";
     width: 1.6rem;
     height: 1px;
-    background: linear-gradient(90deg, #f0a24c, rgba(233, 199, 155, 0.2));
+    background: linear-gradient(90deg, #6f4e37, rgba(212, 185, 150, 0.3));
   }
 
   .text-gradient {
@@ -186,7 +197,7 @@
   }
 
   .text-gradient-soft {
-    background-image: linear-gradient(135deg, #fde9d2 0%, #f7c98a 55%, #e9c79b 100%);
+    background-image: linear-gradient(135deg, #8a6240 0%, #b08968 55%, #c4a379 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -217,20 +228,21 @@
   .lead {
     font-size: clamp(1rem, 1.2vw, 1.125rem);
     line-height: 1.95;
-    color: #adadad;
+    color: #75634f;
   }
 
   .card-surface {
     background-color: var(--color-card);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-line);
     border-radius: var(--radius-card);
+    box-shadow: 0 18px 50px -38px rgba(59, 42, 31, 0.35);
   }
 
   .glass {
-    background-color: rgba(19, 17, 16, 0.66);
+    background-color: rgba(255, 251, 244, 0.72);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-line);
   }
 
   .gradient-border {
@@ -246,9 +258,9 @@
     padding: 1px;
     background: linear-gradient(
       140deg,
-      rgba(240, 162, 76, 0.65),
-      rgba(247, 201, 138, 0.18) 45%,
-      rgba(233, 199, 155, 0.55)
+      rgba(111, 78, 55, 0.55),
+      rgba(212, 185, 150, 0.3) 45%,
+      rgba(176, 137, 104, 0.5)
     );
     -webkit-mask: linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -294,20 +306,20 @@
     transform: none !important;
   }
 
-  /* Glossy amber-glass: lit white top rim, warm metal base, amber halo. */
+  /* دکمه‌ی اصلی: قهوه‌ای براق با لبه‌ی روشن و هاله‌ی گرم */
   .btn-primary {
     isolation: isolate;
     overflow: hidden;
     background-image: var(--gradient-button);
-    border-color: rgba(255, 214, 170, 0.5);
-    color: #fff3e3;
+    border-color: rgba(255, 241, 224, 0.35);
+    color: #fff6ec;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.55),
-      inset 0 -1px 0 rgba(255, 176, 96, 0.45),
-      inset 0 -10px 18px -12px rgba(255, 190, 120, 0.6),
-      0 0 0 1px rgba(0, 0, 0, 0.35),
-      0 12px 34px -10px rgba(240, 162, 76, 0.5),
-      0 0 46px -8px rgba(240, 162, 76, 0.32);
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      inset 0 -1px 0 rgba(212, 185, 150, 0.4),
+      inset 0 -10px 18px -12px rgba(176, 137, 104, 0.5),
+      0 0 0 1px rgba(59, 42, 31, 0.22),
+      0 12px 34px -10px rgba(111, 78, 55, 0.45),
+      0 0 46px -8px rgba(176, 137, 104, 0.35);
   }
 
   .btn-primary::before {
@@ -317,7 +329,7 @@
     border-radius: inherit;
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.36),
+      rgba(255, 255, 255, 0.22),
       rgba(255, 255, 255, 0)
     );
     pointer-events: none;
@@ -326,36 +338,36 @@
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    filter: brightness(1.06);
+    filter: brightness(1.08);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.62),
-      inset 0 -1px 0 rgba(255, 176, 96, 0.5),
-      inset 0 -10px 18px -12px rgba(255, 190, 120, 0.7),
-      0 0 0 1px rgba(0, 0, 0, 0.35),
-      0 16px 44px -10px rgba(240, 162, 76, 0.62),
-      0 0 70px -6px rgba(240, 162, 76, 0.42);
+      inset 0 1px 0 rgba(255, 255, 255, 0.34),
+      inset 0 -1px 0 rgba(212, 185, 150, 0.45),
+      inset 0 -10px 18px -12px rgba(176, 137, 104, 0.55),
+      0 0 0 1px rgba(59, 42, 31, 0.22),
+      0 16px 44px -10px rgba(111, 78, 55, 0.55),
+      0 0 70px -6px rgba(176, 137, 104, 0.42);
   }
 
   .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    background-color: rgba(59, 42, 31, 0.04);
+    border-color: rgba(59, 42, 31, 0.16);
+    color: #3b2a1f;
   }
 
   .btn-secondary:hover {
-    background-color: rgba(240, 162, 76, 0.08);
-    border-color: rgba(240, 162, 76, 0.35);
+    background-color: rgba(111, 78, 55, 0.08);
+    border-color: rgba(111, 78, 55, 0.42);
     transform: translateY(-2px);
   }
 
   .btn-ghost {
     background-color: transparent;
-    color: #cfcac4;
+    color: #75634f;
   }
 
   .btn-ghost:hover {
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.05);
+    color: #3b2a1f;
+    background-color: rgba(59, 42, 31, 0.05);
   }
 
   .btn-sm {
@@ -368,11 +380,11 @@
     width: 100%;
     height: 3.35rem;
     border-radius: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    background-color: rgba(13, 12, 11, 0.55);
+    border: 1px solid rgba(59, 42, 31, 0.16);
+    background-color: #ffffff;
     padding-inline: 1rem;
     font-size: 0.95rem;
-    color: #ffffff;
+    color: #3b2a1f;
     transition:
       border-color 0.25s ease,
       background-color 0.25s ease,
@@ -380,42 +392,42 @@
   }
 
   .field::placeholder {
-    color: #717171;
+    color: #a18b73;
   }
 
   .field:hover {
-    border-color: rgba(255, 255, 255, 0.16);
+    border-color: rgba(59, 42, 31, 0.3);
   }
 
   .field:focus {
     outline: none;
-    border-color: rgba(240, 162, 76, 0.8);
-    background-color: rgba(18, 17, 16, 0.9);
-    box-shadow: 0 0 0 4px rgba(240, 162, 76, 0.14);
+    border-color: rgba(111, 78, 55, 0.85);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(111, 78, 55, 0.14);
   }
 
   .field[aria-invalid="true"] {
-    border-color: rgba(248, 113, 113, 0.7);
-    box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.1);
+    border-color: rgba(220, 38, 38, 0.6);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.08);
   }
 
   .field-select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ADADAD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2383705C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: left 1rem center;
     padding-left: 2.5rem;
   }
 
   .field-select option {
-    background-color: #131110;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #3b2a1f;
   }
 
   .grid-lines {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      linear-gradient(to right, rgba(59, 42, 31, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(59, 42, 31, 0.05) 1px, transparent 1px);
     background-size: 72px 72px;
     mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 20%, transparent 78%);
     -webkit-mask-image: radial-gradient(
@@ -427,8 +439,8 @@
 
   .noise-layer {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    mix-blend-mode: overlay;
+    opacity: 0.03;
+    mix-blend-mode: multiply;
   }
 
   .orb {
@@ -473,12 +485,12 @@
   }
 
   .link-muted {
-    color: #adadad;
+    color: #75634f;
     transition: color 0.25s ease;
   }
 
   .link-muted:hover {
-    color: #ffffff;
+    color: #3b2a1f;
   }
 
   .divider-gradient {
@@ -486,8 +498,8 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.12) 22%,
-      rgba(255, 255, 255, 0.12) 78%,
+      rgba(59, 42, 31, 0.16) 22%,
+      rgba(59, 42, 31, 0.16) 78%,
       transparent
     );
   }
@@ -495,8 +507,8 @@
   .image-frame {
     border-radius: var(--radius-card);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    background-color: #131110;
+    border: 1px solid var(--color-line);
+    background-color: #f4eada;
   }
 
   .tag {
@@ -505,10 +517,10 @@
     height: 1.85rem;
     padding-inline: 0.7rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(59, 42, 31, 0.12);
+    background-color: rgba(59, 42, 31, 0.04);
     font-size: 0.72rem;
-    color: #cfcac4;
+    color: #75634f;
   }
 
   .no-scrollbar {
@@ -524,7 +536,7 @@
     will-change: transform;
   }
 
-  /* ---------- closing CTA + footer -------------------------------------- */
+  /* ---------- باند CTA پایانی و فوتر -------------------------------------- */
 
   .close-band {
     position: relative;
@@ -532,12 +544,12 @@
     background:
       radial-gradient(
         920px 520px at 88% -6%,
-        rgba(240, 162, 76, 0.1),
+        rgba(176, 137, 104, 0.16),
         transparent 62%
       ),
       radial-gradient(
         780px 460px at 8% 104%,
-        rgba(90, 52, 24, 0.28),
+        rgba(212, 185, 150, 0.28),
         transparent 66%
       ),
       var(--color-ink);
@@ -548,23 +560,23 @@
     z-index: 2;
     bottom: clamp(1.25rem, 4.5vw, 4rem);
     height: auto;
-    width: clamp(9rem, 34vw, 30rem);
+    width: clamp(8rem, 36vw, 17rem);
     pointer-events: none;
     user-select: none;
-    filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 26px rgba(240, 162, 76, 0.18));
+    filter: drop-shadow(0 18px 40px rgba(59, 42, 31, 0.3))
+      drop-shadow(0 0 26px rgba(212, 185, 150, 0.35));
   }
 
   .foot-hands-left {
-    left: clamp(-8rem, -7.5vw, -2rem);
+    left: clamp(-3.5rem, -4vw, -1rem);
   }
 
   .foot-hands-right {
-    right: clamp(-7.5rem, -7vw, -2rem);
+    right: clamp(-3rem, -3.5vw, -1rem);
   }
 
   .foot-wordmark {
-    background-image: linear-gradient(180deg, #6b3f1e 0%, #5a3418 46%, #3b2210 100%);
+    background-image: linear-gradient(180deg, #b08968 0%, #8a6240 46%, #6f4e37 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

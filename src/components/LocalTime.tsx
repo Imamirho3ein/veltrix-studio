@@ -20,7 +20,7 @@ export function LocalTime() {
   }, []);
 
   return (
-    <span suppressHydrationWarning className="font-latin text-xs tracking-wider text-fog-400">
+    <span suppressHydrationWarning className="text-xs tracking-wider text-fog-400">
       {time ?? "—"}
     </span>
   );

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { manrope, vazirmatnArabic, vazirmatnLatin } from "@/lib/fonts";
+import { manrope, vazirmatn } from "@/lib/fonts";
 import { siteConfig, siteKeywords } from "@/lib/constants";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0d0d",
-  colorScheme: "dark",
+  themeColor: "#FFF9F0",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
@@ -79,7 +79,7 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
-      className={`${vazirmatnArabic.variable} ${vazirmatnLatin.variable} ${manrope.variable}`}
+      className={`${vazirmatn.variable} ${manrope.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -88,7 +88,7 @@ export default function RootLayout({
         <div id="top" />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:right-5 focus:top-5 focus:z-[300] focus:rounded-xl focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-fog-900"
+          className="sr-only focus:not-sr-only focus:fixed focus:right-5 focus:top-5 focus:z-[300] focus:rounded-xl focus:bg-[#FFFFFF] focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-fog-900"
         >
           رفتن به محتوای اصلی
         </a>

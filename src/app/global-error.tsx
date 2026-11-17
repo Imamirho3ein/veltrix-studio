@@ -27,7 +27,7 @@ export default function GlobalError({
             style={{
               fontSize: "0.6rem",
               letterSpacing: "0.3em",
-              color: "#f0a24c",
+              color: "#b08968",
               margin: 0,
             }}
           >
@@ -68,8 +68,8 @@ export default function GlobalError({
               paddingInline: "1.5rem",
               borderRadius: "0.75rem",
               border: "1px solid rgba(255,255,255,0.12)",
-              background: "linear-gradient(135deg,#f0a24c,#f7c98a)",
-              color: "#fff",
+              background: "linear-gradient(135deg,#b08968,#d4b996)",
+              color: "#2c241d",
               fontSize: "0.85rem",
               fontWeight: 600,
               cursor: "pointer",

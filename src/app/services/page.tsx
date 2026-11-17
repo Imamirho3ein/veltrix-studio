@@ -167,7 +167,7 @@ export default function ServicesPage() {
                   <div className="relative border-t border-white/[0.06] bg-ink-2/50 p-6 sm:p-9 lg:border-s lg:border-t-0 lg:p-11">
                     <div
                       aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(240, 162, 76,0.14),transparent_65%)]"
+                      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_10%,rgba(176, 137, 104,0.14),transparent_65%)]"
                     />
                     <FadeUp delay={0.1} className="relative">
                       <h3 className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-fog-300">
@@ -179,7 +179,7 @@ export default function ServicesPage() {
                             key={item}
                             className="flex items-start gap-3 text-[0.82rem] leading-7 text-fog-300"
                           >
-                            <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border border-brand/30 bg-brand/10 text-brand-200">
+                            <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border border-brand/30 bg-brand/10 text-brand-600">
                               <Check className="size-3" />
                             </span>
                             {item}

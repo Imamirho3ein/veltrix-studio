@@ -7,19 +7,21 @@ export const siteConfig = {
     "ولتریکس استودیو؛ استودیو طراحی و توسعه وب‌سایت‌های مدرن، سریع و حرفه‌ای. طراحی اختصاصی، توسعه‌ی مقیاس‌پذیر، سئو و پشتیبانی واقعی.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
-    "https://veltrixstudio.com",
-  email: "hello@veltrixstudio.com",
-  emailDisplay: "hello@veltrixstudio.com",
+    "https://veltrixstudio.ir",
+  email: "amirhosseinjadidiy@gmail.com",
+  emailDisplay: "amirhosseinjadidiy@gmail.com",
+  phone: "+989009199575",
+  phoneDisplay: "۰۹۰۰۹۱۹۹۵۷۵",
   telegram: {
-    channel: "https://t.me/VeltrixStudio",
-    channelHandle: "@VeltrixStudio",
-    bot: "https://t.me/VeltrixStudioBot",
-    botHandle: "@VeltrixStudioBot",
+    channel: "https://t.me/VeeltrixStudio",
+    channelHandle: "@VeeltrixStudio",
+    bot: "https://t.me/VeeltrixStudi_bot",
+    botHandle: "@VeeltrixStudi_bot",
   },
-  instagram: "https://instagram.com/veltrixstudio",
-  instagramHandle: "@veltrixstudio",
-  linkedin: "https://linkedin.com/company/veltrixstudio",
-  github: "https://github.com/veltrixstudio",
+  instagram: "",
+  instagramHandle: "",
+  linkedin: "",
+  github: "",
   workHours: "شنبه تا پنجشنبه، ۱۰:۰۰ تا ۲۰:۰۰",
   location: "تهران، ایران",
   founded: "۱۴۰۲",
@@ -51,14 +53,10 @@ export const footerLinks = {
   contact: [
     { title: "تماس با ما", href: "/contact" },
     { title: "ایمیل استودیو", href: `mailto:${siteConfig.email}`, external: true },
+    { title: "تماس تلفنی", href: `tel:${siteConfig.phone}`, external: true },
     {
-      title: "اینستاگرام",
-      href: siteConfig.instagram,
-      external: true,
-    },
-    {
-      title: "لینکدین",
-      href: siteConfig.linkedin,
+      title: "کانال تلگرام",
+      href: siteConfig.telegram.channel,
       external: true,
     },
   ],
@@ -86,10 +84,9 @@ export const budgetOptions = [
 ] as const;
 
 export const socialLinks = [
-  { title: "اینستاگرام", href: siteConfig.instagram, icon: "instagram" },
-  { title: "تلگرام", href: siteConfig.telegram.channel, icon: "telegram" },
-  { title: "لینکدین", href: siteConfig.linkedin, icon: "linkedin" },
-  { title: "گیت‌هاب", href: siteConfig.github, icon: "github" },
+  { title: "تماس تلفنی", href: `tel:${siteConfig.phone}`, icon: "phone" },
+  { title: "کانال تلگرام", href: siteConfig.telegram.channel, icon: "telegram" },
+  { title: "ربات تلگرام", href: siteConfig.telegram.bot, icon: "bot" },
 ] as const;
 
 export const siteKeywords = [

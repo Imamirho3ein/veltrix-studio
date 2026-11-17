@@ -20,10 +20,10 @@ const tree: TreeItem[] = [
 type Segment = { t: string; c: string };
 
 const K = "#c9b6e8"; // keyword, lilac
-const F = "#f0a24c"; // function, amber
-const S = "#f0c8a0"; // string, peach
+const F = "#b08968"; // function, tan
+const S = "#e0cbb0"; // string, sand
 const P = "#8ccfc4"; // property, teal
-const N = "#f7c98a"; // number, sand
+const N = "#d4b996"; // number, sand
 const D = "#717171"; // punctuation
 
 const code: Segment[][] = [
@@ -103,15 +103,15 @@ export function CtaVisual() {
       aria-hidden="true"
       className="relative mx-auto w-full max-w-[44rem] select-none [perspective:1800px]"
     >
-      <div className="pointer-events-none absolute -inset-x-6 -top-12 bottom-20 bg-[radial-gradient(52%_58%_at_62%_26%,rgba(240,162,76,0.42),rgba(240,162,76,0.12)_48%,transparent_74%)] blur-[46px]" />
+      <div className="pointer-events-none absolute -inset-x-6 -top-12 bottom-20 bg-[radial-gradient(52%_58%_at_62%_26%,rgba(176,137,104,0.42),rgba(176,137,104,0.12)_48%,transparent_74%)] blur-[46px]" />
 
       <div className="relative [transform:rotateX(4deg)_rotateY(-7deg)_rotateZ(-1.2deg)]">
         <motion.div
           style={{ x, y }}
-          className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#141210] shadow-[0_50px_120px_-40px_rgba(0,0,0,0.95),0_0_60px_-18px_rgba(240,162,76,0.35)]"
+          className="dark-scope relative overflow-hidden rounded-2xl border border-white/10 bg-[#141210] shadow-[0_50px_120px_-40px_rgba(0,0,0,0.95),0_0_60px_-18px_rgba(176,137,104,0.35)]"
         >
-          <div className="pointer-events-none absolute inset-x-8 -top-px h-px bg-[linear-gradient(90deg,transparent,rgba(240,162,76,0.9),transparent)]" />
-          <div className="pointer-events-none absolute inset-x-10 top-0 h-6 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(240,162,76,0.4),transparent_70%)] blur-md" />
+          <div className="pointer-events-none absolute inset-x-8 -top-px h-px bg-[linear-gradient(90deg,transparent,rgba(176,137,104,0.9),transparent)]" />
+          <div className="pointer-events-none absolute inset-x-10 top-0 h-6 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(176,137,104,0.4),transparent_70%)] blur-md" />
 
           <div className="flex items-center justify-between gap-3 border-b border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5">
             <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ export function CtaVisual() {
                 app/page.tsx
               </span>
             </div>
-            <span className="hidden items-center gap-1 text-[0.56rem] text-fog-500 sm:flex">
+            <span className="hidden items-center gap-1 text-[0.56rem] text-fog-400 sm:flex">
               <Sparkles className="size-2.5 text-brand-2" />
               پیش‌نمایش زنده
             </span>
@@ -134,11 +134,11 @@ export function CtaVisual() {
           <div className="grid min-h-[19rem] grid-cols-[0.82fr_1.18fr] sm:min-h-[23rem]">
             <div className="border-e border-white/[0.06] p-2.5 sm:p-3.5">
               <div className="mb-2 flex items-center justify-between px-1">
-                <span className="flex items-center gap-1.5 text-[0.56rem] text-fog-500 sm:text-[0.62rem]">
+                <span className="flex items-center gap-1.5 text-[0.56rem] text-fog-400 sm:text-[0.62rem]">
                   <Layers className="size-2.5" />
                   ساختار صفحه
                 </span>
-                <ChevronDown className="size-2.5 text-fog-600" />
+                <ChevronDown className="size-2.5 text-fog-400" />
               </div>
 
               <div className="space-y-0.5">
@@ -150,7 +150,7 @@ export function CtaVisual() {
                       item.depth === 1 && "ms-2.5",
                       item.active
                         ? "bg-brand/[0.12] text-brand-200 ring-1 ring-brand/25"
-                        : "text-fog-500",
+                        : "text-fog-400",
                     )}
                   >
                     <span
@@ -166,26 +166,26 @@ export function CtaVisual() {
 
               <div className="mt-4 rounded-md border border-white/[0.07] bg-white/[0.025] p-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-[0.52rem] text-fog-500">پرفورمنس</span>
+                  <span className="text-[0.52rem] text-fog-400">پرفورمنس</span>
                   <span className="font-latin text-[0.52rem] text-brand-2">
                     ۹۸
                   </span>
                 </div>
                 <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-white/10">
-                  <span className="block h-full w-[92%] rounded-full bg-[linear-gradient(90deg,#f0a24c,#f7c98a)]" />
+                  <span className="block h-full w-[92%] rounded-full bg-[linear-gradient(90deg,#b08968,#d4b996)]" />
                 </div>
               </div>
             </div>
 
             <div className="relative overflow-hidden px-3 py-2.5 sm:px-4 sm:py-3.5">
-              <div className="mb-1.5 flex items-center gap-1.5 text-[0.54rem] text-fog-600">
+              <div className="mb-1.5 flex items-center gap-1.5 text-[0.54rem] text-fog-400">
                 <span className="size-1 rounded-full bg-brand/70" />
                 کد
               </div>
               <div dir="ltr" className="font-mono text-[0.6rem] leading-[1.85] sm:text-[0.68rem]">
                 {code.map((line, index) => (
                   <div key={index} className="flex gap-2">
-                    <span className="w-3 shrink-0 select-none text-end text-fog-800">
+                    <span className="w-3 shrink-0 select-none text-end text-fog-400">
                       {index + 1}
                     </span>
                     <span className="whitespace-pre text-fog-300">

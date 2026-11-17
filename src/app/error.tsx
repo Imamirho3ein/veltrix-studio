@@ -24,7 +24,7 @@ export default function Error({
 
       <div className="container-x">
         <div className="mx-auto max-w-xl text-center">
-          <span className="mx-auto flex size-14 items-center justify-center rounded-2xl border border-rose-400/25 bg-rose-400/10 text-rose-300">
+          <span className="mx-auto flex size-14 items-center justify-center rounded-2xl border border-rose-400/25 bg-rose-400/10 text-rose-600">
             <AlertTriangle className="size-6" />
           </span>
 

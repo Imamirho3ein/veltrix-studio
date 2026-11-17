@@ -34,7 +34,7 @@ export function CtaCopy() {
     >
       <motion.span
         variants={item}
-        className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-[#1d1510] px-3.5 py-1.5 text-[0.72rem] font-medium text-[#e7c69a] shadow-[inset_0_1px_0_rgba(255,214,170,0.14),0_0_22px_-6px_rgba(240,162,76,0.28)]"
+        className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-[#1d1510] px-3.5 py-1.5 text-[0.72rem] font-medium text-[#d4b996] shadow-[inset_0_1px_0_rgba(255,214,170,0.14),0_0_22px_-6px_rgba(176,137,104,0.28)]"
       >
         <Sparkles className="size-3.5 text-brand" />
         ایده‌ات را بفرست

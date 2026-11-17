@@ -6,18 +6,19 @@ import { LocalTime } from "@/components/LocalTime";
 import { NewsletterForm } from "@/components/layout/NewsletterForm";
 import { FadeUp } from "@/components/animations/FadeUp";
 import {
-  GithubIcon,
-  InstagramIcon,
-  LinkedinIcon,
+  PhoneIcon,
   TelegramIcon,
 } from "@/components/icons/Social";
 import { footerLinks, siteConfig } from "@/lib/constants";
 
 const socials = [
-  { title: "اینستاگرام", href: siteConfig.instagram, Icon: InstagramIcon },
-  { title: "تلگرام", href: siteConfig.telegram.channel, Icon: TelegramIcon },
-  { title: "لینکدین", href: siteConfig.linkedin, Icon: LinkedinIcon },
-  { title: "گیت‌هاب", href: siteConfig.github, Icon: GithubIcon },
+  { title: "تماس تلفنی", href: `tel:${siteConfig.phone}`, Icon: PhoneIcon },
+  { title: "کانال تلگرام", href: siteConfig.telegram.channel, Icon: TelegramIcon },
+  {
+    title: "ربات تلگرام",
+    href: siteConfig.telegram.bot,
+    Icon: TelegramIcon,
+  },
 ];
 
 type FooterLink = { title: string; href: string; external?: boolean };
@@ -89,7 +90,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={title}
-                    className="inline-flex size-9 items-center justify-center rounded-full text-[#e0a165] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand/10 hover:text-brand-200"
+                    className="inline-flex size-9 items-center justify-center rounded-full text-brand-500 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand/10 hover:text-brand-700"
                   >
                     <Icon className="size-[1.05rem]" />
                   </a>
@@ -126,6 +127,13 @@ export function Footer() {
         <div className="mt-12 flex flex-col gap-4 border-t border-white/[0.06] py-5 text-[0.72rem] text-fog-500 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a
+              href={`tel:${siteConfig.phone}`}
+              className="inline-flex items-center gap-2 transition hover:text-white"
+            >
+              <PhoneIcon className="size-3.5 text-brand" />
+              <span dir="ltr">{siteConfig.phoneDisplay}</span>
+            </a>
+            <a
               href={`mailto:${siteConfig.email}`}
               className="inline-flex items-center gap-2 transition hover:text-white"
             >
@@ -148,14 +156,14 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="relative mt-8 h-[clamp(15rem,30vw,27rem)] sm:mt-10">
+        <div className="relative mt-8 h-[clamp(14rem,26vw,24rem)] sm:mt-10">
           <Image
             src="/images/hands/hand-left.png"
             alt=""
             aria-hidden="true"
             width={582}
             height={290}
-            sizes="(max-width: 640px) 34vw, 30rem"
+            sizes="(max-width: 640px) 42vw, 17rem"
             className="foot-hands foot-hands-left"
           />
           <Image
@@ -164,11 +172,11 @@ export function Footer() {
             aria-hidden="true"
             width={558}
             height={328}
-            sizes="(max-width: 640px) 34vw, 30rem"
+            sizes="(max-width: 640px) 42vw, 17rem"
             className="foot-hands foot-hands-right"
           />
 
-          <p className="absolute inset-x-0 bottom-[clamp(7.5rem,14.5vw,13rem)] z-[3] mx-auto flex w-max max-w-[88%] flex-wrap items-center justify-center gap-x-[0.5em] gap-y-1 text-center text-[clamp(0.62rem,1.05vw,0.8rem)] leading-6 text-fog-400">
+          <p className="absolute inset-x-0 bottom-[clamp(6rem,11.5vw,10.5rem)] z-[3] mx-auto flex w-max max-w-[88%] flex-wrap items-center justify-center gap-x-[0.5em] gap-y-1 text-center text-[clamp(0.62rem,1.05vw,0.8rem)] leading-6 text-fog-400">
             <span>©۲۰۲۶</span>
             <span aria-hidden="true" className="text-brand/55">
               /

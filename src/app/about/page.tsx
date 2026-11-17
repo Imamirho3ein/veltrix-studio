@@ -39,7 +39,7 @@ const valueIcons: Record<(typeof values)[number]["icon"], LucideIcon> = {
   shield: ShieldCheck,
 };
 
-const accents = ["#f0a24c", "#f7c98a", "#e9c79b", "#fad3a6"];
+const accents = ["#b08968", "#d4b996", "#c4a379", "#e0cbb0"];
 
 export default function AboutPage() {
   return (
@@ -83,7 +83,7 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
             <FadeUp>
-              <p className="text-xl font-medium leading-10 text-fog-100 sm:text-2xl sm:leading-[2.1]">
+              <p className="text-xl font-medium leading-10 text-fog-500 sm:text-2xl sm:leading-[2.1]">
                 ولتریکس با یک ایده‌ی ساده شروع شد: سایت‌هایی بسازیم که شبیه هم
                 نباشند و بعد از تحویل هم کار کنند.
               </p>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <dl className="divide-y divide-white/[0.06]">
+              <dl className="divide-y divide-brand/10">
                 {[
                   { label: "سال تأسیس", value: siteConfig.founded },
                   { label: "اندازه‌ی تیم", value: "۴ متخصص" },
@@ -156,7 +156,7 @@ export default function AboutPage() {
                     className="flex items-center justify-between gap-4 px-6 py-3.5"
                   >
                     <dt className="text-[0.7rem] text-fog-500">{item.label}</dt>
-                    <dd className="text-[0.74rem] text-fog-200">
+                    <dd className="text-[0.74rem] text-fog-600">
                       {item.value}
                     </dd>
                   </div>
@@ -229,7 +229,7 @@ export default function AboutPage() {
           <div className="relative mt-14">
             <div
               aria-hidden="true"
-              className="absolute inset-y-0 right-[7px] w-px bg-gradient-to-b from-brand/50 via-white/10 to-transparent md:right-1/2"
+              className="absolute inset-y-0 right-[7px] w-px bg-gradient-to-b from-brand/50 via-brand/15 to-transparent md:right-1/2"
             />
 
             <ol className="space-y-10 md:space-y-0">
@@ -243,7 +243,7 @@ export default function AboutPage() {
                         : "pe-9 md:col-start-2 md:ps-14 md:pe-0"
                     }
                   >
-                    <span className="font-latin text-[0.68rem] tracking-[0.2em] text-brand-2">
+                    <span className="text-[0.68rem] text-brand-2">
                       {item.year}
                     </span>
                     <h3 className="mt-2 text-base font-bold text-white">
@@ -256,7 +256,7 @@ export default function AboutPage() {
 
                   <span
                     aria-hidden="true"
-                    className="absolute right-0 top-1.5 size-[15px] rounded-full border-[3px] border-ink bg-brand shadow-[0_0_0_4px_rgba(240, 162, 76,0.18)] md:right-1/2 md:translate-x-1/2"
+                    className="absolute right-0 top-1.5 size-[15px] rounded-full border-[3px] border-ink bg-brand shadow-[0_0_0_4px_rgba(176, 137, 104,0.18)] md:right-1/2 md:translate-x-1/2"
                   />
                 </li>
               ))}
@@ -283,7 +283,7 @@ export default function AboutPage() {
               <FadeUp key={member.name} delay={index * 0.06}>
                 <div className="group h-full overflow-hidden rounded-[20px] border border-white/[0.07] bg-card p-6 transition-all duration-500 hover:-translate-y-1 hover:border-white/[0.13] hover:bg-card-hover">
                   <span
-                    className="flex size-14 items-center justify-center rounded-2xl text-sm font-bold text-white"
+                    className="flex size-14 items-center justify-center rounded-2xl text-sm font-bold text-[#FFF9F0]"
                     style={{
                       background: `linear-gradient(135deg, ${accents[index % accents.length]}, rgba(18, 17, 16,0.9))`,
                     }}

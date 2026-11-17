@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    localPatterns: [
+      { pathname: "/images/**", search: "" },
+      { pathname: "/brand/**", search: "" },
+      { pathname: "/brand/**", search: "?v=2" },
+    ],
   },
   async headers() {
     return [

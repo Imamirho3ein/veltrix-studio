@@ -11,6 +11,8 @@ import { pageMetadata, breadcrumbSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl } from "@/lib/utils";
+import { getSessionUser } from "@/lib/auth";
+import { LoginGate } from "@/components/contact/LoginGate";
 
 export const metadata: Metadata = pageMetadata({
   title: "تماس با ما",
@@ -28,7 +30,9 @@ const contactFaq = [
   faqItems[7]!,
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const user = await getSessionUser();
+
   return (
     <>
       <JsonLd
@@ -88,7 +92,7 @@ export default function ContactPage() {
       <Container className="section-y">
         <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:gap-8">
           <FadeUp>
-            <ContactForm />
+            {user ? <ContactForm /> : <LoginGate />}
           </FadeUp>
           <FadeUp delay={0.1}>
             <ContactInfo />

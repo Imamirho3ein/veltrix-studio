@@ -23,12 +23,12 @@ export function Logo({
         className="absolute inset-[14%] rounded-full bg-brand/45 blur-[14px]"
       />
       <Image
-        src="/brand/logo-192.png"
+        src="/brand/logo-192.png?v=2"
         alt=""
         width={size}
         height={size}
         loading={loading}
-        className="relative h-full w-full object-contain drop-shadow-[0_0_12px_rgba(240, 162, 76,0.38)]"
+        className="relative h-full w-full object-contain drop-shadow-[0_0_12px_rgba(176,137,104,0.38)]"
       />
     </span>
   );

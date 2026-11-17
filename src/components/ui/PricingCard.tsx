@@ -11,12 +11,12 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
       className={cn(
         "relative flex h-full flex-col rounded-[20px] border p-6 transition-all duration-500 hover:-translate-y-1",
         plan.popular
-          ? "gradient-border border-brand/25 bg-[linear-gradient(160deg,rgba(240, 162, 76,0.12),rgba(18, 17, 16,0.9))] shadow-[0_30px_80px_-45px_rgba(240, 162, 76,0.8)]"
+          ? "gradient-border border-brand/30 bg-[linear-gradient(160deg,rgba(176, 137, 104,0.16),rgba(255, 249, 240,0.94))] shadow-[0_30px_80px_-45px_rgba(176, 137, 104,0.8)]"
           : "border-white/[0.07] bg-card hover:border-white/[0.13] hover:bg-card-hover",
       )}
     >
       {plan.popular ? (
-        <span className="absolute -top-3 right-5 rounded-full bg-[linear-gradient(135deg,#f0a24c,#f7c98a)] px-3 py-1 text-[0.6rem] font-medium text-[#2c241d]">
+        <span className="absolute -top-3 right-5 rounded-full bg-[linear-gradient(135deg,#b08968,#d4b996)] px-3 py-1 text-[0.6rem] font-medium text-[#2c241d]">
           پرطرفدار
         </span>
       ) : null}
@@ -63,7 +63,7 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
 
       <Link
         href="/contact"
-        className="group mt-6 inline-flex h-10 w-full items-center justify-center gap-2 rounded-[0.7rem] border border-white/10 bg-white/[0.03] text-[0.76rem] text-fog-200 transition-all duration-300 hover:border-brand/35 hover:bg-brand/10 hover:text-white"
+        className="group mt-6 inline-flex h-10 w-full items-center justify-center gap-2 rounded-[0.7rem] border border-white/10 bg-white/[0.03] text-[0.76rem] text-fog-500 transition-all duration-300 hover:border-brand/35 hover:bg-brand/10 hover:text-brand-800"
       >
         درخواست مشاوره
         <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />

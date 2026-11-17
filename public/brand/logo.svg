@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="vGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a6240"/>
+      <stop offset="1" stop-color="#5c3f2c"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4a379"/>
+      <stop offset="0.55" stop-color="#b08968"/>
+      <stop offset="1" stop-color="#96714f"/>
+    </linearGradient>
+    <radialGradient id="discGrad" cx="0.35" cy="0.28" r="0.95">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.7" stop-color="#fff9f0"/>
+      <stop offset="1" stop-color="#f4eada"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="256" cy="256" r="236" fill="none" stroke="url(#ringGrad)" stroke-width="12"/>
+  <circle cx="256" cy="256" r="206" fill="url(#discGrad)" stroke="#e0cbb0" stroke-width="2"/>
+
+  <path d="M168 172 L256 346 L344 172" fill="none" stroke="url(#vGrad)" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M168 172 L256 346 L344 172" fill="none" stroke="#fff9f0" stroke-opacity="0.3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="245" y="481" width="22" height="22" rx="4" transform="rotate(45 256 492)" fill="#d4b996" stroke="#96714f" stroke-width="3"/>
+</svg>

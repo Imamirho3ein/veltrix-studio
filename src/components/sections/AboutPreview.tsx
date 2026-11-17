@@ -20,7 +20,7 @@ export function AboutPreview() {
             </FadeUp>
 
             <FadeUp delay={0.08}>
-              <p className="mt-6 text-lg font-medium leading-9 text-fog-200">
+              <p className="mt-6 text-lg font-medium leading-9 text-fog-500">
                 ما تجربه‌ای می‌سازیم که برند شما را به مخاطب نزدیک‌تر می‌کند.
               </p>
               <p className="mt-5 max-w-lg text-sm leading-8 text-fog-400">
@@ -79,7 +79,7 @@ export function AboutPreview() {
               </div>
 
               <div className="absolute right-5 top-6 rounded-lg border border-white/10 bg-[#1a1714]/80 px-3 py-2 backdrop-blur-md">
-                <span className="block font-latin text-[0.55rem] tracking-[0.2em] text-fog-500">
+                <span className="block font-latin text-[0.55rem] tracking-[0.2em] text-fog-300">
                   LOCATION
                 </span>
                 <span className="mt-1 block text-[0.68rem] text-fog-200">
@@ -88,7 +88,7 @@ export function AboutPreview() {
               </div>
 
               <div className="absolute bottom-6 left-5 rounded-lg border border-white/10 bg-[#1a1714]/80 px-3 py-2 backdrop-blur-md">
-                <span className="block font-latin text-[0.55rem] tracking-[0.2em] text-fog-500">
+                <span className="block font-latin text-[0.55rem] tracking-[0.2em] text-fog-300">
                   FOCUS
                 </span>
                 <span className="mt-1 block text-[0.68rem] text-fog-200">
@@ -99,10 +99,10 @@ export function AboutPreview() {
             </Reveal>
 
             <div className="absolute -bottom-5 right-6 flex items-center gap-3 rounded-xl border border-white/10 bg-[#1a1714]/90 px-4 py-3 shadow-[0_20px_50px_-24px_rgba(0,0,0,0.9)] backdrop-blur-md">
-              <span className="font-latin text-xl font-bold text-white">
+              <span className="text-xl font-bold text-[#FFF9F0]">
                 {toFa(48)}+
               </span>
-              <span className="text-[0.65rem] leading-5 text-fog-400">
+              <span className="text-[0.65rem] leading-5 text-fog-300">
                 پروژه
                 <br />
                 تحویل‌شده

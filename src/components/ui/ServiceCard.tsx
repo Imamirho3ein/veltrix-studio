@@ -16,13 +16,13 @@ export function ServiceCard({
     <Link
       href={`/services#${service.slug}`}
       className={cn(
-        "gradient-border group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-[20px] border border-white/[0.07] bg-card p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/[0.12] hover:bg-card-hover hover:shadow-[0_30px_80px_-40px_rgba(240, 162, 76,0.55)]",
+        "gradient-border group relative flex min-h-[250px] flex-col justify-between overflow-hidden rounded-[20px] border border-white/[0.07] bg-card p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/[0.12] hover:bg-card-hover hover:shadow-[0_30px_80px_-40px_rgba(176, 137, 104,0.55)]",
         className,
       )}
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(240, 162, 76,0.16),transparent_62%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(176, 137, 104,0.16),transparent_62%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
 
       <div className="relative flex items-start justify-between">

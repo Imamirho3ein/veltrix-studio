@@ -54,7 +54,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "E-Commerce", "UX"],
     timeline: "۹ هفته",
     image: "/images/projects/nexa-shop.svg",
-    accent: "#f0a24c",
+    accent: "#b08968",
     featured: true,
     challenge:
       "فروش برند تا قبل از این پروژه کاملاً در دایرکت اینستاگرام انجام می‌شد. مشتری‌ها نمی‌توانستند موجودی را ببینند، انتخاب سایز سخت بود و اعتماد به خرید آنلاین پایین. از طرف دیگر، مدیر برند نمی‌خواست فروشگاهش شبیه قالب‌های آماده‌ی رایج باشد.",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     tags: ["Dashboard", "Data Viz", "UX"],
     timeline: "۷ هفته",
     image: "/images/projects/arta-finance.svg",
-    accent: "#e9c79b",
+    accent: "#c4a379",
     featured: true,
     challenge:
       "داده‌ی مالی ذاتاً پیچیده است. مشکل، کمبود اطلاعات نبود؛ زیادیِ آن بود. کاربر باید در نگاه اول می‌فهمید دارایی‌اش در چه وضعی است و برای تحلیل عمیق‌تر، مسیر روشنی داشت.",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     tags: ["Corporate", "Brand", "CMS"],
     timeline: "۸ هفته",
     image: "/images/projects/lumina.svg",
-    accent: "#f7c98a",
+    accent: "#d4b996",
     featured: true,
     challenge:
       "چند برند، چند مخاطب و یک سایت شلوغ. نیاز اصلی، یک روایت مادر بود که هر شرکت زیرمجموعه در جای خودش قرار بگیرد و در عین حال هویت مستقل خودش را حفظ کند.",
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     tags: ["E-Commerce", "Catalog", "Art Direction"],
     timeline: "۱۱ هفته",
     image: "/images/projects/vesta.svg",
-    accent: "#fad3a6",
+    accent: "#e0cbb0",
     featured: false,
     challenge:
       "کاتالوگ بزرگ، فیلترهای ضعیف و صفحه‌های محصول یکسان باعث می‌شد کاربر سریع خسته شود. علاوه بر این، برند می‌خواست حس «خانه‌ی واقعی» را منتقل کند، نه ویترین خشک.",
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     tags: ["Education", "LMS", "UX"],
     timeline: "۹ هفته",
     image: "/images/projects/nova-academy.svg",
-    accent: "#e9c79b",
+    accent: "#c4a379",
     featured: false,
     challenge:
       "صفحه‌ی فروش دوره‌ها درباره‌ی «چیستی» دوره حرف می‌زد، نه نتیجه‌ای که دانشجو می‌گیرد. همچنین پخش ویدیو و پیگیری پیشرفت، تجربه‌ی منسجمی نداشت.",

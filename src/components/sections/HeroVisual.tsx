@@ -36,8 +36,8 @@ function MiniNav() {
 
 function MiniSite() {
   return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0d0d0d]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(240, 162, 76,0.22),transparent_45%),radial-gradient(circle_at_18%_85%,rgba(233, 199, 155,0.16),transparent_42%)]" />
+    <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0d0d0d] dark-scope">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(176, 137, 104,0.22),transparent_45%),radial-gradient(circle_at_18%_85%,rgba(212, 185, 150,0.16),transparent_42%)]" />
       <div className="relative flex h-full flex-col">
         <MiniNav />
         <div className="grid flex-1 grid-cols-[1.08fr_0.92fr] items-center gap-2 px-[4%] py-[3%]">
@@ -95,7 +95,7 @@ function PhoneMockup() {
       <div className="flex items-center justify-center py-1">
         <span className="h-1 w-8 rounded-full bg-white/15" />
       </div>
-      <div className="bg-[radial-gradient(circle_at_70%_10%,rgba(240, 162, 76,0.24),transparent_50%),radial-gradient(circle_at_20%_90%,rgba(233, 199, 155,0.15),transparent_45%)] px-2.5 pb-2.5">
+      <div className="bg-[radial-gradient(circle_at_70%_10%,rgba(176, 137, 104,0.24),transparent_50%),radial-gradient(circle_at_20%_90%,rgba(212, 185, 150,0.15),transparent_45%)] px-2.5 pb-2.5">
         <div className="flex items-center justify-between">
           <span className="font-latin text-[5px] font-bold tracking-[0.18em] text-white">
             VELTRIX
@@ -234,14 +234,14 @@ export function HeroVisual() {
           style={{ rotateX, rotateY }}
           className="relative [transform-style:preserve-3d] will-change-transform"
         >
-          <div className="rounded-2xl border border-white/15 bg-[#1a1714] p-1.5 shadow-[0_50px_120px_-42px_rgba(233, 199, 155,0.45)]">
+          <div className="rounded-2xl border border-white/15 bg-[#1a1714] p-1.5 shadow-[0_50px_120px_-42px_rgba(212, 185, 150,0.45)]">
             <div className="overflow-hidden rounded-xl border border-white/10 bg-ink">
               <div className="flex h-6 items-center gap-1.5 border-b border-white/[0.06] bg-white/[0.03] px-2.5 sm:h-7">
                 <span className="size-1.5 rounded-full bg-white/20" />
                 <span className="size-1.5 rounded-full bg-white/20" />
                 <span className="size-1.5 rounded-full bg-white/20" />
                 <div className="mx-auto flex h-3.5 w-1/2 items-center justify-center rounded-full bg-white/[0.05] text-[5px] text-fog-500 sm:text-[6px]">
-                  veltrixstudio.com
+                  veltrixstudio.ir
                 </div>
               </div>
               <MiniSite />
@@ -266,15 +266,15 @@ export function HeroVisual() {
         delay={0.4}
         className="absolute -left-[2%] top-[20%] z-30 sm:left-[-4%]"
       >
-        <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#1a1714]/85 px-3 py-2.5 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md">
+        <div className="flex items-center gap-2.5 rounded-xl border border-[#FFF9F0]/15 bg-[#1a1714]/85 px-3 py-2.5 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md">
           <span className="flex size-7 items-center justify-center rounded-lg bg-brand/15 text-brand-300">
             <Briefcase className="size-3.5" />
           </span>
           <span>
-            <span className="block font-latin text-sm font-bold text-white">
+            <span className="block text-sm font-bold text-[#FFF9F0]">
               +{toFa(50)}
             </span>
-            <span className="block text-[0.6rem] text-fog-400">پروژه موفق</span>
+            <span className="block text-[0.6rem] text-fog-300">پروژه موفق</span>
           </span>
         </div>
       </FloatingCard>
@@ -285,15 +285,15 @@ export function HeroVisual() {
         delay={1}
         className="absolute -right-[2%] top-[48%] z-30 sm:right-[-4%]"
       >
-        <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#1a1714]/85 px-3 py-2.5 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md">
+        <div className="flex items-center gap-2.5 rounded-xl border border-[#FFF9F0]/15 bg-[#1a1714]/85 px-3 py-2.5 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.9)] backdrop-blur-md">
           <span className="flex size-7 items-center justify-center rounded-lg bg-accent-400/15 text-accent-300">
             <Star className="size-3.5" />
           </span>
           <span>
-            <span className="block font-latin text-sm font-bold text-white">
+            <span className="block text-sm font-bold text-[#FFF9F0]">
               {toFa(98)}٪
             </span>
-            <span className="block text-[0.6rem] text-fog-400">
+            <span className="block text-[0.6rem] text-fog-300">
               رضایت مشتری
             </span>
           </span>
@@ -306,10 +306,10 @@ export function HeroVisual() {
         delay={1.6}
         className="absolute bottom-[2%] left-[22%] z-30 hidden sm:block"
       >
-        <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-[#1a1714]/80 px-2.5 py-2 backdrop-blur-md">
+        <div className="flex items-center gap-2 rounded-lg border border-[#FFF9F0]/15 bg-[#1a1714]/80 px-2.5 py-2 backdrop-blur-md">
           <Sparkles className="size-3 text-brand-300" />
           <span className="text-[0.62rem] text-fog-300">
-            <span className="font-latin font-bold text-white">
+            <span className="font-bold text-[#FFF9F0]">
               +{toFa(3)}
             </span>{" "}
             سال تجربه

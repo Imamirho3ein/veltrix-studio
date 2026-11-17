@@ -3,9 +3,9 @@ import {
   Bot,
   Clock,
   Mail,
+  Phone,
   Send,
 } from "lucide-react";
-import { InstagramIcon } from "@/components/icons/Social";
 import { siteConfig } from "@/lib/constants";
 
 const items = [
@@ -18,19 +18,19 @@ const items = [
     ltr: true,
   },
   {
-    title: "تلگرام",
+    title: "تماس مستقیم",
+    value: siteConfig.phoneDisplay,
+    href: `tel:${siteConfig.phone}`,
+    Icon: Phone,
+    note: "شنبه تا پنجشنبه، ۱۰ تا ۲۰",
+    ltr: true,
+  },
+  {
+    title: "کانال تلگرام",
     value: siteConfig.telegram.channelHandle,
     href: siteConfig.telegram.channel,
     Icon: Send,
     note: "سریع‌ترین راه گفتگو",
-    ltr: true,
-  },
-  {
-    title: "اینستاگرام",
-    value: siteConfig.instagramHandle,
-    href: siteConfig.instagram,
-    Icon: InstagramIcon,
-    note: "پشت صحنه و نمونه‌کارهای تازه",
     ltr: true,
   },
   {
@@ -63,7 +63,7 @@ export function ContactInfo() {
                   <span className="block text-[0.65rem] text-fog-500">
                     {title}
                   </span>
-                  <span className="mt-0.5 block truncate text-[0.82rem] text-fog-200">
+                  <span className="mt-0.5 block truncate text-[0.82rem] text-fog-600">
                     {value}
                   </span>
                   <span className="mt-0.5 block text-[0.6rem] text-fog-500">
@@ -81,9 +81,15 @@ export function ContactInfo() {
                 {href ? (
                   <a
                     href={href}
-                    target={href.startsWith("mailto:") ? undefined : "_blank"}
+                    target={
+                      href.startsWith("mailto:") || href.startsWith("tel:")
+                        ? undefined
+                        : "_blank"
+                    }
                     rel={
-                      href.startsWith("mailto:") ? undefined : "noopener noreferrer"
+                      href.startsWith("mailto:") || href.startsWith("tel:")
+                        ? undefined
+                        : "noopener noreferrer"
                     }
                     className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/[0.03]"
                   >
@@ -103,7 +109,7 @@ export function ContactInfo() {
         </ul>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] border border-white/[0.09] bg-[linear-gradient(135deg,rgba(240, 162, 76,0.16),rgba(233, 199, 155,0.07))] p-6">
+      <div className="relative overflow-hidden rounded-[24px] border border-white/[0.09] bg-[linear-gradient(135deg,rgba(176, 137, 104,0.14),rgba(212, 185, 150,0.1))] p-6">
         <div
           aria-hidden="true"
           className="absolute -right-10 -top-10 size-36 rounded-full bg-brand/25 blur-3xl"
@@ -123,7 +129,7 @@ export function ContactInfo() {
             href={siteConfig.telegram.bot}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-accent-300 transition hover:text-white"
+            className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-accent-600 transition hover:text-brand-800"
           >
             گفتگو با ربات
             <ArrowUpLeft className="size-3.5" />

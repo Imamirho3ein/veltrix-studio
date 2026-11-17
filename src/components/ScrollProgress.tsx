@@ -33,7 +33,7 @@ export function ScrollProgress() {
     <div
       ref={barRef}
       aria-hidden="true"
-      className="scroll-progress fixed inset-x-0 top-0 z-[65] h-[3px] origin-right bg-[linear-gradient(90deg,#f0a24c,#f7c98a,#e9c79b)] shadow-[0_0_14px_rgba(240,162,76,0.55)]"
+      className="scroll-progress fixed inset-x-0 top-0 z-[65] h-[3px] origin-right bg-[linear-gradient(90deg,#b08968,#d4b996,#ede3d4)] shadow-[0_0_14px_rgba(176,137,104,0.55)]"
       style={{ transform: "scaleX(0)" }}
     />
   );
