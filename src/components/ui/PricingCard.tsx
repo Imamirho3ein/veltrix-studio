@@ -30,7 +30,7 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
         </span>
       </div>
 
-      <h3 className="mt-5 text-base font-bold text-white">{plan.title}</h3>
+      <h2 className="mt-5 text-base font-bold text-white">{plan.title}</h2>
       <p className="mt-2 text-[0.76rem] leading-6 text-fog-400">
         {plan.description}
       </p>
