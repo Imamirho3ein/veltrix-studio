@@ -68,12 +68,12 @@ export function CtaCopy() {
         <Button
           href={siteConfig.telegram.channel}
           external
-          variant="ghost"
+          variant="secondary"
           fullWidth
           className="sm:w-auto"
+          trailingIcon={<Send className="size-4" />}
         >
           گفتگو در تلگرام
-          <Send className="size-4" />
         </Button>
       </motion.div>
 

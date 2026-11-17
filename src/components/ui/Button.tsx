@@ -16,6 +16,7 @@ type BaseProps = {
   className?: string;
   arrow?: boolean;
   icon?: ReactNode;
+  trailingIcon?: ReactNode;
   magnetic?: boolean;
   fullWidth?: boolean;
 };
@@ -49,6 +50,7 @@ export function Button(props: ButtonProps) {
     className,
     arrow = false,
     icon,
+    trailingIcon,
     magnetic = variant === "primary",
     fullWidth = false,
   } = props;
@@ -65,6 +67,7 @@ export function Button(props: ButtonProps) {
     <>
       {icon}
       <span>{children}</span>
+      {trailingIcon}
       {arrow ? (
         props.href !== undefined && props.external ? (
           <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
