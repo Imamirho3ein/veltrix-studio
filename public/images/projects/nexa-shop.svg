@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Nexa Shop — فروشگاه پوشاک">
+  <defs>
+    <linearGradient id="nexa-bg" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F4EE"/>
+      <stop offset="1" stop-color="#EDE8DF"/>
+    </linearGradient>
+    <linearGradient id="nexa-hero" x1="740" y1="150" x2="1080" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8CFC2"/>
+      <stop offset="0.55" stop-color="#B9AC9B"/>
+      <stop offset="1" stop-color="#8E8171"/>
+    </linearGradient>
+    <linearGradient id="nexa-card1" x1="0" y1="0" x2="240" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4DED4"/>
+      <stop offset="1" stop-color="#CFC6B8"/>
+    </linearGradient>
+    <linearGradient id="nexa-card2" x1="0" y1="0" x2="240" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DED6CA"/>
+      <stop offset="1" stop-color="#C3B7A6"/>
+    </linearGradient>
+    <linearGradient id="nexa-card3" x1="0" y1="0" x2="240" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7E2D9"/>
+      <stop offset="1" stop-color="#D2C9BB"/>
+    </linearGradient>
+    <linearGradient id="nexa-accent" x1="0" y1="0" x2="160" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0a24c"/>
+      <stop offset="1" stop-color="#f7c98a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#nexa-bg)"/>
+  <rect x="0" y="0" width="1200" height="60" fill="#111111"/>
+  <g fill="#aaa6a1" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+    <circle cx="34" cy="30" r="5" fill="#EF4444"/>
+    <circle cx="54" cy="30" r="5" fill="#F59E0B"/>
+    <circle cx="74" cy="30" r="5" fill="#bb782c"/>
+    <rect x="430" y="18" width="340" height="24" rx="12" fill="#211d19"/>
+    <text x="600" y="34" text-anchor="middle" fill="#aaa6a1" font-size="11">nexa.shop</text>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="80" y="140" font-size="30" font-weight="800" letter-spacing="10" fill="#111111">NEXA</text>
+    <g fill="#5a5a5a" font-size="13" letter-spacing="2">
+      <text x="560" y="136">NEW IN</text>
+      <text x="680" y="136">WOMEN</text>
+      <text x="790" y="136">MEN</text>
+      <text x="880" y="136">OBJECTS</text>
+    </g>
+    <g fill="none" stroke="#111111" stroke-width="1.5">
+      <circle cx="1046" cy="130" r="13"/>
+      <path d="M1040 130h12M1046 124v12" opacity="0"/>
+      <path d="M1050 134c3 3 6 6 8 8" stroke-linecap="round"/>
+      <path d="M1096 120h16v20l-8 6-8-6z"/>
+    </g>
+  </g>
+
+  <rect x="700" y="680" width="420" height="1" fill="#111111" opacity="0.1"/>
+
+  <g>
+    <rect x="700" y="168" width="420" height="440" rx="10" fill="url(#nexa-hero)"/>
+    <path d="M760 560c30-90 62-160 118-206 34-28 74-42 118-44 44-2 84 12 124 30v220H760z" fill="#ffffff" opacity="0.12"/>
+    <path d="M742 600c46-66 82-96 132-126 46-28 96-34 146-22 38 9 70 26 100 46v142H742z" fill="#111111" opacity="0.12"/>
+    <rect x="720" y="190" width="92" height="26" rx="13" fill="#111111" opacity="0.85"/>
+    <text x="766" y="207" text-anchor="middle" fill="#F7F4EE" font-family="Segoe UI, Arial, sans-serif" font-size="10" letter-spacing="2">NEW IN</text>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="80" y="268" font-size="15" letter-spacing="4" fill="#8A7F70">SS / 26</text>
+    <text x="80" y="352" font-size="62" font-weight="800" fill="#111111">Collection</text>
+    <text x="80" y="422" font-size="62" font-weight="800" fill="#111111">No. 04</text>
+    <text x="80" y="470" font-size="16" fill="#5B5348" font-family="Tahoma, Arial, sans-serif">پوشاک مینیمال، ساخته‌شده برای هر روز.</text>
+    <g>
+      <rect x="80" y="502" width="168" height="46" rx="6" fill="url(#nexa-accent)"/>
+      <text x="164" y="531" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">SHOP NOW</text>
+    </g>
+    <g fill="none" stroke="#111111" stroke-width="1.2" opacity="0.5">
+      <rect x="264" y="502" width="150" height="46" rx="6"/>
+      <text x="339" y="531" text-anchor="middle" fill="#111111" font-size="13" stroke="none">LOOKBOOK</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="80" y="620" width="250" height="200" rx="8" fill="url(#nexa-card1)"/>
+    <rect x="346" y="620" width="250" height="200" rx="8" fill="url(#nexa-card2)"/>
+    <rect x="612" y="620" width="250" height="200" rx="8" fill="url(#nexa-card3)"/>
+    <g fill="#111111" opacity="0.16">
+      <path d="M150 780c14-36 30-62 54-78 20-14 44-18 68-10 16 6 30 16 42 28v60H150z"/>
+      <path d="M420 782c10-30 24-54 44-70 22-18 48-22 72-12 14 6 26 14 36 24v66H420z" fill="#7A6C5B"/>
+      <path d="M690 776c12-26 26-44 46-58 22-16 46-20 68-10 12 5 22 12 30 20v58H690z"/>
+    </g>
+    <g font-family="Segoe UI, Arial, sans-serif" fill="#111111">
+      <text x="94" y="646" font-size="11" letter-spacing="2" opacity="0.6">01</text>
+      <text x="360" y="646" font-size="11" letter-spacing="2" opacity="0.6">02</text>
+      <text x="626" y="646" font-size="11" letter-spacing="2" opacity="0.6">03</text>
+      <text x="94" y="846" font-size="14" font-weight="700">Linen Shirt</text>
+      <text x="360" y="846" font-size="14" font-weight="700">Wide Trousers</text>
+      <text x="626" y="846" font-size="14" font-weight="700">Wool Coat</text>
+      <text x="290" y="846" font-size="12" opacity="0.6">۲.۴ م</text>
+      <text x="556" y="846" font-size="12" opacity="0.6">۳.۱ م</text>
+      <text x="822" y="846" font-size="12" opacity="0.6">۵.۹ م</text>
+    </g>
+  </g>
+</svg>

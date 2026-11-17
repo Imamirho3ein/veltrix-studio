@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Vesta Home — فروشگاه دکوراسیون">
+  <defs>
+    <linearGradient id="ves-bg" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EEE6"/>
+      <stop offset="1" stop-color="#E9E0D3"/>
+    </linearGradient>
+    <linearGradient id="ves-a" x1="80" y1="330" x2="380" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9B49C"/>
+      <stop offset="1" stop-color="#9C8368"/>
+    </linearGradient>
+    <linearGradient id="ves-b" x1="400" y1="330" x2="700" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8C7B2"/>
+      <stop offset="1" stop-color="#B49B80"/>
+    </linearGradient>
+    <linearGradient id="ves-c" x1="720" y1="330" x2="1080" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#998f83"/>
+      <stop offset="1" stop-color="#6a6157"/>
+    </linearGradient>
+    <linearGradient id="ves-d" x1="80" y1="650" x2="380" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C08560"/>
+      <stop offset="1" stop-color="#8E5B3C"/>
+    </linearGradient>
+    <linearGradient id="ves-e" x1="400" y1="650" x2="700" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E3D6C6"/>
+      <stop offset="1" stop-color="#C2AE96"/>
+    </linearGradient>
+    <linearGradient id="ves-f" x1="720" y1="650" x2="1080" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B9AFA0"/>
+      <stop offset="1" stop-color="#8B8071"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#ves-bg)"/>
+
+  <rect width="1200" height="52" fill="#1F1A15"/>
+  <circle cx="30" cy="26" r="4" fill="#EF4444" opacity="0.6"/>
+  <circle cx="48" cy="26" r="4" fill="#F59E0B" opacity="0.6"/>
+  <circle cx="66" cy="26" r="4" fill="#bb782c" opacity="0.6"/>
+  <rect x="432" y="14" width="336" height="24" rx="12" fill="#2C251E"/>
+  <text x="600" y="30" text-anchor="middle" fill="#8F8375" font-family="Segoe UI, Arial, sans-serif" font-size="10">vesta.home / collections</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="80" y="126" font-size="26" font-weight="800" letter-spacing="9" fill="#1F1A15">VESTA</text>
+    <text x="80" y="142" font-size="7.5" letter-spacing="5" fill="#8B7E6D">HOME OBJECTS</text>
+
+    <g fill="#6B5F51" font-size="10" letter-spacing="1.6">
+      <text x="760" y="120">COLLECTIONS</text>
+      <text x="860" y="120">FURNITURE</text>
+      <text x="950" y="120">LIGHTING</text>
+      <text x="1030" y="120">JOURNAL</text>
+    </g>
+    <g fill="none" stroke="#1F1A15" stroke-width="1.4">
+      <circle cx="1106" cy="116" r="12"/>
+      <path d="M1110 120l7 7" stroke-linecap="round"/>
+      <path d="M1140 106h14v18l-7 5-7-5z"/>
+    </g>
+
+    <line x1="80" y1="176" x2="1120" y2="176" stroke="#1F1A15" stroke-opacity="0.14"/>
+
+    <text x="80" y="236" font-size="44" font-weight="700" fill="#1F1A15" letter-spacing="-0.5">Living,</text>
+    <text x="80" y="288" font-size="44" font-weight="700" fill="#8E5B3C" letter-spacing="-0.5">composed.</text>
+    <text x="392" y="252" font-size="12" fill="#6B5F51" font-family="Tahoma, Arial, sans-serif">مجموعه‌ای از اشیای خانه، با نور طبیعی و متریال گرم.</text>
+    <text x="392" y="274" font-size="12" fill="#6B5F51" font-family="Tahoma, Arial, sans-serif">هر فضا، یک چیدمان آماده.</text>
+
+    <g>
+      <rect x="700" y="212" width="84" height="26" rx="13" fill="#1F1A15"/>
+      <text x="742" y="229" text-anchor="middle" fill="#F4EEE6" font-size="9" letter-spacing="1">ALL</text>
+      <g fill="none" stroke="#1F1A15" stroke-opacity="0.25">
+        <rect x="794" y="212" width="94" height="26" rx="13"/>
+        <rect x="898" y="212" width="104" height="26" rx="13"/>
+        <rect x="1012" y="212" width="108" height="26" rx="13"/>
+      </g>
+      <g fill="#6B5F51" font-size="9">
+        <text x="841" y="229" text-anchor="middle">LIVING</text>
+        <text x="950" y="229" text-anchor="middle">BEDROOM</text>
+        <text x="1066" y="229" text-anchor="middle">STUDIO</text>
+      </g>
+    </g>
+  </g>
+
+  <g>
+    <rect x="80" y="330" width="300" height="290" rx="3" fill="url(#ves-a)"/>
+    <g opacity="0.35" fill="#3E3226">
+      <path d="M120 560h220v-70c0-34-26-62-60-62h-100c-34 0-60 28-60 62z"/>
+      <rect x="150" y="430" width="180" height="34" rx="8"/>
+    </g>
+    <g opacity="0.5" fill="#F4EEE6">
+      <rect x="140" y="500" width="60" height="46" rx="6"/>
+      <rect x="260" y="500" width="60" height="46" rx="6"/>
+    </g>
+    <rect x="80" y="330" width="300" height="290" rx="3" fill="none" stroke="#1F1A15" stroke-opacity="0.08"/>
+  </g>
+
+  <g>
+    <rect x="400" y="330" width="300" height="200" rx="3" fill="url(#ves-b)"/>
+    <g opacity="0.35" fill="#4A3D30">
+      <circle cx="550" cy="430" r="52"/>
+      <rect x="480" y="462" width="140" height="14" rx="7"/>
+      <rect x="520" y="476" width="60" height="44"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="720" y="330" width="400" height="290" rx="3" fill="url(#ves-c)"/>
+    <g opacity="0.4" fill="#e2ddd7">
+      <path d="M780 560c0-60 34-108 80-108s80 48 80 108z"/>
+      <rect x="920" y="430" width="140" height="130" rx="4"/>
+      <path d="M960 430v130M1020 430v130" stroke="#6a6157" stroke-width="2"/>
+    </g>
+    <g opacity="0.55" fill="#37312a">
+      <circle cx="1060" cy="500" r="26"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="80" y="650" width="300" height="190" rx="3" fill="url(#ves-d)"/>
+    <g opacity="0.4" fill="#F0DFCE">
+      <circle cx="230" cy="730" r="46"/>
+      <rect x="180" y="786" width="100" height="8" rx="4"/>
+      <rect x="210" y="800" width="40" height="26" rx="3"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="400" y="650" width="300" height="190" rx="3" fill="url(#ves-e)"/>
+    <g opacity="0.4" fill="#6B5F51">
+      <rect x="450" y="690" width="200" height="110" rx="4"/>
+      <path d="M450 740h200M520 690v110M580 690v110" stroke="#F4EEE6" stroke-width="2"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="720" y="650" width="400" height="190" rx="3" fill="url(#ves-f)"/>
+    <g opacity="0.45" fill="#EFE7DA">
+      <path d="M790 840V760c0-32 24-58 54-58h132c30 0 54 26 54 58v80z"/>
+      <rect x="830" y="700" width="44" height="34" rx="4"/>
+    </g>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#1F1A15">
+    <g font-size="12" font-weight="600">
+      <text x="80" y="650">Linen Sofa — Sand</text>
+      <text x="400" y="560">Travertine Table</text>
+      <text x="720" y="650">Garden Chair — Olive</text>
+      <text x="80" y="876">Terracotta Vase</text>
+      <text x="400" y="876">Wool Rug — Ivory</text>
+      <text x="720" y="876">Reading Lamp</text>
+    </g>
+    <g font-size="10" fill="#8B7E6D">
+      <text x="80" y="668">از ۴۸ میلیون</text>
+      <text x="400" y="578">از ۲۲ میلیون</text>
+      <text x="720" y="668">از ۱۶ میلیون</text>
+      <text x="80" y="894">از ۳.۲ میلیون</text>
+      <text x="400" y="894">از ۹.۸ میلیون</text>
+      <text x="720" y="894">از ۵.۶ میلیون</text>
+    </g>
+  </g>
+</svg>
