@@ -68,7 +68,7 @@ export default function PricingPage() {
         title={
           <>
             قیمت شفاف،
-            <br />
+            <br />{" "}
             <span className="text-gradient">بدون غافلگیری.</span>
           </>
         }

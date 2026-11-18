@@ -63,9 +63,9 @@ export function Hero() {
               className="display-title mt-7"
             >
               ایده‌ات را به
-              <br />
+              <br />{" "}
               یک <span className="text-gradient">تجربه دیجیتال</span>
-              <br />
+              <br />{" "}
               تبدیل می‌کنیم.
             </motion.h1>
 

@@ -46,7 +46,7 @@ export function CtaCopy() {
         className="mt-6 text-[clamp(2.15rem,4.5vw,3.4rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-white"
       >
         پروژه‌ی بعدی‌ات
-        <br />
+        <br />{" "}
         از همین‌جا <span className="text-gradient">شروع می‌شود.</span>
       </motion.h2>
 

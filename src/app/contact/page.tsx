@@ -80,7 +80,7 @@ export default async function ContactPage() {
         title={
           <>
             بیایید درباره‌ی
-            <br />
+            <br />{" "}
             <span className="text-gradient">پروژه‌ی شما</span> حرف بزنیم.
           </>
         }

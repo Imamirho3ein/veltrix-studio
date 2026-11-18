@@ -62,7 +62,7 @@ export default function ServicesPage() {
         title={
           <>
             از ایده تا اجرا؛
-            <br />
+            <br />{" "}
             <span className="text-gradient">همه‌ی مسیر</span> با یک تیم.
           </>
         }

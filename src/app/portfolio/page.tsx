@@ -46,7 +46,7 @@ export default function PortfolioPage() {
         title={
           <>
             کارهایی که
-            <br />
+            <br />{" "}
             <span className="text-gradient">به آن‌ها افتخار</span> می‌کنیم.
           </>
         }

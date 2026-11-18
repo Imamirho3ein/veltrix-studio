@@ -181,7 +181,7 @@ export function TelegramSection() {
 
                 <div className="flex items-center gap-2 border-t border-white/[0.07] bg-white/[0.02] px-3 py-2.5">
                   <span className="flex-1 rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1.5 text-[0.58rem] text-fog-500">
-                    پیام خود را بنویسید...
+                    پیام خود را بنویسید…
                   </span>
                   <span className="flex size-7 items-center justify-center rounded-full bg-brand text-[#2c241d]">
                     <Send className="size-3" />

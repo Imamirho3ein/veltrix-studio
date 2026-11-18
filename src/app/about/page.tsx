@@ -57,7 +57,7 @@ export default function AboutPage() {
         title={
           <>
             تیم کوچک،
-            <br />
+            <br />{" "}
             <span className="text-gradient">وسواس بزرگ.</span>
           </>
         }

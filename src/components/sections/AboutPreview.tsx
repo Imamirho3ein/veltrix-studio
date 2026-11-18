@@ -14,7 +14,7 @@ export function AboutPreview() {
               <p className="eyebrow mb-4">درباره‌ی ولتریکس</p>
               <h2 id="about-preview-title" className="section-title">
                 ما فقط سایت
-                <br />
+                <br />{" "}
                 <span className="text-gradient">نمی‌سازیم.</span>
               </h2>
             </FadeUp>
@@ -106,7 +106,7 @@ export function AboutPreview() {
               </span>
               <span className="text-[0.65rem] leading-5 text-fog-300">
                 پروژه
-                <br />
+                <br />{" "}
                 تحویل‌شده
               </span>
             </div>
