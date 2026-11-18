@@ -6,16 +6,18 @@ import {
   Phone,
   Send,
 } from "lucide-react";
+import { EmailLink } from "@/components/ui/EmailLink";
 import { siteConfig } from "@/lib/constants";
 
 const items = [
   {
     title: "ایمیل",
-    value: siteConfig.emailDisplay,
-    href: `mailto:${siteConfig.email}`,
+    value: "ارسال ایمیل به استودیو",
+    href: null,
     Icon: Mail,
     note: "برای بریف، فایل یا سؤال فنی",
-    ltr: true,
+    ltr: false,
+    email: true,
   },
   {
     title: "تماس مستقیم",
@@ -24,6 +26,7 @@ const items = [
     Icon: Phone,
     note: "شنبه تا پنجشنبه، ۱۰ تا ۲۰",
     ltr: true,
+    email: false,
   },
   {
     title: "کانال تلگرام",
@@ -32,6 +35,7 @@ const items = [
     Icon: Send,
     note: "سریع‌ترین راه گفتگو",
     ltr: true,
+    email: false,
   },
   {
     title: "ساعات پاسخ‌گویی",
@@ -40,6 +44,7 @@ const items = [
     Icon: Clock,
     note: "بیرون از این بازه، پیام بگذارید",
     ltr: false,
+    email: false,
   },
 ];
 
@@ -53,7 +58,7 @@ export function ContactInfo() {
         </p>
 
         <ul className="mt-6 space-y-2">
-          {items.map(({ title, value, href, Icon, note, ltr }) => {
+          {items.map(({ title, value, href, Icon, note, ltr, email }) => {
             const content = (
               <>
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-brand-300">
@@ -78,18 +83,21 @@ export function ContactInfo() {
 
             return (
               <li key={title}>
-                {href ? (
+                {email ? (
+                  <EmailLink
+                    ariaLabel="ارسال ایمیل به ولتریکس استودیو"
+                    className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/[0.03]"
+                  >
+                    {content}
+                  </EmailLink>
+                ) : href ? (
                   <a
                     href={href}
                     target={
-                      href.startsWith("mailto:") || href.startsWith("tel:")
-                        ? undefined
-                        : "_blank"
+                      href.startsWith("tel:") ? undefined : "_blank"
                     }
                     rel={
-                      href.startsWith("mailto:") || href.startsWith("tel:")
-                        ? undefined
-                        : "noopener noreferrer"
+                      href.startsWith("tel:") ? undefined : "noopener noreferrer"
                     }
                     className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/[0.03]"
                   >

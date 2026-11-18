@@ -22,7 +22,7 @@ export function NewsletterForm() {
     const value = email.trim();
     if (!EMAIL_RE.test(value)) {
       setStatus("error");
-      setNote("ایمیل معتبر نیست. نمونه: name@example.com");
+      setNote("ایمیل معتبر نیست. لطفاً دوباره بررسی کنید.");
       return;
     }
 
@@ -80,7 +80,7 @@ export function NewsletterForm() {
           dir="ltr"
           inputMode="email"
           autoComplete="email"
-          placeholder="name@example.com"
+          placeholder="ایمیل شما"
           value={email}
           onChange={onChange}
           aria-invalid={status === "error" ? true : undefined}

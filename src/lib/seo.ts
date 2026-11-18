@@ -74,7 +74,6 @@ export function organizationSchema(): SchemaNode {
     logo: absoluteUrl("/brand/logo-512.png?v=2"),
     image: absoluteUrl("/api/og?title=VELTRIX%20STUDIO&subtitle=Digital%20Design%20Studio"),
     description: siteConfig.description,
-    email: siteConfig.email,
     telephone: siteConfig.phone,
     contactPoint: {
       "@type": "ContactPoint",

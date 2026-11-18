@@ -5,10 +5,12 @@ export function Logo({
   className,
   size = 44,
   loading = "lazy",
+  alt = "لوگوی ولتریکس استودیو",
 }: {
   className?: string;
   size?: number;
   loading?: "eager" | "lazy";
+  alt?: string;
 }) {
   return (
     <span
@@ -24,7 +26,7 @@ export function Logo({
       />
       <Image
         src="/brand/logo-192.png?v=2"
-        alt=""
+        alt={alt}
         width={size}
         height={size}
         loading={loading}

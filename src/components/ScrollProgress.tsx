@@ -1,40 +1,13 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-
+/**
+ * Pure-CSS reading progress bar. The animation is driven by the scroll
+ * timeline (no JavaScript, no client component, no hydration cost).
+ * In browsers without scroll-driven animation support it simply stays hidden.
+ */
 export function ScrollProgress() {
-  const barRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const bar = barRef.current;
-    if (!bar) return;
-
-    const update = () => {
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
-      const scrolled = window.scrollY || doc.scrollTop || 0;
-      const progress = max > 0 ? Math.min(1, Math.max(0, scrolled / max)) : 0;
-      bar.style.transform = `scaleX(${progress})`;
-    };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    document.addEventListener("scroll", update, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      document.removeEventListener("scroll", update);
-    };
-  }, []);
-
   return (
     <div
-      ref={barRef}
       aria-hidden="true"
       className="scroll-progress fixed inset-x-0 top-0 z-[65] h-[3px] origin-right bg-[linear-gradient(90deg,#b08968,#d4b996,#ede3d4)] shadow-[0_0_14px_rgba(176,137,104,0.55)]"
-      style={{ transform: "scaleX(0)" }}
     />
   );
 }

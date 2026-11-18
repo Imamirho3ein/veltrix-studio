@@ -32,7 +32,7 @@ export function WhyUs() {
                   چرا <span className="text-gradient">ولتریکس</span>؟
                 </>
               }
-              description="ما ادعای «بهترین بودن» نداریم. فقط یک فرایند روشن، تیم کوچک و وسواس واقعی داریم که نتیجه‌اش سایت‌هایی است که کار می‌کنند."
+              description="ما ادعای «بهترین بودن» نداریم. فقط یک فرایند روشن، تیم کوچک و وسواس واقعی داریم. نتیجه‌اش سایت‌هایی است که کار می‌کنند."
             />
             <FadeUp delay={0.15} className="mt-8 hidden lg:block">
               <div className="flex items-center gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4">
@@ -65,9 +65,9 @@ export function WhyUs() {
                         {feature.number}
                       </span>
                     </div>
-                    <h3 className="mt-6 text-base font-bold text-white">
-                      {feature.title}
-                    </h3>
+                    <p className="mt-6 text-base text-white">
+                      <strong className="font-bold">{feature.title}</strong>
+                    </p>
                     <p className="mt-2.5 text-[0.82rem] leading-7 text-fog-400">
                       {feature.description}
                     </p>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpLeft, Mail } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
-import { LocalTime } from "@/components/LocalTime";
+import { EmailLink } from "@/components/ui/EmailLink";
 import { NewsletterForm } from "@/components/layout/NewsletterForm";
 import { FadeUp } from "@/components/animations/FadeUp";
 import {
@@ -32,7 +32,7 @@ function LinkColumn({
 }) {
   return (
     <div>
-      <h3 className="text-[0.76rem] font-medium text-fog-500">{title}</h3>
+      <p className="text-[0.76rem] font-medium text-fog-500">{title}</p>
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
           <li key={item.href}>
@@ -71,15 +71,19 @@ export function Footer() {
               aria-label="ولتریکس استودیو — صفحه اصلی"
               className="inline-flex items-center gap-2.5 rounded-xl"
             >
-              <Logo size={40} />
+              <Logo
+                size={40}
+                alt="نشان ولتریکس استودیو در پاورقی سایت"
+              />
               <span className="text-lg font-semibold tracking-tight text-white">
                 ولتریکس <span className="font-normal text-fog-400">استودیو</span>
               </span>
             </Link>
 
             <p className="mt-5 max-w-xs text-[0.84rem] leading-7 text-fog-500">
-              ولتریکس استودیو؛ از ایده تا اجرا، وب‌سایت‌هایی می‌سازیم که برند شما
-              را جدی می‌گیرند.
+              <strong className="font-semibold text-fog-300">ولتریکس استودیو</strong>
+              ؛ از ایده تا اجرا، وب‌سایت‌هایی می‌سازیم که برند شما را جدی
+              می‌گیرند.
             </p>
 
             <ul className="mt-5 flex items-center gap-1.5">
@@ -116,9 +120,9 @@ export function Footer() {
             y={18}
           >
             <div id="newsletter" className="scroll-mt-28">
-              <h3 className="text-[0.82rem] font-medium text-fog-300">
+              <p className="text-[0.82rem] font-medium text-fog-300">
                 عضویت در خبرنامه
-              </h3>
+              </p>
               <NewsletterForm />
             </div>
           </FadeUp>
@@ -133,16 +137,18 @@ export function Footer() {
               <PhoneIcon className="size-3.5 text-brand" />
               <span dir="ltr">{siteConfig.phoneDisplay}</span>
             </a>
-            <a
-              href={`mailto:${siteConfig.email}`}
+            <EmailLink
+              ariaLabel="ارسال ایمیل به ولتریکس استودیو"
               className="inline-flex items-center gap-2 transition hover:text-white"
             >
               <Mail className="size-3.5 text-brand" />
-              <span dir="ltr">{siteConfig.emailDisplay}</span>
-            </a>
+              <span>ایمیل استودیو</span>
+            </EmailLink>
             <span className="inline-flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-brand" />
-              <LocalTime />
+              <span className="text-xs tracking-wider text-fog-400">
+                ۱۰:۰۰ تا ۲۰:۰۰
+              </span>
               <span>به وقت تهران</span>
             </span>
           </div>
@@ -159,8 +165,7 @@ export function Footer() {
         <div className="relative mt-8 h-[clamp(14rem,26vw,24rem)] sm:mt-10">
           <Image
             src="/images/hands/hand-left.png"
-            alt=""
-            aria-hidden="true"
+            alt="تصویر تزئینی دست چپ — همکاری تیمی در ولتریکس استودیو"
             width={582}
             height={290}
             sizes="(max-width: 640px) 42vw, 17rem"
@@ -168,8 +173,7 @@ export function Footer() {
           />
           <Image
             src="/images/hands/hand-right.png"
-            alt=""
-            aria-hidden="true"
+            alt="تصویر تزئینی دست راست — ساخت تجربه دیجیتال توسط ولتریکس استودیو"
             width={558}
             height={328}
             sizes="(max-width: 640px) 42vw, 17rem"

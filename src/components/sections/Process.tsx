@@ -41,9 +41,9 @@ export function Process() {
                 <span className="font-latin text-[0.6rem] uppercase tracking-[0.26em] text-fog-500">
                   {step.latin}
                 </span>
-                <h3 className="mt-2 text-base font-bold text-white">
-                  {step.title}
-                </h3>
+                <p className="mt-2 text-base text-white">
+                  <strong className="font-bold">{step.title}</strong>
+                </p>
                 <p className="mt-2 text-[0.83rem] leading-7 text-fog-400">
                   {step.description}
                 </p>

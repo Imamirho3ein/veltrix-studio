@@ -122,7 +122,7 @@ export function CtaVisual() {
             <div className="flex items-center gap-1.5 rounded-full border border-white/[0.07] bg-white/[0.03] px-2.5 py-1">
               <Code2 className="size-3 text-brand" />
               <span dir="ltr" className="font-latin text-[0.58rem] text-fog-400">
-                app/page.tsx
+                app/page
               </span>
             </div>
             <span className="hidden items-center gap-1 text-[0.56rem] text-fog-400 sm:flex">

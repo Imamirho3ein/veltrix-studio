@@ -56,7 +56,11 @@ export function Header() {
               aria-label="ولتریکس استودیو — صفحه اصلی"
               className="rounded-xl"
             >
-              <Logo size={50} loading="eager" />
+              <Logo
+                size={50}
+                loading="eager"
+                alt="لوگوی ولتریکس استودیو — طراحی سایت و تجربه دیجیتال"
+              />
             </Link>
 
             <nav aria-label="ناوبری اصلی" className="hidden xl:block">

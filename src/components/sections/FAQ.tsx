@@ -58,33 +58,31 @@ export function FaqSection({
                 key={item.question}
                 className="border-b border-white/[0.06] last:border-b-0"
               >
-                <h3>
-                  <button
-                    type="button"
-                    id={`${id}-button-${index}`}
-                    aria-expanded={isOpen}
-                    aria-controls={`${id}-panel-${index}`}
-                    onClick={() => toggle(index)}
-                    className="flex w-full items-center justify-between gap-5 px-5 py-5 text-start transition-colors hover:bg-white/[0.02] sm:px-7"
+                <button
+                  type="button"
+                  id={`${id}-button-${index}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`${id}-panel-${index}`}
+                  onClick={() => toggle(index)}
+                  className="flex w-full items-center justify-between gap-5 px-5 py-5 text-start transition-colors hover:bg-white/[0.02] sm:px-7"
+                >
+                  <strong className="text-[0.88rem] font-semibold text-white sm:text-[0.95rem]">
+                    {item.question}
+                  </strong>
+                  <span
+                    className={`flex size-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                      isOpen
+                        ? "border-brand/40 bg-brand/15 text-white"
+                        : "border-white/10 bg-white/[0.03] text-fog-400"
+                    }`}
                   >
-                    <span className="text-[0.88rem] font-semibold text-white sm:text-[0.95rem]">
-                      {item.question}
-                    </span>
-                    <span
-                      className={`flex size-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
-                        isOpen
-                          ? "border-brand/40 bg-brand/15 text-white"
-                          : "border-white/10 bg-white/[0.03] text-fog-400"
-                      }`}
-                    >
-                      {isOpen ? (
-                        <Minus className="size-3.5" />
-                      ) : (
-                        <Plus className="size-3.5" />
-                      )}
-                    </span>
-                  </button>
-                </h3>
+                    {isOpen ? (
+                      <Minus className="size-3.5" />
+                    ) : (
+                      <Plus className="size-3.5" />
+                    )}
+                  </span>
+                </button>
                 <AnimatePresence initial={false}>
                   {isOpen ? (
                     <motion.div

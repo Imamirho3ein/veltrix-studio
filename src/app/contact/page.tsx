@@ -50,12 +50,10 @@ export default async function ContactPage() {
             mainEntity: {
               "@type": "Organization",
               name: siteConfig.name,
-              email: siteConfig.email,
               url: siteConfig.url,
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "sales",
-                email: siteConfig.email,
                 availableLanguage: ["fa", "en"],
                 hoursAvailable: {
                   "@type": "OpeningHoursSpecification",

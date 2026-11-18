@@ -35,7 +35,9 @@ export function ServiceCard({
       </div>
 
       <div className="relative mt-9">
-        <h3 className="text-[1.05rem] font-bold text-white">{service.title}</h3>
+        <p className="text-[1.05rem] text-white">
+          <strong className="font-bold">{service.title}</strong>
+        </p>
         <p className="mt-3 text-[0.84rem] leading-7 text-fog-400">
           {service.summary}
         </p>

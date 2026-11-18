@@ -9,7 +9,7 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
     "https://veltrixstudio.ir",
   email: "amirhosseinjadidiy@gmail.com",
-  emailDisplay: "amirhosseinjadidiy@gmail.com",
+  emailDisplay: "ایمیل استودیو",
   phone: "+989009199575",
   phoneDisplay: "۰۹۰۰۹۱۹۹۵۷۵",
   telegram: {
@@ -52,7 +52,7 @@ export const footerLinks = {
   ],
   contact: [
     { title: "تماس با ما", href: "/contact" },
-    { title: "ایمیل استودیو", href: `mailto:${siteConfig.email}`, external: true },
+    { title: "ایمیل استودیو", href: "/contact", external: false },
     { title: "تماس تلفنی", href: `tel:${siteConfig.phone}`, external: true },
     {
       title: "کانال تلگرام",

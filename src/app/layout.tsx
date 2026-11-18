@@ -4,7 +4,6 @@ import { siteConfig, siteKeywords } from "@/lib/constants";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Preloader } from "@/components/Preloader";
 import { Noise } from "@/components/Noise";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { JsonLd } from "@/components/JsonLd";
@@ -23,7 +22,13 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   publisher: siteConfig.name,
   formatDetection: { email: false, address: false, telephone: false },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "fa-IR": "/",
+      "x-default": "/",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "fa_IR",
@@ -93,7 +98,6 @@ export default function RootLayout({
           رفتن به محتوای اصلی
         </a>
         <ScrollProgress />
-        <Preloader />
         <Noise />
         <Header />
         <main id="main-content">{children}</main>

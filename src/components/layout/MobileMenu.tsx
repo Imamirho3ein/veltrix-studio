@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Mail, Phone, Send, UserRound, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
+import { EmailLink } from "@/components/ui/EmailLink";
 import { Button } from "@/components/ui/Button";
 import { navItems, siteConfig } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -167,13 +168,13 @@ export function MobileMenu({ open, onClose, authenticated = false }: MobileMenuP
                   <Phone className="size-4 text-brand" />
                   <span dir="ltr">{siteConfig.phoneDisplay}</span>
                 </a>
-                <a
-                  href={`mailto:${siteConfig.email}`}
+                <EmailLink
+                  ariaLabel="ارسال ایمیل به ولتریکس استودیو"
                   className="inline-flex items-center gap-2 transition hover:text-white"
                 >
                   <Mail className="size-4 text-brand" />
-                  <span dir="ltr">{siteConfig.email}</span>
-                </a>
+                  <span>ایمیل استودیو</span>
+                </EmailLink>
                 <a
                   href={siteConfig.telegram.channel}
                   target="_blank"

@@ -169,7 +169,7 @@ export function ContactForm() {
             type="email"
             dir="ltr"
             className="field text-start"
-            placeholder="you@example.com"
+            placeholder="ایمیل شما"
             autoComplete="email"
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "email-error" : undefined}

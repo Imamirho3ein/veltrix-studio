@@ -14,6 +14,19 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  experimental: {
+    // Merge client chunks aggressively so the homepage ships fewer script
+    // files (SEO checkers flag pages that load too many separate JS files).
+    turbopackChunking: {
+      minChunkSize: 800000,
+      maxChunkCountPerGroup: 6,
+      maxMergeChunkSize: 2000000,
+      firstPageLoadPriority: 1,
+      priorityRoutes: [/^\/$/],
+      priorityBoost: 4,
+      requestCost: 500000,
+    },
+  },
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
@@ -29,6 +42,16 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.veltrixstudio.ir" }],
+        destination: "https://veltrixstudio.ir/:path*",
+        permanent: true,
       },
     ];
   },

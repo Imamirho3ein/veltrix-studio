@@ -23,7 +23,7 @@ export function Testimonials() {
               مشتری‌ها <span className="text-gradient">چه می‌گویند؟</span>
             </>
           }
-          description="ما بعد از تحویل پروژه هم در دسترس هستیم؛ این چند جمله از کسانی است که این مسیر را با ما رفته‌اند."
+          description="ما بعد از تحویل پروژه هم در دسترس هستیم. این چند جمله از کسانی است که این مسیر را با ما رفته‌اند."
           action={
             <Badge dot={false} className="gap-3 px-4 py-2">
               <span className="flex items-center gap-0.5 text-accent-500">

@@ -22,7 +22,13 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [...siteKeywords],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "fa-IR": "/",
+      "x-default": "/",
+    },
+  },
   openGraph: {
     title: "ولتریکس استودیو | طراحی سایت اختصاصی و تجربه‌های دیجیتال",
     description: siteConfig.description,
@@ -52,6 +58,7 @@ const marqueeItems = [
 export default function HomePage() {
   return (
     <>
+      <link rel="amphtml" href={`${siteConfig.url}/amp`} />
       <JsonLd data={faqSchema(faqItems)} />
       <Hero />
 

@@ -20,7 +20,7 @@ export function Services() {
               <span className="text-gradient">قدرتمند</span>
             </>
           }
-          description="از طراحی اولیه تا توسعه و پشتیبانی، تمام مسیر ساخت محصول دیجیتال را کنار شما هستیم؛ با یک تیم کوچک و تمرکز کامل."
+          description="از طراحی اولیه تا توسعه و پشتیبانی، کنار شما هستیم. با یک تیم کوچک و تمرکز کامل، مسیر ساخت محصول دیجیتال را پیش می‌بریم."
           action={
             <Button href="/services" variant="secondary" size="sm" arrow>
               همه‌ی خدمات
