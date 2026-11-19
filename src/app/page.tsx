@@ -24,10 +24,6 @@ export const metadata: Metadata = {
   keywords: [...siteKeywords],
   alternates: {
     canonical: "/",
-    languages: {
-      "fa-IR": "/",
-      "x-default": "/",
-    },
   },
   openGraph: {
     title: "ولتریکس استودیو | طراحی سایت اختصاصی و تجربه‌های دیجیتال",
@@ -59,6 +55,8 @@ export default function HomePage() {
   return (
     <>
       <link rel="amphtml" href={`${siteConfig.url}/amp`} />
+      <link rel="alternate" hrefLang="fa-IR" href={siteConfig.url} />
+      <link rel="alternate" hrefLang="x-default" href={siteConfig.url} />
       <JsonLd
         data={[organizationSchema(), websiteSchema(), faqSchema(faqItems)]}
       />

@@ -22,10 +22,6 @@ export const metadata: Metadata = {
   formatDetection: { email: false, address: false, telephone: false },
   alternates: {
     canonical: "/",
-    languages: {
-      "fa-IR": "/",
-      "x-default": "/",
-    },
   },
   openGraph: {
     type: "website",
