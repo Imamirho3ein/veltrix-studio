@@ -39,8 +39,7 @@ function LinkColumn({
             {item.external ? (
               <a
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer norefferer"
+                rel="noopener noreferrer"
                 className="inline-block text-[0.82rem] text-fog-400 transition duration-300 hover:-translate-x-0.5 hover:text-white"
               >
                 {item.title}
@@ -91,8 +90,7 @@ export function Footer() {
                 <li key={title}>
                   <a
                     href={href}
-                    target="_blank"
-                    rel="noopener noreferrer norefferer"
+                    rel="noopener noreferrer"
                     aria-label={title}
                     className="inline-flex size-9 items-center justify-center rounded-full text-brand-500 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand/10 hover:text-brand-700"
                   >

@@ -50,7 +50,7 @@ export function Testimonials() {
                   ))}
                 </div>
                 <blockquote className="mt-5 flex-1 text-[0.86rem] leading-8 text-fog-300">
-                  «{testimonial.comment}»
+                  «{testimonial.comment} »
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-white/[0.06] pt-5">
                   <span

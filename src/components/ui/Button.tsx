@@ -83,8 +83,7 @@ export function Button(props: ButtonProps) {
       props.external ? (
         <a
           href={props.href}
-          target="_blank"
-          rel="noopener noreferrer norefferer"
+          rel="noopener noreferrer"
           className={classes}
           onClick={props.onClick}
         >

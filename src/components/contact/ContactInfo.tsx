@@ -135,8 +135,7 @@ export function ContactInfo() {
           </p>
           <a
             href={siteConfig.telegram.bot}
-            target="_blank"
-            rel="noopener noreferrer norefferer"
+            rel="noopener noreferrer"
             className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-accent-600 transition hover:text-brand-800"
           >
             گفتگو با ربات

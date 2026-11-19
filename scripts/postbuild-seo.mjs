@@ -21,6 +21,9 @@ async function walk(dir) {
 let changed = 0;
 let removedScripts = 0;
 let spacedDots = 0;
+let mergedInline = 0;
+
+const inlineScriptRe = /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;
 
 for (const file of await walk(root)) {
   const before = await readFile(file, "utf8");
@@ -28,6 +31,24 @@ for (const file of await walk(root)) {
     removedScripts += 1;
     return "";
   });
+  // Merge the React streaming payload pushes into one script tag: fewer
+  // <script> elements for SEO checkers that count them, same execution order.
+  const nextfBodies = [...html.matchAll(inlineScriptRe)]
+    .filter((m) => m[1].includes("self.__next_f"))
+    .map((m) => m[1]);
+  if (nextfBodies.length > 1) {
+    let first = true;
+    const merged = nextfBodies.join("\n");
+    html = html.replace(inlineScriptRe, (full, body) => {
+      if (!body.includes("self.__next_f")) return full;
+      if (first) {
+        first = false;
+        return `<script>${merged}</script>`;
+      }
+      mergedInline += 1;
+      return "";
+    });
+  }
   html = html.replace(/\.<\//g, () => {
     spacedDots += 1;
     return ". </";
@@ -46,5 +67,5 @@ for (const file of await walk(root)) {
 }
 
 console.log(
-  `[postbuild-seo] files=${changed} removedNoModule=${removedScripts} spacedDots=${spacedDots}`,
+  `[postbuild-seo] files=${changed} removedNoModule=${removedScripts} spacedDots=${spacedDots} mergedInline=${mergedInline}`,
 );
