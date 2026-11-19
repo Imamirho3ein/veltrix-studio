@@ -17,6 +17,8 @@ jobs:
       - name: Run JetSEO analysis
         run: |
           set -x
+          curl -sS -L -A "Mozilla/5.0" "https://veltrixstudio.ir/?nc=ci-$(date +%s)" -o live.html
+          echo "live bytes: $(wc -c < live.html)"
           rm -f cookies.txt
           curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" \
             "https://www.jetseo.ir/" -o home.html
@@ -42,6 +44,6 @@ jobs:
           git config user.email "seo-bot@users.noreply.github.com"
           cp check.json diag-check.json || true
           cp page.html diag-page.html || true
-          git add seo-report.html diag-check.json diag-page.html
+          git add seo-report.html diag-check.json diag-page.html live.html
           git commit -m "chore: jetseo report" || true
           git push
