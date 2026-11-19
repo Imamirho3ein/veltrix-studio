@@ -38,12 +38,34 @@ jobs:
           echo "report bytes: $(wc -c < seo-report.html)"
           grep -o 'data-score="[0-9]*"' seo-report.html | head -1 || true
 
+      - name: Run JetSEO analysis for /amp
+        run: |
+          set -x
+          rm -f cookies-amp.txt
+          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" \
+            "https://www.jetseo.ir/" -o home-amp.html
+          TOKEN=$(grep -o 'name="__RequestVerificationToken"[^>]*value="[^"]*"' home-amp.html \
+            | sed -E 's/.*value="([^"]*)".*/\1/' | head -1)
+          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" -L \
+            --data-urlencode "url=https://veltrixstudio.ir/amp" \
+            --data-urlencode "__RequestVerificationToken=$TOKEN" \
+            "https://www.jetseo.ir/siteinfo" -o page-amp.html
+          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" \
+            "https://www.jetseo.ir/siteinfodata/check?url=veltrixstudio.ir%2Famp" -o check-amp.json
+          echo "check amp: $(cat check-amp.json)"
+          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" -m 300 \
+            "https://www.jetseo.ir/siteinfodata/analyze?url=veltrixstudio.ir%2Famp" -o seo-report-amp.html
+          echo "amp report bytes: $(wc -c < seo-report-amp.html)"
+          grep -o 'data-score="[0-9]*"' seo-report-amp.html | head -1 || true
+
       - name: Commit report
         run: |
           git config user.name "seo-bot"
           git config user.email "seo-bot@users.noreply.github.com"
           cp check.json diag-check.json || true
           cp page.html diag-page.html || true
-          git add seo-report.html diag-check.json diag-page.html live.html
+          cp check-amp.json diag-check-amp.json || true
+          cp page-amp.html diag-page-amp.html || true
+          git add seo-report.html diag-check.json diag-page.html live.html seo-report-amp.html diag-check-amp.json diag-page-amp.html
           git commit -m "chore: jetseo report" || true
           git push
