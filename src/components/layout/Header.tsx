@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, UserRound } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { navItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -94,9 +93,6 @@ export function Header() {
                   پنل کاربری
                 </Link>
               ) : null}
-              <Button href="/contact" size="sm" arrow>
-                شروع پروژه
-              </Button>
             </div>
 
             <button

@@ -70,7 +70,7 @@ curl "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" \
 - **دامنه:** `veltrixstudio.ir`
 - **ایمیل:** `amirhosseinjadidiy@gmail.com`
 - **تلفن:** `۰۹۰۰۹۱۹۹۵۷۵`
-- **تلگرام:** کانال `@VeeltrixStudio` · ربات `@VeeltrixStudi_bot`
+- **تلگرام:** کانال `@VeeltrixStudio` · ربات `@VeltrixStudio_bot`
 
 لوگو از فایل منبع (`public/brand/logo-source.jpg`) با پس‌زمینه‌ی شفاف استخراج شده است.
 
