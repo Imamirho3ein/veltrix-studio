@@ -18,8 +18,14 @@ jobs:
         run: |
           set -x
           rm -f cookies.txt
-          curl -sS -c cookies.txt -b cookies.txt -L -A "Mozilla/5.0" \
-            -X POST -d "url=https://veltrixstudio.ir/" \
+          curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" \
+            "https://www.jetseo.ir/" -o home.html
+          TOKEN=$(grep -o 'name="__RequestVerificationToken"[^>]*value="[^"]*"' home.html \
+            | sed -E 's/.*value="([^"]*)".*/\1/' | head -1)
+          echo "token length: ${#TOKEN}"
+          curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" -L \
+            --data-urlencode "url=https://veltrixstudio.ir/" \
+            --data-urlencode "__RequestVerificationToken=$TOKEN" \
             "https://www.jetseo.ir/siteinfo" -o page.html
           echo "page bytes: $(wc -c < page.html)"
           curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" \
