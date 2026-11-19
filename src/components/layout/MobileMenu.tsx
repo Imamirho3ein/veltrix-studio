@@ -7,7 +7,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Mail, Phone, Send, UserRound, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { EmailLink } from "@/components/ui/EmailLink";
-import { Button } from "@/components/ui/Button";
 import { navItems, siteConfig } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -149,9 +148,6 @@ export function MobileMenu({ open, onClose, authenticated = false }: MobileMenuP
             </nav>
 
             <div className="mt-8 space-y-4">
-              <Button href="/contact" fullWidth arrow onClick={onClose}>
-                شروع پروژه
-              </Button>
               <Link
                 href={authenticated ? "/panel" : "/login"}
                 onClick={onClose}

@@ -241,7 +241,7 @@ export function HeroVisual() {
                 <span className="size-1.5 rounded-full bg-white/20" />
                 <span className="size-1.5 rounded-full bg-white/20" />
                 <div className="mx-auto flex h-3.5 w-1/2 items-center justify-center rounded-full bg-white/[0.05] text-[5px] text-fog-500 sm:text-[6px]">
-                  veltrixstudio.ir
+                  veltrixstudio
                 </div>
               </div>
               <MiniSite />

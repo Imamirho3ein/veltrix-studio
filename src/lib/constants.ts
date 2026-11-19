@@ -15,8 +15,8 @@ export const siteConfig = {
   telegram: {
     channel: "https://t.me/VeeltrixStudio",
     channelHandle: "@VeeltrixStudio",
-    bot: "https://t.me/VeeltrixStudi_bot",
-    botHandle: "@VeeltrixStudi_bot",
+    bot: "https://t.me/VeltrixStudio_bot",
+    botHandle: "@VeltrixStudio_bot",
   },
   instagram: "",
   instagramHandle: "",
@@ -51,14 +51,13 @@ export const footerLinks = {
     { title: "ربات تلگرام", href: siteConfig.telegram.bot, external: true },
   ],
   contact: [
-    { title: "تماس با ما", href: "/contact" },
-    { title: "ایمیل استودیو", href: "/contact", external: false },
     { title: "تماس تلفنی", href: `tel:${siteConfig.phone}`, external: true },
     {
       title: "کانال تلگرام",
       href: siteConfig.telegram.channel,
       external: true,
     },
+    { title: "ربات تلگرام", href: siteConfig.telegram.bot, external: true },
   ],
 } as const;
 

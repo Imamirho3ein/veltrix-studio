@@ -51,7 +51,7 @@ export const projects: Project[] = [
     intro:
       "نکسا یک برند پوشاک مستقل است که می‌خواست از اینستاگرام به یک فروشگاه واقعی برسد؛ بدون شلوغی، بدون قالب تکراری.",
     services: ["طراحی UI", "توسعه فروشگاه", "سئو تکنیکال"],
-    tags: ["Next.js", "E-Commerce", "UX"],
+    tags: ["NextJS", "E-Commerce", "UX"],
     timeline: "۹ هفته",
     image: "/images/projects/nexa-shop.svg",
     accent: "#b08968",

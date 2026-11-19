@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { manrope, vazirmatn } from "@/lib/fonts";
 import { siteConfig, siteKeywords } from "@/lib/constants";
-import { organizationSchema, websiteSchema } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Noise } from "@/components/Noise";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -89,7 +87,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-dvh antialiased">
-        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <div id="top" />
         <a
           href="#main-content"

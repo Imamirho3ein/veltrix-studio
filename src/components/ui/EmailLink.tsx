@@ -15,7 +15,7 @@ export function EmailLink({
   className?: string;
   ariaLabel?: string;
 }) {
-  function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     const user = "amirhosseinjadidiy";
     const domain = "gmail.com";
@@ -23,13 +23,13 @@ export function EmailLink({
   }
 
   return (
-    <a
-      href="/contact"
+    <button
+      type="button"
       onClick={handleClick}
-      className={className}
+      className={`text-start ${className ?? ""}`}
       aria-label={ariaLabel}
     >
       {children}
-    </a>
+    </button>
   );
 }

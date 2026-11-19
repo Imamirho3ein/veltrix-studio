@@ -61,7 +61,7 @@ export function DeviceShowcase({
                   <span className="size-2 rounded-full bg-white/20" />
                   <span className="mx-auto flex h-4 w-1/3 items-center justify-center gap-1.5 rounded-full bg-white/[0.05] text-[7px] text-fog-500">
                     <span className="size-1 rounded-full bg-emerald-600/70" />
-                    veltrixstudio.ir/projects/{projectTitle}
+                    veltrixstudio/projects/{projectTitle}
                   </span>
                 </div>
                 <Image

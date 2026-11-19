@@ -12,7 +12,7 @@ import { FaqSection } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 import { Marquee } from "@/components/ui/Marquee";
 import { faqItems } from "@/data/faq";
-import { faqSchema } from "@/lib/seo";
+import { faqSchema, organizationSchema, websiteSchema } from "@/lib/seo";
 import { siteConfig, siteKeywords } from "@/lib/constants";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -59,7 +59,9 @@ export default function HomePage() {
   return (
     <>
       <link rel="amphtml" href={`${siteConfig.url}/amp`} />
-      <JsonLd data={faqSchema(faqItems)} />
+      <JsonLd
+        data={[organizationSchema(), websiteSchema(), faqSchema(faqItems)]}
+      />
       <Hero />
 
       <div className="relative border-y border-white/[0.06] bg-ink-2/30 py-4">
