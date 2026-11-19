@@ -174,7 +174,7 @@ export function MobileMenu({ open, onClose, authenticated = false }: MobileMenuP
                 <a
                   href={siteConfig.telegram.channel}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer norefferer"
                   className="inline-flex items-center gap-2 transition hover:text-white"
                 >
                   <Send className="size-4 text-accent-400" />

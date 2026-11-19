@@ -66,7 +66,7 @@ export function TelegramSection() {
                 <a
                   href={siteConfig.telegram.channel}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer norefferer"
                   className="group rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/35 hover:bg-brand/[0.07]"
                 >
                   <div className="flex items-center justify-between">
@@ -87,7 +87,7 @@ export function TelegramSection() {
                 <a
                   href={siteConfig.telegram.bot}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer norefferer"
                   className="group rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-400/35 hover:bg-accent-400/[0.07]"
                 >
                   <div className="flex items-center justify-between">

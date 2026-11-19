@@ -84,7 +84,7 @@ export function Button(props: ButtonProps) {
         <a
           href={props.href}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer norefferer"
           className={classes}
           onClick={props.onClick}
         >
