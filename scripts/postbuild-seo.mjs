@@ -24,6 +24,13 @@ let spacedDots = 0;
 let mergedInline = 0;
 
 const inlineScriptRe = /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;
+const isExecutableInline = (full) => {
+  const open = full.slice(0, full.indexOf(">") + 1);
+  if (/\bsrc\s*=/.test(open)) return false;
+  if (/type\s*=\s*["']application\/(ld\+json|json)["']/i.test(open)) return false;
+  if (/type\s*=\s*["']text\/template["']/i.test(open)) return false;
+  return true;
+};
 
 for (const file of await walk(root)) {
   const before = await readFile(file, "utf8");
@@ -31,16 +38,16 @@ for (const file of await walk(root)) {
     removedScripts += 1;
     return "";
   });
-  // Merge the React streaming payload pushes into one script tag: fewer
-  // <script> elements for SEO checkers that count them, same execution order.
-  const nextfBodies = [...html.matchAll(inlineScriptRe)]
-    .filter((m) => m[1].includes("self.__next_f"))
+  // Merge all executable inline scripts (Turbopack bootstrap + React streaming
+  // payload) into one tag: fewer <script> elements, same execution order.
+  const inlineBodies = [...html.matchAll(inlineScriptRe)]
+    .filter((m) => isExecutableInline(m[0]))
     .map((m) => m[1]);
-  if (nextfBodies.length > 1) {
+  if (inlineBodies.length > 1) {
     let first = true;
-    const merged = nextfBodies.join("\n");
-    html = html.replace(inlineScriptRe, (full, body) => {
-      if (!body.includes("self.__next_f")) return full;
+    const merged = inlineBodies.join("\n");
+    html = html.replace(inlineScriptRe, (full) => {
+      if (!isExecutableInline(full)) return full;
       if (first) {
         first = false;
         return `<script>${merged}</script>`;
