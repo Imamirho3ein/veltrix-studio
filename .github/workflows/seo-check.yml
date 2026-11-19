@@ -14,11 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Fetch live HTML
+        run: |
+          curl -sS -L -A "Mozilla/5.0" "https://veltrixstudio.ir/?nc=ci-$(date +%s)" -o live.html
+          echo "live bytes: $(wc -c < live.html)"
+
       - name: Run JetSEO analysis
         run: |
           set -x
-          curl -sS -L -A "Mozilla/5.0" "https://veltrixstudio.ir/?nc=ci-$(date +%s)" -o live.html
-          echo "live bytes: $(wc -c < live.html)"
           rm -f cookies.txt
           curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" \
             "https://www.jetseo.ir/" -o home.html
@@ -38,25 +41,16 @@ jobs:
           echo "report bytes: $(wc -c < seo-report.html)"
           grep -o 'data-score="[0-9]*"' seo-report.html | head -1 || true
 
-      - name: Run JetSEO analysis for /amp
+      - name: Fetch JetSEO rule info
         run: |
-          set -x
-          rm -f cookies-amp.txt
-          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" \
-            "https://www.jetseo.ir/" -o home-amp.html
-          TOKEN=$(grep -o 'name="__RequestVerificationToken"[^>]*value="[^"]*"' home-amp.html \
-            | sed -E 's/.*value="([^"]*)".*/\1/' | head -1)
-          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" -L \
-            --data-urlencode "url=https://veltrixstudio.ir/amp" \
-            --data-urlencode "__RequestVerificationToken=$TOKEN" \
-            "https://www.jetseo.ir/siteinfo" -o page-amp.html
-          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" \
-            "https://www.jetseo.ir/siteinfodata/check?url=veltrixstudio.ir%2Famp" -o check-amp.json
-          echo "check amp: $(cat check-amp.json)"
-          curl -sS -c cookies-amp.txt -b cookies-amp.txt -A "Mozilla/5.0" -m 300 \
-            "https://www.jetseo.ir/siteinfodata/analyze?url=veltrixstudio.ir%2Famp" -o seo-report-amp.html
-          echo "amp report bytes: $(wc -c < seo-report-amp.html)"
-          grep -o 'data-score="[0-9]*"' seo-report-amp.html | head -1 || true
+          mkdir -p rules
+          for id in $(seq 100 130) $(seq 200 230) $(seq 400 430); do
+            curl -sS -m 20 -A "Mozilla/5.0" -H "Content-Type: application/json" \
+              -d "{\"pagecount\":$id,\"url\":\"\",\"lang\":\"\"}" \
+              "https://www.jetseo.ir/api/webservice/getruleinfo" -o "rules/$id.json" || true
+          done
+          echo "downloaded: $(ls rules | wc -l)"
+          grep -l "نقطه" rules/*.json || true
 
       - name: Commit report
         run: |
@@ -64,8 +58,6 @@ jobs:
           git config user.email "seo-bot@users.noreply.github.com"
           cp check.json diag-check.json || true
           cp page.html diag-page.html || true
-          cp check-amp.json diag-check-amp.json || true
-          cp page-amp.html diag-page-amp.html || true
-          git add seo-report.html diag-check.json diag-page.html live.html seo-report-amp.html diag-check-amp.json diag-page-amp.html
+          git add seo-report.html diag-check.json diag-page.html live.html rules
           git commit -m "chore: jetseo report" || true
           git push
