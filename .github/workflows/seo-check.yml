@@ -43,23 +43,24 @@ jobs:
 
       - name: Fetch JetSEO rule info
         run: |
-          mkdir -p rules
           AF=$(grep -o 'name="request-verification-token" content="[^"]*"' home.html \
             | sed -E 's/.*content="([^"]*)".*/\1/' | head -1)
           echo "antiforgery length: ${#AF}"
-          for id in $(seq 100 130) $(seq 200 230) $(seq 400 430); do
-            curl -sS -m 20 -A "Mozilla/5.0" \
+          : > rule-hints.tsv
+          for id in $(seq 1 500); do
+            resp=$(curl -sS -m 15 -A "Mozilla/5.0" \
               -c cookies.txt -b cookies.txt \
               -H "Content-Type: application/json; charset=utf-8" \
               -H "RequestVerificationToken: $AF" \
               -H "Referer: https://www.jetseo.ir/siteinfo?url=veltrixstudio.ir" \
               -d "{\"pagecount\":$id,\"url\":\"\",\"lang\":\"\"}" \
-              "https://www.jetseo.ir/api/webservice/getruleinfo" -o "rules/$id.json" || true
+              "https://www.jetseo.ir/api/webservice/getruleinfo" || true)
+            case "$resp" in
+              *'"Hint"'*) printf '%s\t%s\n' "$id" "$resp" >> rule-hints.tsv ;;
+            esac
           done
-          echo "downloaded: $(ls rules | wc -l)"
-          head -c 200 rules/422.json || true
-          echo
-          grep -l "نقطه" rules/*.json || true
+          echo "hints: $(wc -l < rule-hints.tsv)"
+          grep "نقط" rule-hints.tsv || true
 
       - name: Commit report
         run: |
@@ -67,6 +68,6 @@ jobs:
           git config user.email "seo-bot@users.noreply.github.com"
           cp check.json diag-check.json || true
           cp page.html diag-page.html || true
-          git add seo-report.html diag-check.json diag-page.html live.html rules
+          git add seo-report.html diag-check.json diag-page.html live.html rule-hints.tsv rules
           git commit -m "chore: jetseo report" || true
           git push
