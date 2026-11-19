@@ -44,12 +44,21 @@ jobs:
       - name: Fetch JetSEO rule info
         run: |
           mkdir -p rules
+          AF=$(grep -o 'name="request-verification-token" content="[^"]*"' home.html \
+            | sed -E 's/.*content="([^"]*)".*/\1/' | head -1)
+          echo "antiforgery length: ${#AF}"
           for id in $(seq 100 130) $(seq 200 230) $(seq 400 430); do
-            curl -sS -m 20 -A "Mozilla/5.0" -H "Content-Type: application/json" \
+            curl -sS -m 20 -A "Mozilla/5.0" \
+              -c cookies.txt -b cookies.txt \
+              -H "Content-Type: application/json; charset=utf-8" \
+              -H "RequestVerificationToken: $AF" \
+              -H "Referer: https://www.jetseo.ir/siteinfo?url=veltrixstudio.ir" \
               -d "{\"pagecount\":$id,\"url\":\"\",\"lang\":\"\"}" \
               "https://www.jetseo.ir/api/webservice/getruleinfo" -o "rules/$id.json" || true
           done
           echo "downloaded: $(ls rules | wc -l)"
+          head -c 200 rules/422.json || true
+          echo
           grep -l "نقطه" rules/*.json || true
 
       - name: Commit report
