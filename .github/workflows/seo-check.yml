@@ -1,0 +1,39 @@
+name: seo-check
+
+on:
+  push:
+    branches: [seo-check]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  jetseo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run JetSEO analysis
+        run: |
+          set -x
+          rm -f cookies.txt
+          curl -sS -c cookies.txt -b cookies.txt -L -A "Mozilla/5.0" \
+            -X POST -d "url=https://veltrixstudio.ir/" \
+            "https://www.jetseo.ir/siteinfo" -o page.html
+          echo "page bytes: $(wc -c < page.html)"
+          curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" \
+            "https://www.jetseo.ir/siteinfodata/check?url=veltrixstudio.ir" -o check.json
+          echo "check: $(cat check.json)"
+          curl -sS -c cookies.txt -b cookies.txt -A "Mozilla/5.0" -m 300 \
+            "https://www.jetseo.ir/siteinfodata/analyze?url=veltrixstudio.ir" -o seo-report.html
+          echo "report bytes: $(wc -c < seo-report.html)"
+          grep -o 'data-score="[0-9]*"' seo-report.html | head -1 || true
+
+      - name: Commit report
+        run: |
+          git config user.name "seo-bot"
+          git config user.email "seo-bot@users.noreply.github.com"
+          git add seo-report.html
+          git commit -m "chore: jetseo report" || true
+          git push
