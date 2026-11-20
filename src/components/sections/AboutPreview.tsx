@@ -15,13 +15,13 @@ export function AboutPreview() {
               <h2 id="about-preview-title" className="section-title">
                 ما فقط سایت
                 <br />{" "}
-                <span className="text-gradient">نمی‌سازیم.</span>
+                <span className="text-gradient">نمی‌سازیم.</span>{" "}
               </h2>
             </FadeUp>
 
             <FadeUp delay={0.08}>
               <p className="mt-6 text-lg font-medium leading-9 text-fog-500">
-                ما تجربه‌ای می‌سازیم که برند شما را به مخاطب نزدیک‌تر می‌کند.
+                ما تجربه‌ای می‌سازیم که برند شما را به مخاطب نزدیک‌تر می‌کند.{" "}
               </p>
               <p className="mt-5 max-w-lg text-sm leading-8 text-fog-400">
                 ولتریکس استودیو یک تیم کوچک و متمرکز برای طراحی تجربه‌های
@@ -29,7 +29,7 @@ export function AboutPreview() {
                 کنار شما هستیم. هر پروژه را مثل محصول خودمان می‌بینیم؛ با وسواس
                 در جزئیات و مسئولیت در نتیجه. کار را با شناخت کسب‌وکار شروع
                 می‌کنیم و با تحویل یک سایت سریع، تمیز و قابل‌توسعه تمام
-                می‌کنیم. در تمام مسیر، شفاف و در دسترس می‌مانیم.
+                می‌کنیم. در تمام مسیر، شفاف و در دسترس می‌مانیم.{" "}
               </p>
             </FadeUp>
 

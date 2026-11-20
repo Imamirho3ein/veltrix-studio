@@ -66,12 +66,12 @@ export function Hero() {
               <br />{" "}
               یک <span className="text-gradient">تجربه دیجیتال</span>
               <br />{" "}
-              تبدیل می‌کنیم.
+              تبدیل می‌کنیم.{" "}
             </motion.h1>
 
             <motion.p variants={item} className="lead mt-7 max-w-xl">
               برای برندهایی که متفاوت دیده می‌شوند، وب‌سایت‌های سریع و هدفمند با
-              جزئیاتی دقیق می‌سازیم.
+              جزئیاتی دقیق می‌سازیم.{" "}
             </motion.p>
 
             <motion.div

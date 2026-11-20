@@ -82,7 +82,7 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-[0.84rem] leading-7 text-fog-500">
               <strong className="font-semibold text-fog-300">ولتریکس استودیو</strong>
               ؛ از ایده تا اجرا، وب‌سایت‌هایی می‌سازیم که برند شما را جدی
-              می‌گیرند.
+              می‌گیرند.{" "}
             </p>
 
             <ul className="mt-5 flex items-center gap-1.5">
@@ -187,7 +187,7 @@ export function Footer() {
             <span aria-hidden="true" className="text-brand/55">
               /
             </span>
-            <span>از ایده تا اجرا.</span>
+            <span>از ایده تا اجرا.</span>{" "}
           </p>
 
           <span

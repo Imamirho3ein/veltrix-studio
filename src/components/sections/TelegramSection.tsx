@@ -10,17 +10,17 @@ import { FadeUp } from "@/components/animations/FadeUp";
 const messages = [
   {
     from: "bot" as const,
-    text: "سلام! به ولتریکس خوش آمدی. برای شروع پروژه یا مشاوره، همین‌جا بنویس.",
+    text: "سلام! به ولتریکس خوش آمدی. برای شروع پروژه یا مشاوره، همین‌جا بنویس. ",
     delay: 0.2,
   },
   {
     from: "user" as const,
-    text: "برای طراحی یک فروشگاه اینترنتی مشاوره می‌خوام.",
+    text: "برای طراحی یک فروشگاه اینترنتی مشاوره می‌خوام. ",
     delay: 0.55,
   },
   {
     from: "bot" as const,
-    text: "عالیه. سه سؤال کوتاه می‌پرسم تا برآورد دقیق و زمان‌بندی بدیم.",
+    text: "عالیه. سه سؤال کوتاه می‌پرسم تا برآورد دقیق و زمان‌بندی بدیم. ",
     delay: 0.9,
   },
 ];
@@ -50,7 +50,7 @@ export function TelegramSection() {
                 <span>جامعه‌ی ولتریکس</span>
               </Badge>
               <h2 id="telegram-title" className="section-title mt-5">
-                یک قدم <span className="text-gradient">جلوتر</span> باش.
+                یک قدم <span className="text-gradient">جلوتر</span> باش.{" "}
               </h2>
               <p className="lead mt-5 max-w-lg text-[0.95rem]">
                 پشت صحنه‌ی پروژه‌ها، نکته‌های طراحی و توسعه را در کانال تلگرام
@@ -59,7 +59,7 @@ export function TelegramSection() {
                 آشنا شوید، کانال جای خوبی برای شروع است. ربات تلگرام هم برای
                 شروع سریع بریف پروژه آماده است. چند سؤال کوتاه می‌پرسد و درخواست
                 شما را مستقیم به تیم می‌رساند. این‌طور بدون رفت‌وآمد اضافه، مسیر
-                پروژه روشن می‌شود.
+                پروژه روشن می‌شود.{" "}
               </p>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -105,7 +105,7 @@ export function TelegramSection() {
               </div>
 
               <p className="mt-4 text-[0.68rem] text-fog-500">
-                بدون پیام تبلیغاتی؛ فقط چیزهایی که به کارتان می‌آید.
+                بدون پیام تبلیغاتی؛ فقط چیزهایی که به کارتان می‌آید.{" "}
               </p>
             </FadeUp>
 
@@ -184,7 +184,7 @@ export function TelegramSection() {
 
                 <div className="flex items-center gap-2 border-t border-white/[0.07] bg-white/[0.02] px-3 py-2.5">
                   <span className="flex-1 rounded-full border border-white/[0.06] bg-white/[0.03] px-3 py-1.5 text-[0.58rem] text-fog-500">
-                    پیام خود را بنویسید…
+                    پیام خود را بنویسید…{" "}
                   </span>
                   <span className="flex size-7 items-center justify-center rounded-full bg-brand text-[#2c241d]">
                     <Send className="size-3" />

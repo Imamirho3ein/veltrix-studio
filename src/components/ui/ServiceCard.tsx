@@ -39,7 +39,7 @@ export function ServiceCard({
           <strong className="font-bold">{service.title}</strong>
         </p>
         <p className="mt-3 text-[0.84rem] leading-7 text-fog-400">
-          {service.summary}
+          {service.summary}{" "}
         </p>
       </div>
 

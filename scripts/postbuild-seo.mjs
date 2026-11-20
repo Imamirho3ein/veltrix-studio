@@ -1,7 +1,7 @@
 // Post-build SEO tweaks for statically prerendered pages.
 // 1) Drop the legacy nomodule polyfill bundle (modern-only target).
-// 2) Put a space after sentence-ending periods that sit directly before a tag,
-//    so text extracted from the raw HTML keeps the space after the dot.
+// 2) Merge executable inline scripts so SEO checkers count fewer script tags.
+// 3) Lowercase the hreflang attribute for crawlers that match it literally.
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -20,7 +20,6 @@ async function walk(dir) {
 
 let changed = 0;
 let removedScripts = 0;
-let spacedDots = 0;
 let mergedInline = 0;
 
 const inlineScriptRe = /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;
@@ -56,14 +55,6 @@ for (const file of await walk(root)) {
       return "";
     });
   }
-  html = html.replace(/\.<\//g, () => {
-    spacedDots += 1;
-    return ". </";
-  });
-  html = html.replace(/…<\//g, () => {
-    spacedDots += 1;
-    return "… </";
-  });
   // React/Next serialise the attribute as `hrefLang`; some SEO crawlers match
   // the lowercase spelling only. HTML attribute names are case-insensitive.
   html = html.replace(/hrefLang=/g, "hreflang=");
@@ -74,5 +65,5 @@ for (const file of await walk(root)) {
 }
 
 console.log(
-  `[postbuild-seo] files=${changed} removedNoModule=${removedScripts} spacedDots=${spacedDots} mergedInline=${mergedInline}`,
+  `[postbuild-seo] files=${changed} removedNoModule=${removedScripts} mergedInline=${mergedInline}`,
 );

@@ -65,7 +65,7 @@ export function PortfolioCard({
           </h3>
         </div>
         <p className="mt-2 text-[0.83rem] leading-7 text-fog-400">
-          {project.summary}
+          {project.summary}{" "}
         </p>
         <div className="mt-auto flex flex-wrap gap-1.5 pt-5">
           {project.tags.map((tag) => (

@@ -96,7 +96,7 @@ export function FaqSection({
                       className="overflow-hidden"
                     >
                       <p className="px-5 pb-6 text-[0.82rem] leading-8 text-fog-400 sm:px-7">
-                        {item.answer}
+                        {item.answer}{" "}
                       </p>
                     </motion.div>
                   ) : null}
