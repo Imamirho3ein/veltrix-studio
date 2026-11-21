@@ -21,6 +21,11 @@ export function SectionTitle({
   action,
   id,
 }: SectionTitleProps) {
+  const descriptionText =
+    typeof description === "string" && description.endsWith(".")
+      ? `${description} `
+      : description;
+
   return (
     <FadeUp
       className={cn(
@@ -35,8 +40,10 @@ export function SectionTitle({
         <h2 id={id} className="section-title">
           {title}
         </h2>
-        {description ? (
-          <p className="lead mt-5 text-[0.98rem] md:text-base">{description}</p>
+        {descriptionText ? (
+          <p className="lead mt-5 text-[0.98rem] md:text-base">
+            {descriptionText}
+          </p>
         ) : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}

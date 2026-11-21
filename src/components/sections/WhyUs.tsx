@@ -44,7 +44,7 @@ export function WhyUs() {
                     تعهد ما: مالکیت کامل شما
                   </p>
                   <p className="mt-1 text-[0.7rem] leading-6 text-fog-400">
-                    کد، دامنه و هاست به نام شماست. بدون وابستگی.
+                    کد، دامنه و هاست به نام شماست. بدون وابستگی.{" "}
                   </p>
                 </div>
               </div>
@@ -69,7 +69,7 @@ export function WhyUs() {
                       <strong className="font-bold">{feature.title}</strong>
                     </p>
                     <p className="mt-2.5 text-[0.82rem] leading-7 text-fog-400">
-                      {feature.description}
+                      {feature.description}{" "}
                     </p>
                   </div>
                 </FadeUp>

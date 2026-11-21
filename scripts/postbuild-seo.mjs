@@ -1,7 +1,9 @@
 // Post-build SEO tweaks for statically prerendered pages.
 // 1) Drop the legacy nomodule polyfill bundle (modern-only target).
-// 2) Merge the bootstrap/shared JS chunks into one request, and let the
+// 2) Merge executable inline scripts so SEO checkers count fewer script tags.
+// 3) Merge the bootstrap/shared JS chunks into one request, and let the
 //    Turbopack manifest load the entry chunk itself (fewer script tags).
+// 4) Lowercase the hreflang attribute for crawlers that match it literally.
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";

@@ -49,10 +49,10 @@ function MiniSite() {
             <p className="mt-1.5 text-[11px] font-extrabold leading-[1.5] text-white sm:text-[13px]">
               برند تو،{" "}
               <br />
-              فراتر از یک سایت.
+              فراتر از یک سایت.{" "}
             </p>
             <p className="mt-1 hidden text-[5.5px] leading-[1.9] text-fog-400 sm:block">
-              طراحی اختصاصی، سرعت بالا و جزئیاتی که دیده می‌شود.
+              طراحی اختصاصی، سرعت بالا و جزئیاتی که دیده می‌شود.{" "}
             </p>
             <span className="mt-2 inline-flex items-center gap-1 rounded-[4px] bg-gradient-to-l from-brand-500 to-accent-500 px-2 py-1 text-[5.5px] font-semibold text-[#2c241d]">
               شروع پروژه
@@ -108,10 +108,10 @@ function PhoneMockup() {
         <p className="mt-2 text-[7px] font-extrabold leading-[1.6] text-white">
           تجربه‌ای که
           <br />
-          در ذهن می‌ماند.
+          در ذهن می‌ماند.{" "}
         </p>
         <p className="mt-1 text-[4.5px] leading-[1.9] text-fog-400">
-          طراحی و توسعه‌ی سایت‌های اختصاصی برای برندهای جسور.
+          طراحی و توسعه‌ی سایت‌های اختصاصی برای برندهای جسور.{" "}
         </p>
         <div className="mt-1.5 h-10 overflow-hidden rounded-[5px] border border-white/10 bg-gradient-to-br from-brand-500/35 via-brand-500/15 to-accent-400/25 p-1">
           <div className="flex h-full items-end gap-1">

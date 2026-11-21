@@ -45,7 +45,7 @@ export function Process() {
                   <strong className="font-bold">{step.title}</strong>
                 </p>
                 <p className="mt-2 text-[0.83rem] leading-7 text-fog-400">
-                  {step.description}
+                  {step.description}{" "}
                 </p>
                 <ul className="mt-4 space-y-1.5">
                   {step.details.map((detail) => (

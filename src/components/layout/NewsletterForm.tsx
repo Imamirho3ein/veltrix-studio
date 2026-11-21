@@ -116,7 +116,7 @@ export function NewsletterForm() {
               : "text-fog-500",
         )}
       >
-        {note}
+        {note}{" "}
       </p>
     </form>
   );
