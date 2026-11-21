@@ -1,8 +1,8 @@
 // Post-build SEO tweaks for statically prerendered pages.
 // 1) Drop the legacy nomodule polyfill bundle (modern-only target).
 // 2) Merge executable inline scripts so SEO checkers count fewer script tags.
-// 3) Merge the bootstrap/shared JS chunks into one request, and let the
-//    Turbopack manifest load the entry chunk itself (fewer script tags).
+// 3) Merge the bootstrap/shared JS chunks into one request while keeping the
+//    Turbopack entry chunk, which is what actually boots hydration.
 // 4) Lowercase the hreflang attribute for crawlers that match it literally.
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -14,7 +14,6 @@ const chunksDir = path.join(process.cwd(), ".next", "static", "chunks");
 const scriptTagRe = /<script\b[^>]*\bsrc="([^"]+)"[^>]*><\/script>/g;
 const mergedBundles = new Map();
 let mergedExternal = 0;
-let deferredExternal = 0;
 
 async function rewriteExternalScripts(html) {
   const tags = [...html.matchAll(scriptTagRe)].filter((m) =>
@@ -22,38 +21,20 @@ async function rewriteExternalScripts(html) {
   );
   if (tags.length < 2) return html;
 
-  // Chunks listed in the Turbopack manifest as `otherChunks` are injected by
-  // the runtime itself; drop their script tags so they are not requested twice.
+  // Keep every chunk script tag in place. The entry chunk listed in the
+  // Turbopack manifest is the one that starts hydration; replacing it with a
+  // preload leaves the server-rendered page inert.
   const deferred = new Set();
   for (const m of html.matchAll(/"otherChunks":\[([^\]]*)\]/g)) {
     for (const q of m[1].matchAll(/"([^"]+)"/g)) deferred.add(q[1]);
   }
-
-  const headTags = [];
-  const deferredTags = [];
-  for (const tag of tags) {
-    const rel = tag[1].replace(/^\/_next\//, "");
-    if (deferred.has(rel)) deferredTags.push(tag);
-    else headTags.push(tag);
-  }
-
+  const tagsToMerge = tags.filter(
+    (tag) => !deferred.has(tag[1].replace(/^\/_next\//, "")),
+  );
   let out = html;
-  if (deferredTags.length > 0) {
-    for (const tag of deferredTags) {
-      const src = tag[1];
-      const preloadRe = new RegExp(
-        `<link\\b[^>]*\\bhref="${src.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"[^>]*>`,
-      );
-      const preload = preloadRe.test(out)
-        ? ""
-        : `<link rel="preload" as="script" href="${src}"/>`;
-      out = out.replace(tag[0], preload);
-      if (tag[0] !== preload) deferredExternal += 1;
-    }
-  }
 
-  if (headTags.length > 1) {
-    const sources = headTags.map((tag) => tag[1]);
+  if (tagsToMerge.length > 1) {
+    const sources = tagsToMerge.map((tag) => tag[1]);
     const bodies = await Promise.all(
       sources.map((src) => readFile(path.join(chunksDir, path.basename(src)), "utf8")),
     );
@@ -140,5 +121,5 @@ for (const file of await walk(root)) {
 }
 
 console.log(
-  `[postbuild-seo] files=${changed} removedNoModule=${removedScripts} mergedInline=${mergedInline} mergedExternal=${mergedExternal} deferredExternal=${deferredExternal}`,
+  `[postbuild-seo] files=${changed} removedNoModule=${removedScripts} mergedInline=${mergedInline} mergedExternal=${mergedExternal}`,
 );
