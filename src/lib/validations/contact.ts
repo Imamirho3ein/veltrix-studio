@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { campaignBudget } from "@/data/campaign";
+import { campaign, campaignBudget } from "@/data/campaign";
 import { budgetOptions, projectTypes } from "@/lib/constants";
 import { isValidIranPhone } from "@/lib/utils";
 
@@ -43,7 +43,7 @@ export const contactSchema = z.object({
     .min(1, "بازه‌ی بودجه را انتخاب کنید.")
     .refine(
       (value) =>
-        value === campaignBudget ||
+        (campaign.enabled && value === campaignBudget) ||
         budgetOptions.some((item) => item === value),
       {
         message: "بازه‌ی بودجه را انتخاب کنید.",

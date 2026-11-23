@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { campaignBudget } from "@/data/campaign";
+import { campaign, campaignBudget } from "@/data/campaign";
 import { contactSchema, sanitizeText } from "@/lib/validations/contact";
 import { escapeHtml, isTelegramConfigured, sendTelegramMessage } from "@/lib/telegram";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
@@ -79,7 +79,7 @@ export async function POST(request: Request) {
   }
 
   const data = parsed.data;
-  const isCampaign = data.campaign === true;
+  const isCampaign = data.campaign === true && campaign.enabled;
 
   const sessionUser = await getSessionUser();
   if (!sessionUser && !isCampaign) {
