@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { Check, MousePointer2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, Check, MousePointer2, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HeroVisual } from "@/components/sections/HeroVisual";
 import { useIntroReady } from "@/hooks/useIntroReady";
+import { campaign } from "@/data/campaign";
 
 const container = {
   hidden: {},
@@ -74,12 +76,32 @@ export function Hero() {
               جزئیاتی دقیق می‌سازیم.{" "}
             </motion.p>
 
+            {campaign.enabled ? (
+              <motion.div variants={item} className="mt-6">
+                <Link
+                  href="/campaign"
+                  className="group inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-brand/25 bg-brand/[0.06] px-4 py-2 text-[0.72rem] leading-6 text-brand-700 transition duration-300 hover:border-brand/45 hover:bg-brand/10"
+                >
+                  <Sparkles className="size-3.5 text-brand-500" />
+                  <span className="font-semibold">جشنواره یک‌ماهه:</span>
+                  <span>همه‌ی خدمات {campaign.priceLabel}</span>
+                  <span className="text-fog-500">— {campaign.shortRangeLabel}</span>
+                  <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
+                </Link>
+              </motion.div>
+            ) : null}
+
             <motion.div
               variants={item}
               className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              <Button href="/contact" arrow fullWidth className="sm:w-auto">
-                شروع پروژه
+              <Button
+                href={campaign.enabled ? "/campaign" : "/contact"}
+                arrow
+                fullWidth
+                className="sm:w-auto"
+              >
+                {campaign.enabled ? "ثبت سفارش جشنواره" : "شروع پروژه"}
               </Button>
               <Button
                 href="/portfolio"

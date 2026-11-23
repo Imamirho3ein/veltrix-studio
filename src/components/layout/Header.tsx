@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, UserRound } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { campaign } from "@/data/campaign";
 import { navItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -64,22 +65,26 @@ export function Header() {
 
             <nav aria-label="ناوبری اصلی" className="hidden xl:block">
               <ul className="flex items-center gap-0.5">
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={isActive(item.href) ? "page" : undefined}
-                      className={cn(
-                        "inline-flex rounded-lg px-3.5 py-2 text-[0.84rem] transition-colors duration-300",
-                        isActive(item.href)
-                          ? "bg-white/[0.06] text-white"
-                          : "text-fog-400 hover:bg-white/[0.035] hover:text-white",
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
+                {navItems
+                  .filter((item) => item.href !== "/campaign" || campaign.enabled)
+                  .map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        aria-current={isActive(item.href) ? "page" : undefined}
+                        className={cn(
+                          "inline-flex rounded-lg px-3.5 py-2 text-[0.84rem] transition-colors duration-300",
+                          isActive(item.href)
+                            ? "bg-white/[0.06] text-white"
+                            : item.href === "/campaign"
+                              ? "border border-brand/25 bg-brand/[0.06] font-medium text-brand-700 hover:border-brand/40 hover:bg-brand/10"
+                              : "text-fog-400 hover:bg-white/[0.035] hover:text-white",
+                        )}
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             </nav>
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { PricingPlan } from "@/data/pricing";
+import { campaign } from "@/data/campaign";
 import { cn } from "@/lib/utils";
 
 export function PricingCard({ plan }: { plan: PricingPlan }) {
@@ -36,23 +37,48 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
       </p>
 
       <div className="mt-6 flex-1 space-y-2.5 border-t border-white/[0.06] pt-5">
-        {plan.templateRange ? (
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-[0.7rem] text-fog-500">قالب آماده</span>
-            <span className="text-[0.78rem] font-medium text-fog-300">
-              {plan.templateRange}
-            </span>
-          </div>
-        ) : null}
+        {campaign.enabled ? (
+          <>
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-[0.7rem] text-fog-500">قیمت عادی</span>
+              <span className="text-[0.72rem] text-fog-400 line-through decoration-brand/50">
+                {plan.templateRange ?? plan.customPrice}
+              </span>
+            </div>
 
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-3.5 py-3">
-          <span className="block text-[0.62rem] text-fog-500">
-            {plan.customLabel}
-          </span>
-          <span className="mt-1 block text-[0.92rem] font-bold text-white">
-            {plan.customPrice}
-          </span>
-        </div>
+            <div className="rounded-xl border border-brand/30 bg-brand/[0.07] px-3.5 py-3">
+              <span className="block text-[0.62rem] text-brand-700">
+                قیمت جشنواره
+              </span>
+              <span className="mt-1 block text-[1.02rem] font-extrabold text-white">
+                {campaign.priceLabel}
+              </span>
+              <span className="mt-1 block text-[0.6rem] text-fog-500">
+                {campaign.shortRangeLabel} — بدون محدودیت ظرفیت
+              </span>
+            </div>
+          </>
+        ) : (
+          <>
+            {plan.templateRange ? (
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-[0.7rem] text-fog-500">قالب آماده</span>
+                <span className="text-[0.78rem] font-medium text-fog-300">
+                  {plan.templateRange}
+                </span>
+              </div>
+            ) : null}
+
+            <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-3.5 py-3">
+              <span className="block text-[0.62rem] text-fog-500">
+                {plan.customLabel}
+              </span>
+              <span className="mt-1 block text-[0.92rem] font-bold text-white">
+                {plan.customPrice}
+              </span>
+            </div>
+          </>
+        )}
 
         {plan.note ? (
           <p className="pt-1 text-[0.62rem] leading-5 text-fog-500">
@@ -62,10 +88,10 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
       </div>
 
       <Link
-        href="/contact"
+        href={campaign.enabled ? "/campaign#order" : "/contact"}
         className="group mt-6 inline-flex h-10 w-full items-center justify-center gap-2 rounded-[0.7rem] border border-white/10 bg-white/[0.03] text-[0.76rem] text-fog-500 transition-all duration-300 hover:border-brand/35 hover:bg-brand/10 hover:text-brand-800"
       >
-        درخواست مشاوره
+        {campaign.enabled ? "ثبت سفارش جشنواره" : "درخواست مشاوره"}
         <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
       </Link>
     </div>

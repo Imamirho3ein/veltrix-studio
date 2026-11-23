@@ -1,4 +1,5 @@
 import { services } from "@/data/services";
+import { campaign } from "@/data/campaign";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -43,14 +44,16 @@ export function Services() {
                 تعرفه‌ی شفاف، بدون غافلگیری
               </p>
               <p className="mt-1 text-xs text-fog-400">
-                سایت شرکتی از ۷۵ میلیون تومان · فروشگاه اینترنتی از ۹۰ میلیون تومان
+                {campaign.enabled
+                  ? `جشنواره یک‌ماهه: همه‌ی خدمات ${campaign.priceLabel} — ${campaign.shortRangeLabel}`
+                  : "سایت شرکتی از ۷۵ میلیون تومان · فروشگاه اینترنتی از ۹۰ میلیون تومان"}
               </p>
             </div>
             <Link
-              href="/pricing"
+              href={campaign.enabled ? "/campaign" : "/pricing"}
               className="group inline-flex items-center gap-2 text-xs font-medium text-brand-300 transition hover:text-white"
             >
-              مشاهده‌ی تعرفه‌ها
+              {campaign.enabled ? "جزئیات جشنواره" : "مشاهده‌ی تعرفه‌ها"}
               <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
             </Link>
           </div>

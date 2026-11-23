@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Mail, Phone, Send, UserRound, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { EmailLink } from "@/components/ui/EmailLink";
+import { campaign } from "@/data/campaign";
 import { navItems, siteConfig } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -106,44 +107,55 @@ export function MobileMenu({ open, onClose, authenticated = false }: MobileMenuP
 
             <nav aria-label="ناوبری موبایل" className="mt-10 flex-1 overflow-y-auto">
               <ul className="flex flex-col">
-                {navItems.map((item, index) => {
-                  const active =
-                    item.href === "/"
-                      ? pathname === "/"
-                      : pathname.startsWith(item.href);
-                  return (
-                    <motion.li
-                      key={item.href}
-                      initial={{ opacity: 0, x: 22 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: 0.08 + index * 0.055,
-                        duration: 0.4,
-                        ease: "easeOut",
-                      }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={onClose}
-                        aria-current={active ? "page" : undefined}
-                        className={cn(
-                          "group flex items-center justify-between border-b border-white/[0.06] py-4 text-xl font-semibold transition-colors",
-                          active
-                            ? "text-white"
-                            : "text-fog-300 hover:text-white",
-                        )}
+                {navItems
+                  .filter((item) => item.href !== "/campaign" || campaign.enabled)
+                  .map((item, index) => {
+                    const active =
+                      item.href === "/"
+                        ? pathname === "/"
+                        : pathname.startsWith(item.href);
+                    return (
+                      <motion.li
+                        key={item.href}
+                        initial={{ opacity: 0, x: 22 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: 0.08 + index * 0.055,
+                          duration: 0.4,
+                          ease: "easeOut",
+                        }}
                       >
-                        <span>{item.title}</span>
-                        <span className="flex items-center gap-3">
-                          <span className="font-latin text-[0.62rem] tracking-widest text-fog-600">
-                            0{index + 1}
+                        <Link
+                          href={item.href}
+                          onClick={onClose}
+                          aria-current={active ? "page" : undefined}
+                          className={cn(
+                            "group flex items-center justify-between border-b border-white/[0.06] py-4 text-xl font-semibold transition-colors",
+                            active
+                              ? "text-white"
+                              : item.href === "/campaign"
+                                ? "text-brand-700 hover:text-brand-800"
+                                : "text-fog-300 hover:text-white",
+                          )}
+                        >
+                          <span className="flex items-center gap-2.5">
+                            {item.title}
+                            {item.href === "/campaign" ? (
+                              <span className="rounded-full bg-brand/15 px-2 py-0.5 text-[0.55rem] font-medium tracking-wide text-brand-700">
+                                {campaign.priceShort}
+                              </span>
+                            ) : null}
                           </span>
-                          <ArrowLeft className="size-4 text-fog-500 transition-transform group-hover:-translate-x-1 group-hover:text-accent-400" />
-                        </span>
-                      </Link>
-                    </motion.li>
-                  );
-                })}
+                          <span className="flex items-center gap-3">
+                            <span className="font-latin text-[0.62rem] tracking-widest text-fog-600">
+                              0{index + 1}
+                            </span>
+                            <ArrowLeft className="size-4 text-fog-500 transition-transform group-hover:-translate-x-1 group-hover:text-accent-400" />
+                          </span>
+                        </Link>
+                      </motion.li>
+                    );
+                  })}
               </ul>
             </nav>
 

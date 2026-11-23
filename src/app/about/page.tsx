@@ -18,6 +18,7 @@ import { Stats } from "@/components/sections/Stats";
 import { CTA } from "@/components/sections/CTA";
 import { Process } from "@/components/sections/Process";
 import { storyTimeline, team, values } from "@/data/about";
+import { campaign } from "@/data/campaign";
 import { siteConfig } from "@/lib/constants";
 import { pageMetadata, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
@@ -149,7 +150,10 @@ export default function AboutPage() {
                   { label: "اندازه‌ی تیم", value: "۴ متخصص" },
                   { label: "حوزه‌ی تمرکز", value: "وب، محصول، برند" },
                   { label: "زمان پاسخ‌گویی", value: "کمتر از ۲۴ ساعت" },
-                  { label: "شروع قیمت پروژه", value: "۴۷ میلیون تومان" },
+                  {
+                    label: campaign.enabled ? "قیمت جشنواره" : "شروع قیمت پروژه",
+                    value: campaign.enabled ? campaign.priceLabel : "۴۷ میلیون تومان",
+                  },
                 ].map((item) => (
                   <div
                     key={item.label}

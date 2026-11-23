@@ -29,6 +29,7 @@ import {
   technologies,
 } from "@/data/services";
 import { faqItems } from "@/data/faq";
+import { campaign } from "@/data/campaign";
 import { pageMetadata, serviceSchema, faqSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -249,15 +250,18 @@ export default function ServicesPage() {
                 <div>
                   <p className="eyebrow mb-3">تعرفه‌ها</p>
                   <h2 className="text-xl font-bold text-white sm:text-2xl">
-                    قبل از شروع، هزینه را بدانید.
+                    {campaign.enabled
+                      ? "همه‌ی خدمات، ۱۵ میلیون تومان."
+                      : "قبل از شروع، هزینه را بدانید."}
                   </h2>
                   <p className="mt-2 max-w-xl text-sm leading-7 text-fog-400">
-                    تعرفه‌ی شفاف همه‌ی انواع پروژه — از سایت شرکتی تا فروشگاه و
-                    سازمانی — بدون هزینه‌ی پنهان.
+                    {campaign.enabled
+                      ? `در جشنواره‌ی یک‌ماهه (${campaign.rangeLabel})، تعرفه‌ی همه‌ی خدمات — از سایت شرکتی تا فروشگاه و سازمانی — ${campaign.priceLabel} ثابت است.`
+                      : "تعرفه‌ی شفاف همه‌ی انواع پروژه — از سایت شرکتی تا فروشگاه و سازمانی — بدون هزینه‌ی پنهان."}
                   </p>
                 </div>
-                <Button href="/pricing" arrow>
-                  مشاهده‌ی تعرفه‌ها
+                <Button href={campaign.enabled ? "/campaign" : "/pricing"} arrow>
+                  {campaign.enabled ? "جزئیات جشنواره" : "مشاهده‌ی تعرفه‌ها"}
                 </Button>
               </div>
             </div>

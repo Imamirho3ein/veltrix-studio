@@ -10,9 +10,16 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { TelegramSection } from "@/components/sections/TelegramSection";
 import { FaqSection } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
+import { CampaignBanner } from "@/components/sections/CampaignBanner";
 import { Marquee } from "@/components/ui/Marquee";
+import { campaign } from "@/data/campaign";
 import { faqItems } from "@/data/faq";
-import { faqSchema, organizationSchema, websiteSchema } from "@/lib/seo";
+import {
+  campaignOfferSchema,
+  faqSchema,
+  organizationSchema,
+  websiteSchema,
+} from "@/lib/seo";
 import { siteConfig, siteKeywords } from "@/lib/constants";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -58,9 +65,20 @@ export default function HomePage() {
       <link rel="alternate" hrefLang="fa-IR" href={siteConfig.url} />
       <link rel="alternate" hrefLang="x-default" href={siteConfig.url} />
       <JsonLd
-        data={[organizationSchema(), websiteSchema(), faqSchema(faqItems)]}
+        data={[
+          organizationSchema(),
+          websiteSchema(),
+          faqSchema(faqItems),
+          ...(campaign.enabled ? [campaignOfferSchema()] : []),
+        ]}
       />
       <Hero />
+
+      {campaign.enabled ? (
+        <div className="container-x pt-4">
+          <CampaignBanner />
+        </div>
+      ) : null}
 
       <div className="relative border-y border-white/[0.06] bg-ink-2/30 py-4">
         <Marquee

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendTelegramMessage } from "@/lib/telegram";
+import { campaign } from "@/data/campaign";
 import { siteConfig } from "@/lib/constants";
 
 export const runtime = "nodejs";
@@ -44,7 +45,14 @@ function keyboard() {
         { text: "وب‌سایت", url: siteConfig.url },
         { text: "کانال تلگرام", url: siteConfig.telegram.channel },
       ],
-      [{ text: "شروع پروژه", url: `${siteConfig.url}/contact` }],
+      [
+        {
+          text: campaign.enabled ? "ثبت سفارش جشنواره" : "شروع پروژه",
+          url: campaign.enabled
+            ? `${siteConfig.url}/campaign#order`
+            : `${siteConfig.url}/contact`,
+        },
+      ],
     ],
   };
 }
@@ -57,6 +65,13 @@ function replyFor(text: string): string {
       return [
         "<b>به ولتریکس استودیو خوش آمدید.</b>",
         "",
+        ...(campaign.enabled
+          ? [
+              `🎉 <b>جشنواره یک‌ماهه:</b> همه‌ی خدمات ${campaign.priceLabel} — ${campaign.rangeLabel}`,
+              `${siteConfig.url}/campaign`,
+              "",
+            ]
+          : []),
         "اینجا می‌توانید سریع‌تر به تعرفه‌ها، نمونه‌کارها و راه‌های تماس برسید.",
         "",
         "/services — خدمات",
@@ -75,15 +90,25 @@ function replyFor(text: string): string {
         `${siteConfig.url}/services`,
       ].join("\n");
     case "/pricing":
-      return [
-        "<b>تعرفه‌های پایه:</b>",
-        "• سایت شرکتی: از ۳۰ میلیون (قالب) / ۷۵ میلیون (اختصاصی)",
-        "• فروشگاهی: ۴۲ تا ۵۵ میلیون (قالب) / ۹۰ میلیون به بالا",
-        "• شخصی: از ۴۷ میلیون",
-        "• سازمانی: از ۱۶۵ میلیون",
-        "",
-        `جدول کامل: ${siteConfig.url}/pricing`,
-      ].join("\n");
+      return campaign.enabled
+        ? [
+            "<b>تعرفه‌های جشنواره:</b>",
+            `• همه‌ی ۹ پکیج طراحی سایت: ${campaign.priceLabel} ثابت`,
+            `• بازه: ${campaign.rangeLabel}`,
+            "• بدون محدودیت ظرفیت",
+            "• دامنه و هاست جداگانه",
+            "",
+            `جزئیات و ثبت سفارش: ${siteConfig.url}/campaign`,
+          ].join("\n")
+        : [
+            "<b>تعرفه‌های پایه:</b>",
+            "• سایت شرکتی: از ۳۰ میلیون (قالب) / ۷۵ میلیون (اختصاصی)",
+            "• فروشگاهی: ۴۲ تا ۵۵ میلیون (قالب) / ۹۰ میلیون به بالا",
+            "• شخصی: از ۴۷ میلیون",
+            "• سازمانی: از ۱۶۵ میلیون",
+            "",
+            `جدول کامل: ${siteConfig.url}/pricing`,
+          ].join("\n");
     case "/portfolio":
       return [
         "<b>نمونه‌کارها:</b>",

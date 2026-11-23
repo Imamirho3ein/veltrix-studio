@@ -8,6 +8,7 @@ import { CheckCircle2, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { contactSchema, type ContactFormValues } from "@/lib/validations/contact";
 import { budgetOptions, projectTypes } from "@/lib/constants";
+import { campaignBudget } from "@/data/campaign";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
@@ -18,7 +19,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ campaign = false }: { campaign?: boolean }) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [serverError, setServerError] = useState("");
 
@@ -35,7 +36,7 @@ export function ContactForm() {
       email: "",
       brand: "",
       projectType: "",
-      budget: "",
+      budget: campaign ? campaignBudget : "",
       message: "",
       website: "",
     },
@@ -50,7 +51,10 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          ...values,
+          ...(campaign ? { campaign: true } : {}),
+        }),
       });
 
       const data = (await response.json()) as {
@@ -91,11 +95,14 @@ export function ContactForm() {
           <CheckCircle2 className="size-8" />
         </span>
         <h3 className="mt-6 text-xl font-bold text-white">
-          درخواست شما با موفقیت ارسال شد.
+          {campaign
+            ? "سفارش جشنواره با موفقیت ثبت شد."
+            : "درخواست شما با موفقیت ارسال شد."}
         </h3>
         <p className="mt-3 max-w-sm text-sm leading-7 text-fog-400">
-          پیام شما ثبت شد. تیم ولتریکس در اولین فرصت — معمولاً کمتر از ۲۴ ساعت
-          کاری — با شما تماس می‌گیرد.
+          {campaign
+            ? "درخواست شما با قیمت ثابت ۱۵ میلیون تومان ثبت شد. تیم ولتریکس در اولین فرصت — معمولاً کمتر از ۲۴ ساعت کاری — برای هماهنگی با شما تماس می‌گیرد."
+            : "پیام شما ثبت شد. تیم ولتریکس در اولین فرصت — معمولاً کمتر از ۲۴ ساعت کاری — با شما تماس می‌گیرد."}
         </p>
         <button
           type="button"
@@ -116,13 +123,17 @@ export function ContactForm() {
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-lg font-bold text-white">فرم درخواست پروژه</h2>
+          <h2 className="text-lg font-bold text-white">
+            {campaign ? "فرم سفارش جشنواره" : "فرم درخواست پروژه"}
+          </h2>
           <p className="mt-2 text-xs leading-6 text-fog-400">
-            هرچه دقیق‌تر بنویسید، برآورد ما دقیق‌تر خواهد بود.
+            {campaign
+              ? "فرم کوتاه زیر را پر کنید؛ نیازی به ساخت حساب کاربری نیست. قیمت ثابت جشنواره روی سفارش شما ثبت می‌شود."
+              : "هرچه دقیق‌تر بنویسید، برآورد ما دقیق‌تر خواهد بود."}
           </p>
         </div>
         <span className="hidden rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[0.62rem] text-fog-500 sm:inline-flex">
-          پاسخ &lt; ۲۴ ساعت
+          {campaign ? "۱۵ میلیون ثابت" : "پاسخ < ۲۴ ساعت"}
         </span>
       </div>
 
@@ -223,26 +234,30 @@ export function ContactForm() {
           />
         </div>
 
-        <div>
-          <label htmlFor="budget" className="mb-2 block text-xs text-fog-300">
-            بودجه تقریبی <span className="text-rose-600">*</span>
-          </label>
-          <select
-            id="budget"
-            className="field field-select"
-            aria-invalid={Boolean(errors.budget)}
-            aria-describedby={errors.budget ? "budget-error" : undefined}
-            {...register("budget")}
-          >
-            <option value="">انتخاب کنید…</option>
-            {budgetOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <FieldError id="budget-error" message={errors.budget?.message} />
-        </div>
+        {campaign ? (
+          <input type="hidden" {...register("budget")} />
+        ) : (
+          <div>
+            <label htmlFor="budget" className="mb-2 block text-xs text-fog-300">
+              بودجه تقریبی <span className="text-rose-600">*</span>
+            </label>
+            <select
+              id="budget"
+              className="field field-select"
+              aria-invalid={Boolean(errors.budget)}
+              aria-describedby={errors.budget ? "budget-error" : undefined}
+              {...register("budget")}
+            >
+              <option value="">انتخاب کنید…</option>
+              {budgetOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <FieldError id="budget-error" message={errors.budget?.message} />
+          </div>
+        )}
       </div>
 
       <div className="mt-4">
@@ -295,7 +310,11 @@ export function ContactForm() {
           fullWidth
           className="sm:w-auto"
         >
-          {isSubmitting ? "در حال ارسال..." : "ارسال درخواست"}
+          {isSubmitting
+            ? "در حال ارسال..."
+            : campaign
+              ? "ثبت سفارش جشنواره"
+              : "ارسال درخواست"}
         </Button>
         <p className="text-[0.62rem] leading-5 text-fog-500">
           اطلاعات شما فقط برای بررسی همین پروژه استفاده می‌شود.

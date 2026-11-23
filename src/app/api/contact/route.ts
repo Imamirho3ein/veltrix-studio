@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { campaignBudget } from "@/data/campaign";
 import { contactSchema, sanitizeText } from "@/lib/validations/contact";
 import { escapeHtml, isTelegramConfigured, sendTelegramMessage } from "@/lib/telegram";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
@@ -54,18 +55,6 @@ export async function POST(request: Request) {
   const limit = rateLimit(`contact:${ip}`, MAX_REQUESTS, WINDOW_MS);
   if (!limit.success) return tooMany(limit.retryAfterSeconds);
 
-  const sessionUser = await getSessionUser();
-  if (!sessionUser) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message:
-          "برای ثبت درخواست پروژه، ابتدا وارد حساب خود شوید یا ثبت‌نام کنید.",
-      },
-      { status: 401 },
-    );
-  }
-
   let payload: unknown;
   try {
     payload = await request.json();
@@ -90,6 +79,19 @@ export async function POST(request: Request) {
   }
 
   const data = parsed.data;
+  const isCampaign = data.campaign === true;
+
+  const sessionUser = await getSessionUser();
+  if (!sessionUser && !isCampaign) {
+    return NextResponse.json(
+      {
+        ok: false,
+        message:
+          "برای ثبت درخواست پروژه، ابتدا وارد حساب خود شوید یا ثبت‌نام کنید.",
+      },
+      { status: 401 },
+    );
+  }
 
   // Honeypot: bots fill hidden fields. Pretend everything is fine.
   if (data.website && data.website.trim().length > 0) {
@@ -102,7 +104,7 @@ export async function POST(request: Request) {
     email: sanitizeText(data.email),
     brand: sanitizeText(data.brand),
     projectType: sanitizeText(data.projectType),
-    budget: sanitizeText(data.budget),
+    budget: isCampaign ? campaignBudget : sanitizeText(data.budget),
     message: sanitizeText(data.message),
   };
 
@@ -113,13 +115,15 @@ export async function POST(request: Request) {
   }).format(new Date());
 
   // درخواست همیشه در دیتابیس ثبت می‌شود تا در پنل کاربر دیده شود.
-  const lead = newLeadRecord({ ...clean, userId: sessionUser.id });
+  const lead = newLeadRecord({ ...clean, userId: sessionUser?.id });
   await mutateDb((db) => {
     db.leads.push(lead);
   });
 
   const lines = [
-    "🚀 <b>درخواست پروژه‌ی جدید</b>",
+    isCampaign
+      ? "🎉 <b>درخواست جشنواره ۱۵ میلیونی</b>"
+      : "🚀 <b>درخواست پروژه‌ی جدید</b>",
     "",
     `<b>نام:</b> ${escapeHtml(clean.name)}`,
     `<b>برند:</b> ${escapeHtml(clean.brand)}`,

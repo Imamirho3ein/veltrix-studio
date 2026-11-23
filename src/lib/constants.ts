@@ -33,12 +33,14 @@ export const navItems = [
   { title: "خدمات", href: "/services" },
   { title: "نمونه‌کارها", href: "/portfolio" },
   { title: "تعرفه‌ها", href: "/pricing" },
+  { title: "جشنواره", href: "/campaign" },
   { title: "درباره ما", href: "/about" },
   { title: "تماس با ما", href: "/contact" },
 ] as const;
 
 export const footerLinks = {
   studio: [
+    { title: "جشنواره ۱۵ میلیونی", href: "/campaign" },
     { title: "درباره ما", href: "/about" },
     { title: "نمونه‌کارها", href: "/portfolio" },
     { title: "خدمات", href: "/services" },

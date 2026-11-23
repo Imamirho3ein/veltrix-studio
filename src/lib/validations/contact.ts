@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { campaignBudget } from "@/data/campaign";
 import { budgetOptions, projectTypes } from "@/lib/constants";
 import { isValidIranPhone } from "@/lib/utils";
 
@@ -40,15 +41,21 @@ export const contactSchema = z.object({
     .string()
     .trim()
     .min(1, "بازه‌ی بودجه را انتخاب کنید.")
-    .refine((value) => budgetOptions.some((item) => item === value), {
-      message: "بازه‌ی بودجه را انتخاب کنید.",
-    }),
+    .refine(
+      (value) =>
+        value === campaignBudget ||
+        budgetOptions.some((item) => item === value),
+      {
+        message: "بازه‌ی بودجه را انتخاب کنید.",
+      },
+    ),
   message: z
     .string()
     .trim()
     .min(10, "کمی بیشتر درباره‌ی پروژه بنویسید (حداقل ۱۰ کاراکتر).")
     .max(2000, "توضیحات بیش از حد طولانی است."),
   website: z.string().max(0).optional(),
+  campaign: z.boolean().optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;

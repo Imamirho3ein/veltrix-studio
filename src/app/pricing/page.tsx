@@ -1,25 +1,33 @@
 import type { Metadata } from "next";
-import { Check, Info } from "lucide-react";
+import Link from "next/link";
+import { CalendarDays, Check, Infinity as InfinityIcon, Info } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { PricingCard } from "@/components/ui/PricingCard";
+import { CampaignBanner } from "@/components/sections/CampaignBanner";
 import { FaqSection } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 import { pricingPlans } from "@/data/pricing";
+import { campaign } from "@/data/campaign";
 import { pricingFaqItems } from "@/data/faq";
 import { pageMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata({
-  title: "تعرفه‌ها",
-  description:
-    "تعرفه‌ی طراحی سایت در ولتریکس استودیو: فروشگاهی، شرکتی، رستوران، پزشکی، مدرسه، خدماتی، فروش دوره، شخصی و سازمانی — با تفکیک قالب آماده و طرح اختصاصی.",
+  title: campaign.enabled ? "تعرفه‌ها و جشنواره ۱۵ میلیونی" : "تعرفه‌ها",
+  description: campaign.enabled
+    ? "جشنواره یک‌ماهه ولتریکس استودیو: تعرفه‌ی همه‌ی پکیج‌های طراحی سایت — فروشگاهی، شرکتی، رستوران، پزشکی، مدرسه، خدماتی، فروش دوره، شخصی و سازمانی — ۱۵ میلیون تومان ثابت است."
+    : "تعرفه‌ی طراحی سایت در ولتریکس استودیو: فروشگاهی، شرکتی، رستوران، پزشکی، مدرسه، خدماتی، فروش دوره، شخصی و سازمانی — با تفکیک قالب آماده و طرح اختصاصی.",
   path: "/pricing",
-  ogTitle: "تعرفه‌ی طراحی سایت",
-  ogSubtitle: "قیمت شفاف، بدون هزینه‌ی پنهان.",
+  ogTitle: campaign.enabled
+    ? "تعرفه‌ها و جشنواره ۱۵ میلیونی"
+    : "تعرفه‌ی طراحی سایت",
+  ogSubtitle: campaign.enabled
+    ? "همه‌ی خدمات، یک قیمت: ۱۵ میلیون تومان."
+    : "قیمت شفاف، بدون هزینه‌ی پنهان.",
 });
 
 const included = [
@@ -53,8 +61,17 @@ export default function PricingPage() {
                 name: plan.title,
                 description: plan.description,
                 priceCurrency: "IRR",
+                ...(campaign.enabled
+                  ? {
+                      price: String(campaign.priceRial),
+                      priceValidUntil: campaign.endDate,
+                      validFrom: campaign.startDate,
+                    }
+                  : {}),
                 availability: "https://schema.org/InStock",
-                url: absoluteUrl("/contact"),
+                url: absoluteUrl(
+                  campaign.enabled ? "/campaign#order" : "/contact",
+                ),
               },
             })),
           },
@@ -63,27 +80,57 @@ export default function PricingPage() {
       />
 
       <PageHero
-        eyebrow="تعرفه‌ها"
+        eyebrow={campaign.enabled ? "تعرفه‌ها / جشنواره" : "تعرفه‌ها"}
         breadcrumb="تعرفه‌ها"
         title={
-          <>
-            قیمت شفاف،
-            <br />{" "}
-            <span className="text-gradient">بدون غافلگیری.</span>
-          </>
+          campaign.enabled ? (
+            <>
+              یک قیمت،
+              <br />{" "}
+              <span className="text-gradient">برای همه‌ی خدمات.</span>
+            </>
+          ) : (
+            <>
+              قیمت شفاف،
+              <br />{" "}
+              <span className="text-gradient">بدون غافلگیری.</span>
+            </>
+          )
         }
-        description="تعرفه‌ها بر اساس نوع پروژه و سطح سفارشی‌سازی تعیین می‌شوند. اعداد زیر حدودی هستند و قیمت نهایی بعد از جلسه‌ی کشف و مشخص‌شدن دامنه‌ی کار، مکتوب اعلام می‌شود."
+        description={
+          campaign.enabled
+            ? `در جشنواره‌ی یک‌ماهه‌ی ولتریکس، تعرفه‌ی همه‌ی پکیج‌ها ${campaign.priceLabel} ثابت است؛ از ${campaign.startLabel} تا ${campaign.endLabel} و بدون محدودیت ظرفیت. هزینه‌ی دامنه و هاست جداگانه محاسبه می‌شود.`
+            : "تعرفه‌ها بر اساس نوع پروژه و سطح سفارشی‌سازی تعیین می‌شوند. اعداد زیر حدودی هستند و قیمت نهایی بعد از جلسه‌ی کشف و مشخص‌شدن دامنه‌ی کار، مکتوب اعلام می‌شود."
+        }
       >
-        <div className="flex items-start gap-2.5 rounded-xl border border-accent-400/20 bg-accent-400/[0.06] px-4 py-3 text-[0.72rem] leading-6 text-accent-100/90">
-          <Info className="mt-0.5 size-4 shrink-0 text-accent-300" />
-          <p>
-            همه‌ی مبالغ به <span className="font-semibold">تومان</span> و
-            تقریبی هستند. هزینه‌ی دامنه و هاست جداگانه محاسبه می‌شود.
-          </p>
-        </div>
+        {campaign.enabled ? (
+          <div className="flex flex-wrap items-center gap-2.5">
+            <span className="inline-flex h-9 items-center gap-2 rounded-full border border-brand/25 bg-brand/[0.06] px-4 text-[0.72rem] text-brand-700">
+              <CalendarDays className="size-3.5" />
+              {campaign.rangeLabel}
+            </span>
+            <span className="inline-flex h-9 items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 text-[0.72rem] text-fog-500">
+              <InfinityIcon className="size-3.5" />
+              بدون محدودیت ظرفیت
+            </span>
+            <Link href="/campaign" className="btn btn-primary btn-sm">
+              جزئیات جشنواره
+            </Link>
+          </div>
+        ) : (
+          <div className="flex items-start gap-2.5 rounded-xl border border-accent-400/20 bg-accent-400/[0.06] px-4 py-3 text-[0.72rem] leading-6 text-accent-100/90">
+            <Info className="mt-0.5 size-4 shrink-0 text-accent-300" />
+            <p>
+              همه‌ی مبالغ به <span className="font-semibold">تومان</span> و
+              تقریبی هستند. هزینه‌ی دامنه و هاست جداگانه محاسبه می‌شود.
+            </p>
+          </div>
+        )}
       </PageHero>
 
       <Container className="section-y">
+        {campaign.enabled ? <CampaignBanner compact className="mb-8" /> : null}
+
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {pricingPlans.map((plan, index) => (
             <FadeUp key={plan.slug} delay={index * 0.04}>
@@ -123,7 +170,7 @@ export default function PricingPage() {
               <div className="mt-4 space-y-4 text-[0.78rem] leading-7">
                 <div>
                   <p className="font-semibold text-fog-600">
-                    قالب آماده — سریع‌تر، اقتصادی‌تر
+                    قالب آماده — سریع‌تر
                   </p>
                   <p className="mt-1 text-fog-400">
                     ساختار و طراحی پایه از یک قالب حرفه‌ای شروع می‌شود و هویت
@@ -141,6 +188,16 @@ export default function PricingPage() {
                   </p>
                 </div>
               </div>
+
+              {campaign.enabled ? (
+                <p className="mt-4 rounded-xl border border-brand/20 bg-brand/[0.05] px-4 py-3 text-[0.68rem] leading-6 text-fog-500">
+                  در جشنواره، هزینه‌ی هر دو مسیر{" "}
+                  <span className="font-semibold text-brand-700">
+                    {campaign.priceLabel}
+                  </span>{" "}
+                  است؛ انتخاب مسیر فقط به نیاز پروژه بستگی دارد.
+                </p>
+              ) : null}
 
               <div className="mt-5 rounded-xl border border-white/[0.06] bg-white/[0.025] px-4 py-3">
                 <p className="text-[0.68rem] leading-6 text-fog-500">
@@ -162,13 +219,17 @@ export default function PricingPage() {
                 تعرفه‌ی دقیق <span className="text-gradient">پروژه‌ی شما</span>
               </>
             }
-            description="اگر نوع پروژه‌تان در لیست نیست یا امکانات خاصی می‌خواهید، فرم تماس را پر کنید؛ برآورد اختصاصی دریافت می‌کنید."
+            description={
+              campaign.enabled
+                ? `در جشنواره، همه‌ی پکیج‌ها ${campaign.priceLabel} هستند. اگر نوع پروژه‌تان در لیست نیست یا امکانات خاصی می‌خواهید، فرم سفارش جشنواره را پر کنید تا مسیر مناسب را پیشنهاد بدهیم.`
+                : "اگر نوع پروژه‌تان در لیست نیست یا امکانات خاصی می‌خواهید، فرم تماس را پر کنید؛ برآورد اختصاصی دریافت می‌کنید."
+            }
             action={
               <a
-                href="/contact"
+                href={campaign.enabled ? "/campaign#order" : "/contact"}
                 className="btn btn-secondary btn-sm shrink-0"
               >
-                دریافت برآورد اختصاصی
+                {campaign.enabled ? "ثبت سفارش جشنواره" : "دریافت برآورد اختصاصی"}
               </a>
             }
             className="mt-6"

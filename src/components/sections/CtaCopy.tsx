@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Clock, Send, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { campaign } from "@/data/campaign";
 import { siteConfig } from "@/lib/constants";
 
 const container = {
@@ -37,7 +38,7 @@ export function CtaCopy() {
         className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-[#1d1510] px-3.5 py-1.5 text-[0.72rem] font-medium text-[#d4b996] shadow-[inset_0_1px_0_rgba(255,214,170,0.14),0_0_22px_-6px_rgba(176,137,104,0.28)]"
       >
         <Sparkles className="size-3.5 text-brand" />
-        ایده‌ات را بفرست
+        {campaign.enabled ? "جشنواره یک‌ماهه" : "ایده‌ات را بفرست"}
       </motion.span>
 
       <motion.h2
@@ -54,19 +55,22 @@ export function CtaCopy() {
         variants={item}
         className="mt-5 max-w-[30rem] text-[0.92rem] leading-8 text-fog-400 sm:text-base"
       >
-        ایده‌ات را بگو؛ در بوم یا کد شکلش می‌دهیم و تحویل می‌گیرید. مشاوره‌ی
-        اولیه بدون تعهد است و مسیر را شفاف پیش می‌بریم. ابتدا هدف و مخاطب را
-        روشن می‌کنیم. بعد معماری و طراحی را می‌سازیم و در نهایت با تست و
-        بهینه‌سازی تحویل می‌دهیم. اگر هنوز بریف آماده نداری هم مشکلی نیست. یک
-        توضیح کوتاه از کسب‌وکارت کافی است تا قدم اول را با هم برداریم.{" "}
+        {campaign.enabled
+          ? `تا ${campaign.endLabel}، همه‌ی خدمات طراحی و توسعه‌ی سایت ${campaign.priceLabel} است؛ بدون محدودیت ظرفیت و بدون هزینه‌ی پنهان. ایده‌ات را بگو؛ در بوم یا کد شکلش می‌دهیم و تحویل می‌گیری. مشاوره‌ی اولیه بدون تعهد است و مسیر را شفاف پیش می‌بریم.`
+          : "ایده‌ات را بگو؛ در بوم یا کد شکلش می‌دهیم و تحویل می‌گیرید. مشاوره‌ی اولیه بدون تعهد است و مسیر را شفاف پیش می‌بریم. ابتدا هدف و مخاطب را روشن می‌کنیم. بعد معماری و طراحی را می‌سازیم و در نهایت با تست و بهینه‌سازی تحویل می‌دهیم. اگر هنوز بریف آماده نداری هم مشکلی نیست. یک توضیح کوتاه از کسب‌وکارت کافی است تا قدم اول را با هم برداریم."}{" "}
       </motion.p>
 
       <motion.div
         variants={item}
         className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center"
       >
-        <Button href="/contact" arrow fullWidth className="sm:w-auto">
-          شروع پروژه
+        <Button
+          href={campaign.enabled ? "/campaign#order" : "/contact"}
+          arrow
+          fullWidth
+          className="sm:w-auto"
+        >
+          {campaign.enabled ? "ثبت سفارش جشنواره" : "شروع پروژه"}
         </Button>
         <Button
           href={siteConfig.telegram.channel}
@@ -90,7 +94,9 @@ export function CtaCopy() {
         </span>
         <span className="inline-flex items-center gap-2">
           <ShieldCheck className="size-3.5 text-accent-400" />
-          مشاوره‌ی اولیه بدون تعهد
+          {campaign.enabled
+            ? `بدون محدودیت ظرفیت — ${campaign.rangeLabel}`
+            : "مشاوره‌ی اولیه بدون تعهد"}
         </span>
       </motion.div>
     </motion.div>

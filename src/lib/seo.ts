@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { campaign } from "@/data/campaign";
 import { siteConfig, siteKeywords } from "@/lib/constants";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -177,3 +178,40 @@ export function serviceSchema(
     })),
   };
 }
+
+export function campaignOfferSchema(): SchemaNode {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Offer",
+    name: "جشنواره یک‌ماهه ولتریکس استودیو",
+    description:
+      "در جشنواره یک‌ماهه ولتریکس استودیو، همه‌ی خدمات طراحی و توسعه‌ی سایت با قیمت ثابت ۱۵ میلیون تومان و بدون محدودیت ظرفیت ارائه می‌شوند.",
+    url: absoluteUrl("/campaign"),
+    priceCurrency: "IRR",
+    price: String(campaign.priceRial),
+    priceValidUntil: campaign.endDate,
+    validFrom: campaign.startDate,
+    availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Iran",
+    },
+    itemOffered: {
+      "@type": "Service",
+      name: "طراحی و توسعه وب‌سایت",
+      description:
+        "طراحی سایت اختصاصی، واکنش‌گرا و سریع همراه با سئوی تکنیکال پایه، فرم تماس امن و سه ماه پشتیبانی رایگان.",
+      provider: {
+        "@type": "Organization",
+        name: siteConfig.name,
+        url: siteConfig.url,
+      },
+    },
+  };
+}
+
