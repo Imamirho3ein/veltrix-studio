@@ -11,8 +11,6 @@ import { pageMetadata, breadcrumbSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/constants";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl } from "@/lib/utils";
-import { getSessionUser } from "@/lib/auth";
-import { LoginGate } from "@/components/contact/LoginGate";
 
 export const metadata: Metadata = pageMetadata({
   title: "تماس با ما",
@@ -30,9 +28,7 @@ const contactFaq = [
   faqItems[7]!,
 ];
 
-export default async function ContactPage() {
-  const user = await getSessionUser();
-
+export default function ContactPage() {
   return (
     <>
       <JsonLd
@@ -90,7 +86,7 @@ export default async function ContactPage() {
       <Container className="section-y">
         <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:gap-8">
           <FadeUp>
-            {user ? <ContactForm /> : <LoginGate />}
+            <ContactForm />
           </FadeUp>
           <FadeUp delay={0.1}>
             <ContactInfo />
@@ -100,7 +96,8 @@ export default async function ContactPage() {
         <FadeUp delay={0.1} className="mt-6">
           <div className="flex flex-col gap-2 rounded-[20px] border border-white/[0.06] bg-white/[0.015] px-5 py-4 text-[0.68rem] leading-6 text-fog-500 sm:flex-row sm:items-center sm:justify-between">
             <span>
-              اطلاعات فرم فقط برای بررسی درخواست استفاده می‌شود و در اختیار
+              ثبت درخواست بدون حساب کاربری ممکن است؛ پنل کاربری اختیاری است و
+              فقط برای پیگیری درخواست‌ها استفاده می‌شود. اطلاعات فرم در اختیار
               شخص ثالث قرار نمی‌گیرد.
             </span>
             <span className="shrink-0 font-latin tracking-wide text-fog-600">

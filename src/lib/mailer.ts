@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { siteConfig } from "@/lib/constants";
-import { sendTelegramMessage } from "@/lib/telegram";
+import { escapeHtml } from "@/lib/telegram";
 import { absoluteUrl } from "@/lib/utils";
 
 type TransportEnv = {
@@ -67,8 +67,9 @@ const EMAIL_BODY = (code: string, url: string) => `
 export type SendResult = { sent: boolean; channel: "email" | "fallback" };
 
 /**
- * کد تأیید ۶ رقمی (+ لینک پشتیبان) را می‌فرستد. اگر SMTP تنظیم نشده باشد،
- * کد و لینک در لاگ سرور و در صورت تنظیم، تلگرام استودیو ثبت می‌شود.
+ * کد تأیید ۶ رقمی (+ لینک پشتیبان) را فقط به ایمیل خود کاربر می‌فرستد.
+ * اگر SMTP تنظیم نشده باشد، کد در لاگ سرور ثبت می‌شود و به هیچ مقصد دیگری
+ * (از جمله تلگرام مدیر) ارسال نمی‌شود.
  */
 export async function sendVerificationEmail(
   to: string,
@@ -93,10 +94,99 @@ export async function sendVerificationEmail(
   }
 
   console.warn(
-    `[auth] SMTP not configured. Verification code for ${to}: ${code} | link: ${verifyUrl}`,
-  );
-  await sendTelegramMessage(
-    `🔐 <b>کد تأیید حساب</b>\n<b>ایمیل:</b> ${to}\n<b>کد:</b> <code>${code}</code>\n<a href="${verifyUrl}">تأیید با لینک</a>\n\n<i>SMTP تنظیم نشده؛ از مسیر جایگزین ارسال شد.</i>`,
+    `[auth] SMTP unavailable. Verification code for ${to}: ${code} | link: ${verifyUrl}`,
   );
   return { sent: false, channel: "fallback" };
+}
+
+export type LeadEmailData = {
+  name: string;
+  phone: string;
+  email: string;
+  brand: string;
+  projectType: string;
+  budget: string;
+  message: string;
+  submittedAt: string;
+  campaign: boolean;
+};
+
+function leadRow(label: string, value: string) {
+  return `<tr>
+    <td style="padding:10px 0;border-bottom:1px solid #ede3d4;font-size:12px;color:#8a7663;white-space:nowrap;vertical-align:top">${label}</td>
+    <td style="padding:10px 0 10px 14px;border-bottom:1px solid #ede3d4;font-size:13px;color:#3b2a1f;line-height:1.9">${value}</td>
+  </tr>`;
+}
+
+const LEAD_EMAIL_BODY = (lead: LeadEmailData) => {
+  const name = escapeHtml(lead.name);
+  const email = `<span dir="ltr" style="unicode-bidi:embed">${escapeHtml(lead.email)}</span>`;
+  const phone = `<span dir="ltr" style="unicode-bidi:embed">${escapeHtml(lead.phone)}</span>`;
+  const message = escapeHtml(lead.message).replace(/\r?\n/g, "<br />");
+
+  return `
+<div style="font-family:Tahoma,Arial,sans-serif;direction:rtl;text-align:right;background:#f4eada;padding:28px;color:#3b2a1f">
+  <div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid #e0cbb0;border-radius:18px;padding:30px">
+    <p style="font-size:15px;color:#6f4e37;font-weight:bold;margin:0 0 18px">ولتریکس استودیو</p>
+    <h2 style="font-size:18px;color:#3b2a1f;margin:0 0 8px">${
+      lead.campaign ? "درخواست جشنواره ۱۵ میلیونی" : "درخواست پروژه‌ی جدید"
+    }</h2>
+    <p style="font-size:12px;color:#8a7663;margin:0 0 18px">${escapeHtml(
+      lead.submittedAt,
+    )}</p>
+
+    <table style="width:100%;border-collapse:collapse">
+      ${leadRow("نام", name)}
+      ${leadRow("ایمیل", email)}
+      ${leadRow("تلفن", phone)}
+      ${leadRow("برند", escapeHtml(lead.brand) || "—")}
+      ${leadRow("نوع پروژه", escapeHtml(lead.projectType))}
+      ${leadRow("بودجه", escapeHtml(lead.budget))}
+    </table>
+
+    <h3 style="font-size:13px;color:#3b2a1f;margin:22px 0 8px">توضیحات</h3>
+    <p style="font-size:13px;line-height:2;color:#75634f;margin:0;background:#f9f3ea;border:1px solid #ede3d4;border-radius:12px;padding:14px">${message}</p>
+
+    <p style="font-size:11px;line-height:2;color:#8a7663;margin:22px 0 0;border-top:1px solid #ede3d4;padding-top:16px">
+      این ایمیل از فرم ${
+        lead.campaign ? "سفارش جشنواره" : "درخواست پروژه"
+      } ولتریکس استودیو ارسال شده است. پاسخ مستقیم به همین ایمیل، به آدرس مشتری می‌رود.
+    </p>
+  </div>
+</div>`;
+};
+
+export async function sendLeadEmail(lead: LeadEmailData): Promise<boolean> {
+  if (!isMailerConfigured()) return false;
+
+  try {
+    const env = transportEnv();
+    const subjectName = lead.name.replace(/[\r\n]+/g, " ").slice(0, 80);
+    await transporter().sendMail({
+      from: env.from ?? env.user,
+      to: siteConfig.email,
+      replyTo: lead.email,
+      subject: `${
+        lead.campaign ? "درخواست جشنواره ۱۵ میلیونی" : "درخواست پروژه‌ی جدید"
+      } — ${subjectName}`,
+      html: LEAD_EMAIL_BODY(lead),
+      text: [
+        lead.campaign ? "درخواست جشنواره ۱۵ میلیونی" : "درخواست پروژه‌ی جدید",
+        `تاریخ: ${lead.submittedAt}`,
+        `نام: ${lead.name}`,
+        `ایمیل: ${lead.email}`,
+        `تلفن: ${lead.phone}`,
+        `برند: ${lead.brand || "—"}`,
+        `نوع پروژه: ${lead.projectType}`,
+        `بودجه: ${lead.budget}`,
+        "",
+        "توضیحات:",
+        lead.message,
+      ].join("\n"),
+    });
+    return true;
+  } catch (error) {
+    console.error("[contact] SMTP send failed:", error);
+    return false;
+  }
 }

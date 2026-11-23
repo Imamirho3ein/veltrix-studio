@@ -148,11 +148,15 @@ export function RegisterForm() {
         </span>
         <h2 className="mt-5 text-lg font-bold text-white">ایمیل تأیید شد!</h2>
         <p className="mt-3 text-xs leading-7 text-fog-400">
-          حساب شما فعال است. برای ثبت درخواست پروژه، وارد حساب شوید.
+          حساب شما فعال است. برای پیگیری درخواست‌ها وارد شوید؛ ثبت درخواست
+          بدون حساب هم ممکن است.
         </p>
         <div className="mt-6 flex flex-col gap-2">
           <Button href={`/login${nextQuery()}`} fullWidth arrow>
             ورود به حساب
+          </Button>
+          <Button href="/contact" variant="secondary" fullWidth>
+            ثبت درخواست بدون ورود
           </Button>
         </div>
       </motion.div>
@@ -177,9 +181,9 @@ export function RegisterForm() {
             {successMessage}
           </p>
           {fallback ? (
-            <p className="mt-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-[0.64rem] leading-6 text-fog-500">
-              SMTP هنوز تنظیم نشده؛ کد تأیید از مسیر جایگزین (لاگ سرور یا
-              تلگرام استودیو) صادر شد.
+            <p className="mt-2 rounded-xl border border-rose-400/20 bg-rose-400/[0.06] px-3 py-2 text-[0.64rem] leading-6 text-rose-700">
+              ارسال ایمیل تأیید ممکن نشد. لطفاً با پشتیبانی تماس بگیرید تا کد
+              تأیید برایتان ارسال شود.
             </p>
           ) : (
             <p className="mt-2 text-[0.64rem] text-fog-500">

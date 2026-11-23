@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   return jsonOk({
     message: delivery.sent
       ? "کد تأیید تازه ارسال شد. صندوق ورودی (و پوشه‌ی اسپم) را بررسی کنید."
-      : "SMTP تنظیم نشده است. کد تأیید در لاگ سرور/تلگرام استودیو قرار گرفت.",
+      : "ارسال ایمیل تأیید ممکن نشد. لطفاً با پشتیبانی تماس بگیرید.",
     emailFallback: !delivery.sent,
   });
 }

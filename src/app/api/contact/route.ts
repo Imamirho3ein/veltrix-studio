@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { campaign, campaignBudget } from "@/data/campaign";
 import { contactSchema, sanitizeText } from "@/lib/validations/contact";
 import { escapeHtml, isTelegramConfigured, sendTelegramMessage } from "@/lib/telegram";
+import { sendLeadEmail } from "@/lib/mailer";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
 import { siteConfig } from "@/lib/constants";
 import { getSessionUser } from "@/lib/auth";
@@ -81,17 +82,8 @@ export async function POST(request: Request) {
   const data = parsed.data;
   const isCampaign = data.campaign === true && campaign.enabled;
 
+  // ثبت درخواست مهمان است؛ پنل کاربری اختیاری است و فقط برای پیگیری استفاده می‌شود.
   const sessionUser = await getSessionUser();
-  if (!sessionUser && !isCampaign) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message:
-          "برای ثبت درخواست پروژه، ابتدا وارد حساب خود شوید یا ثبت‌نام کنید.",
-      },
-      { status: 401 },
-    );
-  }
 
   // Honeypot: bots fill hidden fields. Pretend everything is fine.
   if (data.website && data.website.trim().length > 0) {
@@ -138,27 +130,31 @@ export async function POST(request: Request) {
     `<i>${escapeHtml(submittedAt)} — ${escapeHtml(ip)}</i>`,
   ];
 
-  if (!isTelegramConfigured()) {
+  let channel: "telegram" | "email" | null = null;
+
+  if (isTelegramConfigured()) {
+    const sent = await sendTelegramMessage(lines.join("\n"));
+    if (sent) channel = "telegram";
+  }
+
+  if (!channel) {
+    const mailed = await sendLeadEmail({
+      ...clean,
+      submittedAt,
+      campaign: isCampaign,
+    });
+    if (mailed) channel = "email";
+  }
+
+  if (!channel) {
     console.warn(
-      "[contact] Telegram is not configured. Lead captured locally:",
-      clean,
+      "[contact] Lead stored, but no notification channel delivered it:",
+      lead.id,
     );
     return NextResponse.json({ ok: true, delivered: false });
   }
 
-  const sent = await sendTelegramMessage(lines.join("\n"));
-  if (!sent) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message:
-          "ارسال درخواست انجام نشد. لطفاً دوباره تلاش کنید یا مستقیم به ایمیل ما پیام بدهید.",
-      },
-      { status: 502 },
-    );
-  }
-
-  return NextResponse.json({ ok: true, delivered: true });
+  return NextResponse.json({ ok: true, delivered: true, channel });
 }
 
 export function GET() {
