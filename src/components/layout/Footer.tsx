@@ -107,7 +107,12 @@ export function Footer() {
               aria-label="پیوندهای پاورقی"
               className="grid grid-cols-3 gap-x-4 gap-y-8"
             >
-              <LinkColumn title="استودیو" items={footerLinks.studio.filter((item) => item.href !== "/campaign" || campaign.enabled)} />
+              <LinkColumn
+                title="استودیو"
+                items={footerLinks.studio.filter(
+                  (item) => item.href !== "/campaign" || campaign.enabled,
+                )}
+              />
               <LinkColumn title="منابع" items={footerLinks.resources} />
               <LinkColumn title="ارتباط" items={footerLinks.contact} />
             </nav>
