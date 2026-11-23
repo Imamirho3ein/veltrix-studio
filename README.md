@@ -18,7 +18,7 @@
 ```bash
 npm install
 cp .env.example .env.local   # مقادیر را پر کنید
-npm run dev                  # http://localhost:3000
+npm run dev
 ```
 
 اسکریپت‌ها:
